@@ -1,7 +1,7 @@
 # Useful resource for the project
 ### Framework that can be referenced
 + [RUAH MVC Framework](https://bitbucket.org/parhamcurtis/ruah-mvc-framework/src/master/)
-...This is the framework made by Curtis Parham.
+⋅⋅⋅This is the framework made by Curtis Parham.
 ___
 ### Tutorial
 ##### Frond-end
