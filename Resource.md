@@ -1,9 +1,11 @@
 # Useful resource for the project
 ### Framework that can be referenced
-+ [RUAH MVC Framework](https://bitbucket.org/parhamcurtis/ruah-mvc-framework/src/master/)  
-This is the framework made by Curtis Parham.
-+ [PHP e-commerce series](https://www.youtube.com/watch?v=xHj9wQYWIQ4&list=PLFPkAJFH7I0mitTSKDaoxwfLLf-wNNnVS)  
-This is a tutorial series of an e-commerce website on YouTube.
++ [RUAH MVC Framework](https://bitbucket.org/parhamcurtis/ruah-mvc-framework/src/master/)
+
+  This is the framework made by Curtis Parham.
++ [PHP e-commerce series](https://www.youtube.com/watch?v=xHj9wQYWIQ4&list=PLFPkAJFH7I0mitTSKDaoxwfLLf-wNNnVS)
+
+  This is a tutorial series of an e-commerce website on YouTube.
 ___
 ### Tutorial
 ##### Frond-end
