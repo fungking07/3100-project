@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2020 at 03:29 PM
+-- Generation Time: Mar 23, 2020 at 04:21 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -25,25 +25,48 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `comment_id` int(8) NOT NULL,
+  `comment_date_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `post_id` int(8) UNSIGNED NOT NULL,
+  `comments_content` text NOT NULL,
+  `author_name` varchar(8) NOT NULL,
+  `like_number` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`, `like_number`) VALUES
+(1, '2020-03-22 16:00:00', 1, 'Thank you for effort\r\nBy Admin2', 'Admin2', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
-  `post_id` int(10) UNSIGNED NOT NULL,
-  `post_title` varchar(120) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
-  `post_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `user_name` varchar(20) NOT NULL,
-  `category` varchar(20) DEFAULT NULL,
-  `like_number` int(10) UNSIGNED DEFAULT NULL
+  `post_id` int(8) UNSIGNED NOT NULL,
+  `post_title` varchar(128) NOT NULL,
+  `post_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `author_id` int(8) UNSIGNED NOT NULL,
+  `author_name` varchar(16) NOT NULL,
+  `category` varchar(16) DEFAULT NULL,
+  `like_number` int(8) UNSIGNED DEFAULT NULL,
+  `view_number` int(8) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`post_id`, `post_title`, `post_date`, `user_id`, `user_name`, `category`, `like_number`) VALUES
-(1, 'Hello world!', '2020-03-22 14:18:50', 1, 'Admin1', NULL, 0);
+INSERT INTO `post` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
+(1, '\0\0\0H\0\0\0e\0\0\0l\0\0\0l\0\0\0o\0\0\0 \0\0\0w\0\0\0o\0\0\0r\0\0\0l\0\0\0d\0\0\0!', '2020-03-22 14:18:50', 0, 'Admin1', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -52,7 +75,7 @@ INSERT INTO `post` (`post_id`, `post_title`, `post_date`, `user_id`, `user_name`
 --
 
 CREATE TABLE `post_content` (
-  `post_id` int(11) NOT NULL,
+  `post_id` int(8) UNSIGNED NOT NULL,
   `post_content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -66,22 +89,23 @@ INSERT INTO `post_content` (`post_id`, `post_content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `username`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `username` (
-  `user_id` int(11) NOT NULL,
-  `Username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Password` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+CREATE TABLE `user` (
+  `user_id` int(8) UNSIGNED NOT NULL,
+  `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `username`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `username` (`user_id`, `Username`, `Password`) VALUES
+INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
 (1, 'Admin1', 'csci3100'),
-(2, 'Admin2', 'csci3100');
+(2, 'Admin2', 'csci3100'),
+(3, 'Admin3', 'csci3100');
 
 -- --------------------------------------------------------
 
@@ -90,13 +114,13 @@ INSERT INTO `username` (`user_id`, `Username`, `Password`) VALUES
 --
 
 CREATE TABLE `user_profile` (
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `user_name` varchar(20) NOT NULL,
+  `user_id` int(8) UNSIGNED NOT NULL,
+  `user_name` varchar(16) NOT NULL,
   `email_address` varchar(320) DEFAULT NULL,
-  `personal_picture` geometry NOT NULL,
-  `education` varchar(100) DEFAULT NULL,
+  `personal_picture` varchar(200) NOT NULL,
+  `education` varchar(64) DEFAULT NULL,
   `personal_description` text DEFAULT NULL,
-  `major` varchar(100) DEFAULT NULL,
+  `major` varchar(64) DEFAULT NULL,
   `consultation_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -105,12 +129,20 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`user_id`, `user_name`, `email_address`, `personal_picture`, `education`, `personal_description`, `major`, `consultation_status`) VALUES
-(1, 'Admin1', '123456789@nokia.3310.com.hk', 0x, '', 'Hi from Admin 1.', '', 0),
-(2, 'Admin2', NULL, 0x, NULL, NULL, NULL, 0);
+(1, 'Admin1', '123456789@nokia.3310.com.hk', '', '', 'Hi from Admin 1.', '', 0),
+(2, 'Admin2', NULL, '', NULL, NULL, NULL, 0),
+(3, 'Admin3_cse', NULL, '', NULL, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `post`
@@ -119,10 +151,22 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`post_id`);
 
 --
--- Indexes for table `username`
+-- Indexes for table `post_content`
 --
-ALTER TABLE `username`
+ALTER TABLE `post_content`
+  ADD KEY `post_id` (`post_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `user_profile`
+--
+ALTER TABLE `user_profile`
+  ADD KEY `user_profile_ibfk_1` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -132,13 +176,35 @@ ALTER TABLE `username`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `username`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `username`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `user`
+  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+
+--
+-- Constraints for table `post_content`
+--
+ALTER TABLE `post_content`
+  ADD CONSTRAINT `post_content_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+
+--
+-- Constraints for table `user_profile`
+--
+ALTER TABLE `user_profile`
+  ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
