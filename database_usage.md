@@ -1,5 +1,5 @@
-###database usage
-#format:  database name, attributes, description
+### database usage
+# format:  database name, attributes, description
 
 1. user, for login usage
 + user_id, max 8 digit
