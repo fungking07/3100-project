@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2020 at 04:21 PM
+-- Generation Time: Mar 25, 2020 at 04:14 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comment` (
-  `comment_id` int(8) NOT NULL,
+  `comment_id` int(8) UNSIGNED NOT NULL,
   `comment_date_time` timestamp NOT NULL DEFAULT current_timestamp(),
   `post_id` int(8) UNSIGNED NOT NULL,
   `comments_content` text NOT NULL,
   `author_name` varchar(8) NOT NULL,
-  `like_number` int(8) NOT NULL
+  `like_number` int(8) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -43,6 +43,22 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`, `like_number`) VALUES
 (1, '2020-03-22 16:00:00', 1, 'Thank you for effort\r\nBy Admin2', 'Admin2', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `consultation_comment`
+--
+
+CREATE TABLE `consultation_comment` (
+  `user_id` int(8) NOT NULL,
+  `author_id` int(8) NOT NULL,
+  `score` int(1) NOT NULL,
+  `comments` text NOT NULL,
+  `status_consultee` tinyint(1) DEFAULT 0,
+  `status_consultor` tinyint(1) DEFAULT 0,
+  `comment_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,8 +73,8 @@ CREATE TABLE `post` (
   `author_id` int(8) UNSIGNED NOT NULL,
   `author_name` varchar(16) NOT NULL,
   `category` varchar(16) DEFAULT NULL,
-  `like_number` int(8) UNSIGNED DEFAULT NULL,
-  `view_number` int(8) UNSIGNED NOT NULL
+  `like_number` int(8) UNSIGNED DEFAULT 0,
+  `view_number` int(8) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -95,17 +111,18 @@ INSERT INTO `post_content` (`post_id`, `post_content`) VALUES
 CREATE TABLE `user` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `verify_code` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
-(1, 'Admin1', 'csci3100'),
-(2, 'Admin2', 'csci3100'),
-(3, 'Admin3', 'csci3100');
+INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`) VALUES
+(1, 'Admin1', 'csci3100', NULL),
+(2, 'Admin2', 'csci3100', NULL),
+(3, 'Admin3', 'csci3100', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,21 +134,12 @@ CREATE TABLE `user_profile` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `user_name` varchar(16) NOT NULL,
   `email_address` varchar(320) DEFAULT NULL,
-  `personal_picture` varchar(200) NOT NULL,
-  `education` varchar(64) DEFAULT NULL,
-  `personal_description` text DEFAULT NULL,
-  `major` varchar(64) DEFAULT NULL,
+  `personal_picture` varchar(200) DEFAULT NULL,
+  `education_level` varchar(64) NOT NULL,
+  `personal_description` text NOT NULL,
+  `major` varchar(120) NOT NULL,
   `consultation_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_profile`
---
-
-INSERT INTO `user_profile` (`user_id`, `user_name`, `email_address`, `personal_picture`, `education`, `personal_description`, `major`, `consultation_status`) VALUES
-(1, 'Admin1', '123456789@nokia.3310.com.hk', '', '', 'Hi from Admin 1.', '', 0),
-(2, 'Admin2', NULL, '', NULL, NULL, NULL, 0),
-(3, 'Admin3_cse', NULL, '', NULL, NULL, NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -166,7 +174,7 @@ ALTER TABLE `user`
 -- Indexes for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  ADD KEY `user_profile_ibfk_1` (`user_id`);
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -187,12 +195,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `comment`
---
-ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
 
 --
 -- Constraints for table `post_content`
