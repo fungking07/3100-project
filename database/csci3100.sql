@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2020 at 04:14 PM
+-- Generation Time: Mar 26, 2020 at 02:47 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -112,17 +112,18 @@ CREATE TABLE `user` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `verify_code` varchar(8) DEFAULT NULL
+  `verify_code` varchar(8) DEFAULT NULL,
+  `email_address` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`) VALUES
-(1, 'Admin1', 'csci3100', NULL),
-(2, 'Admin2', 'csci3100', NULL),
-(3, 'Admin3', 'csci3100', NULL);
+INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
+(1, 'Admin1', 'csci3100', NULL, ''),
+(2, 'Admin2', 'csci3100', NULL, ''),
+(3, 'Admin3', 'csci3100', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,6 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`) VALUES
 CREATE TABLE `user_profile` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `user_name` varchar(16) NOT NULL,
-  `email_address` varchar(320) DEFAULT NULL,
   `personal_picture` varchar(200) DEFAULT NULL,
   `education_level` varchar(64) NOT NULL,
   `personal_description` text NOT NULL,
