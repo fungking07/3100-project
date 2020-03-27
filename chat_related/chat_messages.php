@@ -16,13 +16,20 @@
   $chatinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
   $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
 
+  if(isset($_GET["send_consult_doc"])){
+    /*
+    display consult_doc
+     */
+  }
+  if(isset($_GET["user_consult_ok"])){
+    /*
+    go to payment_site
+     */
+  }
   //get certain userID and data
-  /*
-
-   */
   //output chatlist
-  /*code skeleton of output Chatlist
-  <?php forreach($chattinfo as chat){
+  //code skeleton of output Chatlist
+<?php forreach($chattinfo as chat){
     if(chat["userID"] == userID)
 
 <html>
@@ -179,7 +186,7 @@ body {
 </div>
 
 <script>
-// When the user scrolls the page, execute myFunction 
+// When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
