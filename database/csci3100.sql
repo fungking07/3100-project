@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2020 at 02:47 PM
+-- Generation Time: Mar 27, 2020 at 03:17 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `csci3100`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `chatroom_id` int(8) UNSIGNED NOT NULL,
+  `message` text NOT NULL,
+  `message_date_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sender_name` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatroom`
+--
+
+CREATE TABLE `chatroom` (
+  `chatroom_id` int(8) UNSIGNED NOT NULL,
+  `user_id` int(8) NOT NULL,
+  `opponent_id` int(8) NOT NULL,
+  `last_message_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `opponent_picture` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -63,10 +90,10 @@ CREATE TABLE `consultation_comment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Table structure for table `forum`
 --
 
-CREATE TABLE `post` (
+CREATE TABLE `forum` (
   `post_id` int(8) UNSIGNED NOT NULL,
   `post_title` varchar(128) NOT NULL,
   `post_date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -78,10 +105,10 @@ CREATE TABLE `post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `post`
+-- Dumping data for table `forum`
 --
 
-INSERT INTO `post` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
+INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
 (1, '\0\0\0H\0\0\0e\0\0\0l\0\0\0l\0\0\0o\0\0\0 \0\0\0w\0\0\0o\0\0\0r\0\0\0l\0\0\0d\0\0\0!', '2020-03-22 14:18:50', 0, 'Admin1', NULL, 0, 0);
 
 -- --------------------------------------------------------
@@ -92,15 +119,16 @@ INSERT INTO `post` (`post_id`, `post_title`, `post_date`, `author_id`, `author_n
 
 CREATE TABLE `post_content` (
   `post_id` int(8) UNSIGNED NOT NULL,
-  `post_content` text NOT NULL
+  `post_content` text NOT NULL,
+  `like_number` int(8) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post_content`
 --
 
-INSERT INTO `post_content` (`post_id`, `post_content`) VALUES
-(1, 'Hello from Admin1!\r\nThis is the first post of Acadmap from Admin1.\r\nSurprise!?\r\nI hope so.\r\nHope you enjoy using Acadmap!');
+INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
+(1, 'Hello from Admin1!\r\nThis is the first post of Acadmap from Admin1.\r\nSurprise!?\r\nI hope so.\r\nHope you enjoy using Acadmap!', 0);
 
 -- --------------------------------------------------------
 
@@ -146,6 +174,19 @@ CREATE TABLE `user_profile` (
 --
 
 --
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD KEY `chatroom_id` (`chatroom_id`);
+
+--
+-- Indexes for table `chatroom`
+--
+ALTER TABLE `chatroom`
+  ADD PRIMARY KEY (`chatroom_id`),
+  ADD KEY `opponent_picture` (`opponent_picture`);
+
+--
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
@@ -153,15 +194,17 @@ ALTER TABLE `comment`
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `post`
+-- Indexes for table `forum`
 --
-ALTER TABLE `post`
-  ADD PRIMARY KEY (`post_id`);
+ALTER TABLE `forum`
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `like_number` (`like_number`);
 
 --
 -- Indexes for table `post_content`
 --
 ALTER TABLE `post_content`
+  ADD UNIQUE KEY `like_number` (`like_number`),
   ADD KEY `post_id` (`post_id`);
 
 --
@@ -174,6 +217,7 @@ ALTER TABLE `user`
 -- Indexes for table `user_profile`
 --
 ALTER TABLE `user_profile`
+  ADD UNIQUE KEY `personal_picture` (`personal_picture`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -181,9 +225,15 @@ ALTER TABLE `user_profile`
 --
 
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT for table `chatroom`
 --
-ALTER TABLE `post`
+ALTER TABLE `chatroom`
+  MODIFY `chatroom_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `forum`
+--
+ALTER TABLE `forum`
   MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -197,10 +247,28 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `chat`
+--
+ALTER TABLE `chat`
+  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`chatroom_id`) REFERENCES `chatroom` (`chatroom_id`);
+
+--
+-- Constraints for table `chatroom`
+--
+ALTER TABLE `chatroom`
+  ADD CONSTRAINT `chatroom_ibfk_1` FOREIGN KEY (`opponent_picture`) REFERENCES `user_profile` (`personal_picture`);
+
+--
+-- Constraints for table `forum`
+--
+ALTER TABLE `forum`
+  ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`like_number`) REFERENCES `post_content` (`like_number`);
+
+--
 -- Constraints for table `post_content`
 --
 ALTER TABLE `post_content`
-  ADD CONSTRAINT `post_content_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`);
+  ADD CONSTRAINT `post_content_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `forum` (`post_id`);
 
 --
 -- Constraints for table `user_profile`
