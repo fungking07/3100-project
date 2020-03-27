@@ -1,33 +1,26 @@
 <?php
 	include(ConnectDatabase.php);
+	//get input
 
 	//write query
-	$sql = 'SELECT * FROM userAccount Order by userID';
+	$sql = 'SELECT * FROM userAccount Order by userID
+					WHERE ';
 
 
-	//get result accoriding to the query
+	//get result according to the query
 	$result = mysqli_query($connect,$sql);
 
 
-	//fetch the result into the aoociative array format
-	$userdata = mysqli_fetch_all($result,MySQLI_ASSOC)
+	//fetch the result into the asociative array format
+	$otherdata = mysqli_fetch_all($result,MySQLI_ASSOC)
 
+	//display the $otherdata here
 
-	//ouput the result of user on screen
-	//match with the login userid
-	foreach ($userdata as user) {
-		if(/*$userdata["userID"] == login userid*/){
-		//save the varaible to current user
-		$currentUser = $userdata["userID"];
-		//output the info of Current user on the  screen using html and php below
-		//not done yet
-		}
-	}
-
-	//if user press the edit button he can go to the edit.php to change his profile info
-	if(isset($_GET["edit"])){
-		//go to page enable editing
-		header("edit.php");
+	if(isset($_GET["consult"])){
+		/*
+		insert record to chatroom and chat, ie init a chatroom and chat
+		 */
+		header("chat.php");
 	}
 
 ?>
