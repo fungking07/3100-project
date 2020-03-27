@@ -1,7 +1,40 @@
+<?php
+  include(ConnectDatabase.php);
+
+  $sql = 'SELECT * FROM Post Order BY PostID';
+  $commentsql = 'SELECT * FROM Comment'
+
+  //get result accoriding to the query
+  $result = mysqli_query($connect,$sql);
+  $commentResult = mysqli_query($connect,$commentsql);
+
+  //fetch the result into the aoociative array format
+  $Postinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+  $Commentinfo = mysqli_fetch_all($commentResult,MySQLI_ASSOC);
+
+  mysql_free_resul($result);
+
+  if(isset($_GET["submit"])){
+    //direct user to another page to write comment
+    header("comment.php");
+  }
+  //output the post tiltle and postcontent in the html below(done partially)
+
+
+  //output the comment tiltle and postcontent in the html below(not done)
+  /*code skeleton of poutputinf Comment
+  */
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="device-width, initial-scale = 1">
+  <title>Forum skeleton</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 <style>
 body {
   margin: 0;
@@ -22,7 +55,7 @@ body {
   color: #aaa;
 }
 
-.container {
+.container1 {
   border: 2px solid #6CDDC0;
   background-color: #84ECD1;
   border-radius: 5px;
@@ -35,13 +68,13 @@ body {
   background-color: #B7D7CF;
 }
 
-.container::after {
+.container1::after {
   content: "";
   clear: both;
   display: table;
 }
 
-.content {
+.content1 {
   padding: 70px 0;
   margin: 2px auto 2px auto;
   width: 90%;
@@ -55,7 +88,7 @@ body {
   margin: 10px 5px 22px 5px;
   border: none;
   cursor: pointer;
-  width: 10%;
+  width: 170px;
   margin-bottom:10px;
   opacity: 0.8;
   text-align:center;
@@ -67,53 +100,62 @@ body {
 
 </style>
 </head>
-<div class="header">
-  <p>AcadMap</p>
-</div>
 <body>
-    <script>
-        //nodejs print $display_block; 
-    </script>
 
-<div class="content">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="#" class="navbar-brand">AcadMap</a>
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Forum</a></li>
+          <li><a href="#">Chat</a></li>
+          <li><a href="#">Consultation</a></li>
+          <input type="text" placeholder="Search..">
+          <li><a href="#">Welcome, User!</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<div class="container">
+<div class="content1">
+
+<div class="container1">
   <img src="/avatar1.jpg" alt="Avatar1">
-  <h3>Title</h3>
-  <p>content</p>
+  <h3><?php/*output tile according to PostID*/ echo  $Postinfo[PostID][Title]?></h3>
+  <p><?php echo  $Postinfo[PostID][content]  ?></p>
   <span class="time-right">time1</span>
 </div>
 
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p>content</p>
-  <span class="time-right">time1</span>
-</div>
-
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p>content</p>
-  <span class="time-right">time1</span>
-</div>
-
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p>content</p>
-  <span class="time-right">time1</span>
-</div>
-
-<div class="container reply">
+<div class="container1 reply">
   <img src="/avatar1.jpg" alt="Avatar1">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
-<button type="button" class="btn1" onclick="newComm()">+ new comment</button>
+<div class="container1 reply">
+  <img src="/avatar1.jpg" alt="Avatar1">
+  <p>content</p>
+  <span class="time-right">time1</span>
+</div>
+
+<div class="container1 reply">
+  <img src="/avatar1.jpg" alt="Avatar1">
+  <p>content</p>
+  <span class="time-right">time1</span>
+</div>
+
+<div class="container1 reply">
+  <img src="/avatar1.jpg" alt="Avatar1">
+  <p>content</p>
+  <span class="time-right">time1</span>
+</div>
+<form action="post.php" method="get">
+<button type="button" class="btn1" onclick="newComm()" name="submit" value ="submit">+ new comment</button>
 
 </div>
 
 <script>
-// When the user scrolls the page, execute myFunction 
+// When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
 
 function myFunction() {
