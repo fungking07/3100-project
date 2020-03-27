@@ -1,7 +1,62 @@
+<?php
+  //use helper function to connect to the database
+  include(ConnectDatabase.php);
+
+  //write query
+  $sql = 'SELECT username,password FROM user';
+
+  //get result accoriding to the query
+  $result = mysqli_query($connect,$sql);
+
+
+  //fetch the result into the aoociative array format
+  $userdata = mysqli_fetch_all($result,MySQLI_ASSOC)
+
+  //free memory
+  mysql_free_resul($result);
+
+
+  if(isset($_GET["forget"])){
+    header("reset.php");
+  }
+  if(isset($_GET["register"])){
+    header("register.php");
+  }
+  if(isset($_GET["submit"])){
+  if(/*Username is in database*/){
+    //checkif password match
+    if(/*password is match*/){
+      //get in to the forum
+        header("forum.php")
+      }
+      else{
+      //promt error to user
+      //remain on this page
+    }
+    }
+    else{
+      //promt error to user
+      //remain on this page
+    }
+
+  }
+
+  //close connection to DataBase
+  mysqli_close($connect);
+ ?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="device-width, initial-scale = 1">
+<title>Forum skeleton</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style>
 body {
   font-family: Arial;
@@ -21,7 +76,7 @@ body {
   height: 100%;
   width: 50%;
   position: fixed;
-  top: 50;
+  top: 0;
   z-index: 1;
   overflow-x: hidden;
   padding-top: 20px;
@@ -89,20 +144,31 @@ body {
 
 </style>
 </head>
-<div class="header">
-  <p>AcadMap</p>
-</div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <body>
 <div class="content">
   <div class="split left">
     <div class="centered">
-      <form action="/action_page.php" method="get">
+      <form action="login.php" method="get">
         <label for="fname">Username:</label>
         <input type="text" id="user" name="user"><br><br>
         <label for="lname">Password:</label>
         <input type="text" id="pw" name="pw"><br><br>
-        <button type="submit" class="btn2" onclick="regPage()">CONFIRM</button>
-        <button type="button" class="btn2" onclick="regPage()">FORGET</button>
+        <button type="submit" class="btn2" onclick="regPage()" name= "submit" value = "submit">CONFIRM</button>
+        <button type="button" class="btn2" onclick="regPage()" name="forget" value = "forget">FORGET</button>
       </form>
     </div>
   </div>
@@ -111,14 +177,10 @@ body {
     <div class="centered">
       <p>Not yet our member?</p>
       <h3>REGISTER HERE!</h3>
-      <button type="button" class="btn1" onclick="regPage()">REGISTER</button>
+      <button type="button" class="btn1" onclick="regPage()"name="register" value = "register">REGISTER</button>
     </div>
   </div>
 </div>
 
 </body>
-</html> 
-
-
-
-
+</html>
