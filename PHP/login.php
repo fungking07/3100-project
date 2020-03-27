@@ -1,4 +1,21 @@
 <?php
+  //use helper function to connect to the database
+  include(ConnectDatabase.php);
+
+  //write query
+  $sql = 'SELECT username,password FROM user';
+
+  //get result accoriding to the query
+  $result = mysqli_query($connect,$sql);
+
+
+  //fetch the result into the aoociative array format
+  $userdata = mysqli_fetch_all($result,MySQLI_ASSOC)
+
+  //free memory
+  mysql_free_resul($result);
+
+
   if(isset($_GET["forget"])){
     header("reset.php");
   }
@@ -23,6 +40,9 @@
     }
 
   }
+
+  //close connection to DataBase
+  mysqli_close($connect);
  ?>
 
 
