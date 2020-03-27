@@ -2,17 +2,24 @@
   include("ConnectDatabase.php");
 
   $sql = 'SELECT * FROM chat';
-  $sql = 'SELECT * FROM user Order BY userID';
+  $sql = 'SELECT * FROM user Order BY user_id';
   //get result accoriding to the query
   $result = mysqli_query($connect,$sql);
   $result = mysqli_query($connect,$usersql);
+  /*
+  SELECT * FROM chat
+  WHERE user_id = user.user_id
+  ORDER BY last_message_time
+   */
 
   //fetch the result into the aoociative array format
   $chatinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
   $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
 
   //get certain userID and data
-  
+  /*
+
+   */
   //output chatlist
   /*code skeleton of output Chatlist
   <?php forreach($chattinfo as chat){

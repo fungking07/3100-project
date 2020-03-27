@@ -2,7 +2,7 @@
   //as admin from now (change in later code)
 	include(ConnectDatabase.php);
 
-  $sql = 'SELECT message,messageDateTime FROM Chatroom Order By created_at';
+  $sql = 'SELECT message,message_date_time FROM chat Order By last_message_time';
 
 	//get result accoriding to the query
 	$result = mysqli_query($connect,$sql);

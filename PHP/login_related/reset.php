@@ -3,6 +3,7 @@ include("ConnectDatabase.php");
 //need SDO_DAS_ChangeSummary
 if(isset($_POST["submitemail"])){
 	//tell server to send verification code
+	//generate a 8 char verify_code and save it to database, user 
 
 	//echo a message to tell user to wait for the verification code and enter it
 }

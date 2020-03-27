@@ -2,6 +2,15 @@
 # format:  database name, attributes, description
 # Why default NULL: prevent space input/empty input
 
+##footnote: left:
++ forum.php matching_system.php comment_writing.php
+# database:
++ table of chatroom
++ (chatroom_id(primary)(AUTO_INCREMENT,distinuish by admin), user_id(primary), opperent_id, last_message_time(Foreign))
+
++ table of chat
++ (chatroom_id(call from chatroom), message, message_date_time, sender, last_message_time)
+
 1. user, for login usage
 + user_id, max 8 digit, AUTO_INCREMENT(auto +1 from previous if not specify)
 + Username, max 16 char

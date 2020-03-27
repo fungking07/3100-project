@@ -1,12 +1,19 @@
 <?php
   include(ConnectDatabase.php);
 
-  $sql = 'SELECT * FROM Post Order BY PostID';
-  $commentsql = 'SELECT * FROM Comment'
+  $sql = 'SELECT * FROM post Order BY post_id';
+  $commentsql = 'SELECT * FROM comment'
 
   //get result accoriding to the query
   $result = mysqli_query($connect,$sql);
   $commentResult = mysqli_query($connect,$commentsql);
+  /*
+  $comment_sql = 'SELECT * FROM comment
+  WHERE post.post_id = comment.post_id
+  ORDER BY comment.comment_id'
+  //end of sql
+  //output $post_comment_sql
+  */
 
   //fetch the result into the aoociative array format
   $Postinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
@@ -18,13 +25,15 @@
     //direct user to another page to write comment
     header("comment.php");
   }
-  //output the post tiltle and postcontent in the html below(done partially)
+  //output the post_title and post_content in the html below(done partially)
 
 
-  //output the comment tiltle and postcontent in the html below(not done)
+  //output the post_title and post_content in the html below(not done)
   /*code skeleton of poutputinf Comment
+
+  //php way
   <?php forreach($commentinfo as comment){
-    if(PostID = currentPostID){
+    if(post_id = current_post_id){
     ?>
     <div class="container reply">
       <img src="/avatar1.jpg" alt="Avatar1">

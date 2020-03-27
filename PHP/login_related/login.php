@@ -5,11 +5,16 @@
   //write query
   $sql = 'SELECT username,password FROM user';
 
-  //get result accoriding to the query
+  //get result accoriding to the query in database
   $result = mysqli_query($connect,$sql);
+  /*
+  SELECT username,password FROM user
+  WHERE username = input.username and password = input.password
+   */
+// if result != NULL/empty then header("forum.php")
+// fetch it to userdata and check
 
-
-  //fetch the result into the aoociative array format
+  //fetch the result from query into the asociative array format
   $userdata = mysqli_fetch_all($result,MySQLI_ASSOC)
 
   //free memory
@@ -23,18 +28,19 @@
     header("register.php");
   }
   if(isset($_GET["submit"])){
-  if(/*Username is in database*/){
+  if(/*Username is in database,ie $userdata.username = input username*/){
     //checkif password match
-    if(/*password is match*/){
+  if(/*password is match,
+    $userdata.password = input password, for particular user*/){
       //get in to the forum
         header("forum.php")
       }
-      else{
-      //promt error to user
+      else{//pw error case, may consider to combine it after debug
+      //promt error to user, labal out login error
       //remain on this page
     }
     }
-    else{
+    else{// username error case
       //promt error to user
       //remain on this page
     }
@@ -46,7 +52,10 @@
  ?>
 
 
-
+/*
+  as we need to use database,
+  we copy login.html to php in order to make action in html functional
+ */
 <!DOCTYPE html>
 <html>
 <head>

@@ -2,46 +2,39 @@
 	$error =[UserID=>"",username=>"",password=>"",email=>""];
 	if(isset($_POST[submit])){
 		//validate every data
-	if(/*UserID is valid*/){
-			//save data to database
-		}
-		else{
-			//keep userdata in the form
-			//promt error to user
-			//remain on this page
-		}
-	if(/*Username is valid*/){
-			//save data to database
-		}
-		else{
-			//keep userdata in the form
-			//promt error to user
-			//remain on this page
-		}
-	if(/*password is valid*/){
-			//save data to database
-			//remain on this page
-		}
-		else{
-			//keep userdata in the form
-			//promt error to user
-			//remain on this page
-		}
-	if(/*email is valid*/){
-		//keep userdata in the form
-			//save data to database
-			//remain on this page
-		}
-		else{
-			//keep userdata in the form
-			//promt error to user
-			//remain on this page
-		}
+		if (/*UserID is valid && Username is valid && password is valid
+		&& password is valid && email is valid */){
+		//save the info
 		header("registersucessful.html");
+		// or pop up window, header("forum.php")
+	}
+if(/*UserID is invalid*/){
+	//keep userdata in the form
+	//promt error to user
+	//remain on this page
+		}
+	if(/*Username is invalid*/){
+		//keep userdata in the form
+		//promt error to user
+		//remain on this page
+		}
+	if(/*password is invalid*/){
+		//keep userdata in the form
+		//promt error to user
+		//remain on this page
+		}
+	if(/*email is invalid*/){
+		//keep userdata in the form
+		//promt error to user
+		//remain on this page
+		}
 	}
 
 ?>
-
+/*
+  as we need to use database,
+  we copy register.html to php in order to make action in html functional
+ */
 <!DOCTYPE html>
 <html>
 	<head>
