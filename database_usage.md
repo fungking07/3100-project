@@ -4,12 +4,6 @@
 
 ##footnote: left:
 + forum.php matching_system.php comment_writing.php
-# database:
-+ table of chatroom
-+ (chatroom_id(primary)(AUTO_INCREMENT,distinuish by admin), user_id(primary), opperent_id, last_message_time(Foreign))
-
-+ table of chat
-+ (chatroom_id(call from chatroom), message, message_date_time, sender, last_message_time)
 
 1. user, for login usage
 + user_id, max 8 digit, AUTO_INCREMENT(auto +1 from previous if not specify)
@@ -27,7 +21,7 @@
 + major, default NULL
 + consultation_status, using tinyint(1) to stipulate boolean, 0->False, default 0
 
-3. post
+3. forum
 + post_id, max 8 digit, AUTO_INCREMENT(auto +1 from previous if not specify)
 + post_title, max 128 char
 + post_date, current_timestamp() is used
@@ -35,11 +29,12 @@
 + author_name
 + category, max char 16
 + like_number, default 0
-+ view_number, default 0
++ view_number, default 0, Foreign to post_content to post_content
 
 4. post_content
 + post_id, Foreign key constraints, both restrict from post.post_id
 + post_content
++ like_number, default 0
 
 5. comment
 + comment_id
@@ -57,3 +52,16 @@
 + status_consultee, using tinyint(1) to stipulate boolean, 0->False, default 0
 + status_consulter, using tinyint(1) to stipulate boolean, 0->False, default 0
 + comment_date
+
+7. chatroom
++ chatroom_id, AUTO_INCREMENT, max 8 digit, global unique key
++ user_id
++ opponent_id
++ last_message_time
++ opponent_picture, var 200, Foreign key from user_profile.personal_picture
+
+8. chat, for chat in chatroom
++ chatroom_id, max 8 digit, Foreign key from chatroom
++ message
++ message_date_time, current_timestamp()
++ sender_name, maxchar 8
