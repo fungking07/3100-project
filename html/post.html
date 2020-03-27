@@ -75,7 +75,7 @@ body {
 }
 
 .content1 {
-  padding: 70px 0;
+  padding: 0;
   margin: 2px auto 2px auto;
   width: 90%;
 }
@@ -102,50 +102,50 @@ body {
 </head>
 <body>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <a href="#" class="navbar-brand">AcadMap</a>
-      <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Forum</a></li>
-          <li><a href="#">Chat</a></li>
-          <li><a href="#">Consultation</a></li>
-          <input type="text" placeholder="Search..">
-          <li><a href="#">Welcome, User!</a></li>
-        </ul>
-      </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <div class="content1">
 
 <div class="container1">
-  <img src="/avatar1.jpg" alt="Avatar1">
+  <img src="../assets/avatar.jpg" alt="Avatar1">
   <h3><?php/*output tile according to PostID*/ echo  $Postinfo[PostID][Title]?></h3>
   <p><?php echo  $Postinfo[PostID][content]  ?></p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+  <img src="../assets/avatar.jpg" alt="Avatar1">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+  <img src="../assets/avatar.jpg" alt="Avatar1">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+  <img src="../assets/avatar.jpg" alt="Avatar1">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+  <img src="../assets/avatar.jpg" alt="Avatar1">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
@@ -161,8 +161,6 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
 }
 </script>
 
