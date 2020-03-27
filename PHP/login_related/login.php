@@ -46,7 +46,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="device-width, initial-scale = 1">
+<title>Forum skeleton</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style>
 body {
   font-family: Arial;
@@ -66,7 +72,7 @@ body {
   height: 100%;
   width: 50%;
   position: fixed;
-  top: 50;
+  top: 0;
   z-index: 1;
   overflow-x: hidden;
   padding-top: 20px;
@@ -134,9 +140,20 @@ body {
 
 </style>
 </head>
-<div class="header">
-  <p>AcadMap</p>
-</div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <body>
 <div class="content">
   <div class="split left">
