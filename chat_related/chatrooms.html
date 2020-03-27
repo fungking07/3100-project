@@ -18,12 +18,16 @@
   }
 
  ?>
-
-
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="device-width, initial-scale = 1">
+<title>Forum skeleton</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style>
 body {
   margin: 0;
@@ -32,7 +36,7 @@ body {
 }
 
 /* Chat containers */
-.container {
+.container1 {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
@@ -47,14 +51,14 @@ body {
 }
 
 /* Clear floats */
-.container::after {
+.container1::after {
   content: "";
   clear: both;
   display: table;
 }
 
 /* Style images */
-.container img {
+.container1 img {
   float: left;
   max-width: 60px;
   width: 100%;
@@ -63,7 +67,7 @@ body {
 }
 
 /* Style the right image */
-.container img.right {
+.container1 img.right {
   float: right;
   margin-left: 20px;
   margin-right:0;
@@ -82,14 +86,13 @@ body {
 }
 
 .form-container {
-
   padding: 5px;
   background-color: white;
 }
 
 /* Full-width textarea */
 .form-container textarea {
-  width: 57%;
+  width: 70%;
   float: left;
   padding: 15px;
   margin: 5px 10px 22px 10px;
@@ -111,10 +114,10 @@ body {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
-  margin: 10px 5px 22px 5px;
+  margin: 15px 5px 22px 5px;
   border: none;
   cursor: pointer;
-  width: 10%;
+  width: 100px;
   margin-bottom:10px;
   opacity: 0.8;
 }
@@ -129,97 +132,118 @@ body {
   opacity: 1;
 }
 
-.header {
+.header1 {
   position: fixed;
-  top: 0;
   z-index: 1;
   width: 100%;
-  background-color: #f1f1f1;
+  height: 60px;
+  background-color: #5a924c;
 }
 
 /* Style images */
-.header img {
+.header1 img {
   float: left;
   max-width: 60px;
   width: 100%;
-  padding: 10px;
+  padding: 2px;
   margin-right: 20px;
   border-radius: 50%;
 }
 
-.header h2 {
-  text-align: center;
+.phead{
+  padding: 10px 0px;
+  font-size: 23px;
+  color: aliceblue;
 }
 
-.content {
-  padding: 70px 0;
+.content1 {
+  padding: 80px 0px;
   margin: 2px auto 0 auto;
-  width: 80%;
+  width: 90%;
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p> AvaterName </p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="header1">
+  <img src="../assets/avatar.png" alt="Avatar1">
+  <p class="phead"> AvaterName </p>
 </div>
 
-<div class="content">
-<div class="container">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p><?php  echo $msginfo[0]["message"]; ?></p>
-  <span class="time-right"><?php  echo $msginfo[0]["time"]; ?></span>
+<div class="content1">
+<div class="container1">
+  <img src="../assets/avatar.png" alt="Avatar1">
+  <p>content1</p>
+  <span class="time-right">time1</span>
 </div>
 
-<div class="container">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p><?php  echo $msginfo[1]["message"]; ?></p>
-  <span class="time-right"><?php  echo $msginfo[1]["time"]; ?></span>
+<div class="container1">
+  <img src="../assets/avatar.png" alt="Avatar1">
+  <p>content1</p>
+  <span class="time-right">time2</span>
 </div>
 
-<div class="container darker">
-  <img src="avatar2.jpg" alt="Avatar2" class="right">
-  <p><?php  echo $msginfo[2]["message"]; ?></p>
-  <span class="time-left"><?php  echo $msginfo[2]["time"]; ?></span>
+<div class="container1 darker">
+  <img src="../assets/avatar.png" alt="Avatar2" class="right">
+  <p>content2</p>
+  <span class="time-left">time3</span>
 </div>
 
-<div class="container">
-  <img src="/avatar1.jpg" alt="Avatar1">
-  <p><?php  echo $msginfo[3]["message"]; ?></p>
-  <span class="time-right"><?php  echo $msginfo[3]["time"]; ?></span>
+<div class="container1">
+  <img src="../assets/avatar.png" alt="Avatar1">
+  <p>content1</p>
+  <span class="time-right">time4</span>
 </div>
 
 <script>
 function myFunction() {
-  document.getElementById("demo").style.fontSize = "25px";
+  document.getElementById("demo").style.fontSize = "25px"; 
   document.getElementById("demo").style.color = "red";
-  document.getElementById("demo").style.backgroundColor = "yellow";
+  document.getElementById("demo").style.backgroundColor = "yellow";        
 }
 </script>
 
 
 <div class="chat" id="myForm">
-  <form action="chat.php" class="form-container" method="post">
-    <button type="button" class="btn" onclick="newMsg()">c_doc</button>
-    <button type="button" class="btn" onclick="newMsg()">sym</button>
+  <form action="/action_page.php" class="form-container">
+    <button type="button" class="btn" onclick="consult()">
+      <img src="../assets/consult.png" alt="consult height="30" width="30">
+    </button>
+    <button type="button" class="btn" onclick="document()">
+      <img src="../assets/document.png" alt="document" height="30" width="30">
+    </button>
     <textarea placeholder="Type message.." name="msg" required></textarea>
-    <button type="submit" class="btn" onclick="newMsg()" name:"submit" value="submit">Send</button>
+    <button type="submit" class="btn" onclick="newMsg()">
+      <img src="../assets/send.svg" alt="send" height="30" width="30">
+    </button>
   </form>
 </div>
 </div>
 
 <script>
-// When the user scrolls the page, execute myFunction
+// When the user scrolls the page, execute myFunction 
 window.onscroll = function() {myFunction()};
 
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
 }
 </script>
 
 </body>
-</html>
+</html> 

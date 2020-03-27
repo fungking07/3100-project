@@ -46,7 +46,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="device-width, initial-scale = 1">
+  <title>Forum skeleton</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 <style>
 body {
   margin: 0;
@@ -67,7 +73,7 @@ body {
   color: #aaa;
 }
 
-.container {
+.container1 {
   border: 2px solid #6CDDC0;
   background-color: #84ECD1;
   border-radius: 5px;
@@ -80,80 +86,117 @@ body {
   background-color: #B7D7CF;
 }
 
-.container::after {
+.container1::after {
   content: "";
   clear: both;
   display: table;
 }
 
-.content {
-  padding: 70px 0;
+.form-container {
+  padding: 5px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 90%;
+  float: left;
+  padding: 15px;
+  margin: 0px;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 20px;
+}
+
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.content1 {
+  padding: 0;
   margin: 2px auto 2px auto;
   width: 90%;
 }
 
-.btn1 {
+.btn2 {
   float: left;
-  background-color: #4CAF50;
+  font-size: 17px;
+  background-color: rgb(76, 175, 167);
   color: white;
-  padding: 16px 20px;
-  margin: 10px 5px 22px 5px;
+  padding: 16px;
+  margin: 10px;
   border: none;
   cursor: pointer;
-  width: 10%;
+  width: 8%;
   margin-bottom:10px;
   opacity: 0.8;
   text-align:center;
 }
 
-.btn1:hover {
+.btn1:hover, .btn2:hover {
   opacity: 1;
 }
 
 </style>
 </head>
-<div class="header">
-  <p>AcadMap</p>
-</div>
 <body>
-    <script>
-        //nodejs print $display_block;
-    </script>
 
-<div class="content">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<div class="container">
-  <img src="/avatar1.jpg" alt="Avatar1">
+<div class="content1">
+
+<div class="container1">
+  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
   <h3><?php/*output tile according to PostID*/ echo  $Postinfo[PostID][Title]?></h3>
   <p><?php echo  $Postinfo[PostID][content]  ?></p>
   <span class="time-right">time1</span>
 </div>
 
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+<div class="container1 reply">
+  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+<div class="container1 reply">
+  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+<div class="container1 reply">
+  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
-<div class="container reply">
-  <img src="/avatar1.jpg" alt="Avatar1">
+<div class="container1 reply">
+  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
-<form action="post.php" method="get">
-<button type="button" class="btn1" onclick="newComm()" name="submit" value ="submit">+ new comment</button>
+<form action="/action_page.php" class="form-container">
+  <textarea placeholder="Type message.." name="msg" required></textarea>
+</form>
+<button type="submit" class="btn2" onclick="newMsg()">
+  <img src="../assets/send.svg" alt="send" height="30" width="30">
+</button>
+
 
 </div>
 
@@ -164,8 +207,11 @@ window.onscroll = function() {myFunction()};
 function myFunction() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
+}
+
+function newComm(){
+  var popup = document.getElementById("mewComm");
+  popup.classList.toggle("show");
 }
 </script>
 

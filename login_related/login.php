@@ -1,21 +1,33 @@
 <?php
   //use helper function to connect to the database
-  include(ConnectDatabase.php);
-
-  //write query
-  $sql = 'SELECT username,password FROM user';
-
-  //get result accoriding to the query
-  $result = mysqli_query($connect,$sql);
-
-
-  //fetch the result into the aoociative array format
-  $userdata = mysqli_fetch_all($result,MySQLI_ASSOC)
-
-  //free memory
-  mysql_free_resul($result);
-
-
+  function login(){
+    include(ConnectDatabase.php);
+    // get the input
+    $username = $_POST["user"]; //input id = user
+    $password = $_POST["pw"];
+    //prevent MySQL injection
+    $username = stripslashes($username);
+    $username = mysql_real_escape_string($username);
+    $password = stripslashes($password);
+    $password = mysql_real_escape_string($password);
+    //write query
+    $sql = "SELECT username,password FROM user
+    WHERE username = '$username' and password = '$password'";
+    //get result according to the query in database
+    $result = mysqli_query($connect,$sql);
+    //fetch the result from query into the asociative array format
+    $userdata = mysqli_fetch_all($result,MySQLI_ASSOC);
+    if ($userdata['username'] == $username && $userdata['password'] == $password){
+      mysql_free_resul($result);
+      mysqli_close($connect);
+      header("forum.php");
+    }
+    else{
+      mysql_free_resul($result);
+      mysqli_close($connect);
+      echo "Login fail. Please try it again.";
+    }
+  }
   if(isset($_GET["forget"])){
     header("reset.php");
   }
@@ -23,29 +35,13 @@
     header("register.php");
   }
   if(isset($_GET["submit"])){
-  if(/*Username is in database*/){
-    //checkif password match
-    if(/*password is match*/){
-      //get in to the forum
-        header("forum.php")
-      }
-      else{
-      //promt error to user
-      //remain on this page
-    }
-    }
-    else{
-      //promt error to user
-      //remain on this page
-    }
-
+      login();
   }
-
-  //close connection to DataBase
-  mysqli_close($connect);
+  /*
+   as we need to use database,
+   we copy login.html to php in order to make action in html functional
+  */
  ?>
-
-
 
 <!DOCTYPE html>
 <html>
