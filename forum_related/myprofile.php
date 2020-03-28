@@ -29,6 +29,13 @@
 		//go to page enable editing
 		header("edit.php");
 	}
+	if(isset($_GET["consult"])){
+		//start the matching_system
+		//call the user_profile table to do query
+		//may be require a file to display the result and let user choose
+		//then insert a chatroom chat
+		header("chat.php")
+	}
 
 ?>
 
