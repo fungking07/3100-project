@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			.register{
+				margin: 20px auto 0px;
+				text-align: center;
+				font-size: 50px;
+				margin-bottom: 25px;
+			}
+			.picture{
+				display:inline-block;
+				/* position:relative; */
+				width:95px;
+				/* height:60px; */
+				/* top:50%;
+				transform: translateY(-50%); */
+				font-size: 30px;
+				margin-left: 15%;
+				margin-bottom: 25px;
+			}
+			.box1{
+				display:inline-block;
+				width:70%;
+				margin-left:5%;
+				font-size: 25px;
+				margin-bottom: 10px;
+				background-color: #bfa;
+			}
+			.form{
+				margin-left:15%;
+				width:80%;
+				height:800px;
+			}
+			.inner-1{
+				display:inline-block;
+				width:95px;
+				font-size: 30px;
+				margin-bottom: 25px;
+			}
+			.inner-2{
+				display:inline-block;
+				width:70%;
+				margin-left:5%;
+				font-size: 25px;
+				margin-bottom: 10px;
+			}
+			.inner-persnal-description{
+				width:83%;
+				font-size: 25px;
+				margin-bottom: 10px;
+			}
+			.inner-per{
+				width:50%;
+				font-size: 30px;
+			}
+			.submit{
+				display:block;
+				margin: 0px auto;
+				width:100px;
+				height:34px;
+				font-size: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="register">
+			Register
+		</div>
+			<form class="form">
+				<div class="inner-1">
+					Picture:
+				</div>
+				<br>
+					<div class="inner-1">
+						UserID:
+					</div>
+					<input class="inner-2" type="text" name="userID" />
+				<br>
+					<div class="inner-1">
+						Username:
+					</div>
+					<input class="inner-2" type="text" name="username" />
+				<br>
+					<div class="inner-1">
+						Password:
+					</div>
+					<input class="inner-2" type="password" name="password" />
+				<br>
+					<div class="inner-1">
+						Email:
+					</div>
+					<input class="inner-2" type="text" name="email" />
+				<br>
+					<div class="inner-1">
+						Major:
+					</div>
+				<select class="inner-2">
+					<option style="display: none;" value =""></option>
+					<option value ="Arts">Arts</option>
+					<option value ="Business">Business</option>
+					<option value ="Education">Education</option>
+					<option value ="Engineering">Engineering</option>
+					<option value ="Law">Law</option>
+					<option value ="Medicine">Medicine</option>
+					<option value ="Science">Science</option>
+					<option value ="Social Sciennce">Social Science</option>
+				</select>
+				<br>
+					<div class="inner-1">
+						Education:
+					</div>
+					<select class="inner-2">
+						<option style="display: none;" value =""></option>
+						<option value ="High Schoool">High Schoool</option>
+						<option value ="Undergraduate">Undergraduate</option>
+						<option value ="Master">Master</option>
+						<option value ="Post Graduate">Post Graduate</option>
+					</select> 
+				<br>
+					<div class="inner-per">
+						Personal Description:
+					</div>
+					<br>
+					<textarea class="inner-persnal-description" rows="10" cols="50"> </textarea> />
+				<br>
+				<input class="submit" type="submit" value="submit"/>
+			</form>
+		
+	</body>
+</html>
