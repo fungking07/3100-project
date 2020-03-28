@@ -22,7 +22,7 @@
 
 
   //output forum post prototype
-  /*code skeleton of output forum post
+  //code skeleton of output forum post
   <?php forreach($postinfo as post){
     ?>
     <div id= $postinfo["post_id"] class="containers" onclick="pagetrans()">
