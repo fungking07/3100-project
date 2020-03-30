@@ -8,7 +8,7 @@
   This is a tutorial series of an e-commerce website on YouTube.
 
   This is the refernce for creating forum by PHP and MySQL.
-+ [Creating Forum With PHP and MySQL] (https://www.youtube.com/watch?v=749ymaw-rCY)
++ [Creating Forum With PHP and MySQL](https://www.youtube.com/watch?v=749ymaw-rCY)
 ___
 ### Tutorial
 ##### Frond-end
