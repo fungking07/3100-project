@@ -132,6 +132,14 @@ body {
   opacity: 1;
 }
 
+.left{
+  float: left;
+}
+
+.name{
+  padding: 5px 0px 0px 30px;
+}
+
 </style>
 </head>
 <body>
@@ -154,32 +162,37 @@ body {
 <div class="content1">
 
 <div class="container1">
-  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <p class="name">Avatar 1</p>
   <h3><?php/*output tile according to PostID*/ echo  $Postinfo[PostID][Title]?></h3>
   <p><?php echo  $Postinfo[PostID][content]  ?></p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <p class="name">Avatar 2</p>
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <p class="name">Avatar 1</p>
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <p class="name">Avatar 3</p>
   <p>content</p>
   <span class="time-right">time1</span>
 </div>
 
 <div class="container1 reply">
-  <img src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <p class="name">Avatar 2</p>
   <p>content</p>
   <span class="time-right">time1</span>
 </div>

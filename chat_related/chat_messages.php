@@ -151,35 +151,30 @@ body {
 <div id="1" class="container1" onclick="pagetrans()">
   <img class="avatarname" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
   <h4> Avatar1</h4>
-  <p>last msg</p>
   <span class="time-right">time1</span>
 </div>
 
 <div id="2" class="container1" onclick="pagetrans()">
   <img class="avatarname" src="../assets/avatar.png" alt="Avatar2" height="30" width="30">
-  <h4> Avatar2</h4>
-  <p>last msg</p>
+  <h4> Avatar2</h4>]
   <span class="time-right">time2</span>
 </div>
 
 <div id="3" class="container1" onclick="pagetrans()">
   <img class="avatarname" src="../assets/avatar.png" alt="Avatar3" height="30" width="30">
   <h4> Avatar3</h4>
-  <p>last msg</p>
   <span class="time-right">time3</span>
 </div>
 
 <div id="4" class="container1" onclick="pagetrans()">
   <img class="avatarname" src="../assets/avatar.png" alt="Avatar4" height="30" width="30">
   <h4> Avatar4</h4>
-  <p>last msg</p>
   <span class="time-right">time4</span>
 </div>
 
 <div id="5" class="container1" onclick="pagetrans()">
   <img class="avatarname" src="../assets/avatar.png" alt="Avatar5" height="30" width="30">
   <h4> Avatar5</h4>
-  <p>last msg</p>
   <span class="time-right">time5</span>
 </div>
 

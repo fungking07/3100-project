@@ -92,7 +92,7 @@ body {
 
 /* Full-width textarea */
 .form-container textarea {
-  width: 70%;
+  width: 65%;
   float: left;
   padding: 15px;
   margin: 5px 10px 22px 10px;
@@ -128,7 +128,7 @@ body {
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover, .open-button:hover, .containerdoc:hover{
   opacity: 1;
 }
 
@@ -154,6 +154,17 @@ body {
   padding: 10px 0px;
   font-size: 23px;
   color: aliceblue;
+}
+
+.containerdoc {
+  color: rgb(45, 68, 90);
+  border-radius: 15px;
+  text-align: center;
+  width: 60%;
+  margin: 10px 10px 0px 20%;
+  padding: 12px;
+  background-color: #a7dd9a;
+  opacity: 0.8;
 }
 
 .content1 {
@@ -210,6 +221,22 @@ body {
   <span class="time-right">time4</span>
 </div>
 
+<div class="container1 darker">
+  <img src="../assets/avatar.png" alt="Avatar2" class="right">
+  <div class="containerdoc">
+    <p>Request Document</p>
+  </div>
+  <span class="time-left">time3</span>
+</div>
+
+<div class="container1">
+  <img src="../assets/avatar.png" alt="Avatar1">
+  <div class="containerdoc">
+    <p>Consult Document</p>
+  </div>
+  <span class="time-right">time4</span>
+</div>
+
 <script>
 function myFunction() {
   document.getElementById("demo").style.fontSize = "25px"; 
@@ -226,6 +253,9 @@ function myFunction() {
     </button>
     <button type="button" class="btn" onclick="document()">
       <img src="../assets/document.png" alt="document" height="30" width="30">
+    </button>
+    <button type="submit" class="btn" onclick="grade()">
+      <img src="../assets/grade.png" alt="send" height="30" width="30">
     </button>
     <textarea placeholder="Type message.." name="msg" required></textarea>
     <button type="submit" class="btn" onclick="newMsg()">
