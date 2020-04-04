@@ -1,0 +1,154 @@
+body {
+  margin: 0;
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Chat containers */
+.container1 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.container1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.container1 img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
+
+.form-container {
+  padding: 5px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 72%;
+  float: left;
+  padding: 15px;
+  margin: 5px 10px 22px 10px;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 20px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  float: left;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 15px 5px 22px 5px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover, .containerdoc:hover .btnsend:hover{
+  opacity: 1;
+}
+
+.header1 {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 60px;
+  background-color: #5a924c;
+}
+
+/* Style images */
+.header1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  padding: 2px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.phead{
+  padding: 10px 0px;
+  font-size: 23px;
+  color: aliceblue;
+}
+
+.containerdoc {
+  color: rgb(45, 68, 90);
+  border-radius: 10px;
+  text-align: center;
+  width: 60%;
+  margin: 10px 10px 0px 20%;
+  padding: 12px;
+  background-color: #78DDE3;
+  opacity: 0.7;
+}
+
+.btnsend{
+  background-color: #4CAF50;
+  color: white;
+  padding: 0px;
+  margin: 0px 0px 10px 0px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  opacity: 0.8;
+}
+
+.content1 {
+  padding: 80px 0px;
+  margin: 2px auto 0 auto;
+  width: 90%;
+}
