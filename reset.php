@@ -1,6 +1,6 @@
 <?php
   include(ConnectDatabase.php);
-  $newpw = $_POST["newpw"]; //input id = user
+  $newpw = $_POST["newpw"];
   $confimpw = $_POST["confimpw"];
 
   //prevent sql injection
