@@ -23,7 +23,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="device-width, initial-scale = 1">
-<title>Forum skeleton</title>
+<title>consultation chatroom</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/chatrooms.css">
@@ -48,7 +48,7 @@
   </div>
 </nav>
 
-<div class="header1">
+<div class="header2">
   <img src="../assets/avatar.png" alt="Avatar1">
   <p class="phead"> AvaterName </p>
 </div>
@@ -78,33 +78,18 @@
   <span class="time-right">time4</span>
 </div>
 
-<div class="container1 darker">
-  <img src="../assets/avatar.png" alt="Avatar2" class="right">
-  <div class="containerdoc">
-    <p>Request Document</p>
-  </div>
-  <span class="time-left">time3</span>
-</div>
-
-<div class="container1">
-  <img src="../assets/avatar.png" alt="Avatar1">
-  <div class="containerdoc">
-    <p>Consult Document</p>
-    <button class="btnsend">grade</button>
-  </div>
-  <span class="time-right">time4</span>
-</div>
-
 <div class="chat" id="myForm">
   <form action="/action_page.php" class="form-container">
-    <button type="button" class="btn" onclick="consult()">
-      <img src="../assets/consult.png" alt="consult height="30" width="30">
+    <button type="button" class="btncs" onclick="consult()">
+      <p class="text">END</p> 
     </button>
-    <button type="button" class="btn" onclick="document()">
-      <img src="../assets/document.png" alt="document" height="30" width="30">
-    </button>
+    <!--
+      <button type="button" class="btn" onclick="document()">
+        <img src="../assets/document.png" alt="document" height="30" width="30">
+      </button>
+    -->
     <textarea placeholder="Type message.." name="msg" required></textarea>
-    <button type="submit" class="btn" onclick="newMsg()">
+    <button type="submit" class="btncs" onclick="newMsg()">
       <img src="../assets/send.svg" alt="send" height="30" width="30">
     </button>
   </form>

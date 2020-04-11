@@ -80,6 +80,19 @@ body {
 /* Set a style for the submit/login button */
 .form-container .btn {
   float: left;
+  background-color: rgb(76, 78, 175);
+  color: white;
+  padding: 16px 20px;
+  margin: 15px 5px 22px 5px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-container .btncs {
+  float: left;
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
@@ -91,26 +104,43 @@ body {
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover, .containerdoc:hover .btnsend:hover{
   opacity: 1;
 }
 
+.text{
+  height: 20px;
+  width: 20px;
+  padding: 3px 5px 5px 8px;
+  font-size: larger;
+  font-weight: bolder;
+}
+
 .header1 {
-  position: fixed;
   z-index: 1;
   width: 100%;
   height: 60px;
-  background-color: #5a924c;
+  background-color: rgb(76, 78, 175);
 }
 
-/* Style images */
+.header2{
+  z-index: 1;
+  width: 100%;
+  height: 60px;
+  background-color: #4CAF50;
+}
+
 .header1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  padding: 2px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.header2 img {
   float: left;
   max-width: 60px;
   width: 100%;
@@ -126,18 +156,18 @@ body {
 }
 
 .containerdoc {
-  color: rgb(45, 68, 90);
+  color: rgb(88, 94, 100);
   border-radius: 10px;
   text-align: center;
   width: 60%;
   margin: 10px 10px 0px 20%;
   padding: 12px;
-  background-color: #78DDE3;
+  background-color: rgb(185, 197, 197);
   opacity: 0.7;
 }
 
 .btnsend{
-  background-color: #4CAF50;
+  background-color: rgb(76, 78, 175);
   color: white;
   padding: 0px;
   margin: 0px 0px 10px 0px;
@@ -148,7 +178,7 @@ body {
 }
 
 .content1 {
-  padding: 80px 0px;
+  padding: 5px 0px;
   margin: 2px auto 0 auto;
   width: 90%;
 }
