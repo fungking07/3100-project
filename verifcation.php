@@ -37,24 +37,39 @@
                 \n\n$code\n\nThank you.\n\nRegrads,\nThe AcadMap team";
                 
         mail($email,$email_subject,$message,[$header]);
-
-    }
+	}
+	mysql_free_resul($result);
+    mysqli_close($connect);
 }
     function compare(){
     include(ConnectDatabase.php);
-    // get the input
+	// get the input
+	$email = $_POST["email"]; //input email
+    //prevent MySQL injection
+    $email = stripslashes($email);
+	$email = mysql_real_escape_string($email);
+	//
     $verify_code = $_POST["code"]; //input = code
-        $verify_code = stripslashes($verify_code);
-        $verify_code = mysql_real_escape_string($verify_code);
-        if (isset("summit")){
-            if($code == $verify_code){
-                header("reset.php");
-            }
-            else{
-                 echo "vertification code not match.";
-            }
-        }
-    }
+	$verify_code = stripslashes($verify_code);
+	$verify_code = mysql_real_escape_string($verify_code);
+	$sql = "SELECT verify_code, email_address FROM user
+    WHERE email_address = '$email' ";
+	if($code == $verify_code){
+		header("reset.php");
+	}
+	else{
+		echo "vertification code not match.";
+	}
+	mysql_free_resul($result);
+    mysqli_close($connect);
+}
+
+	if(isset($_GET["send"])){
+		verify();
+	}
+	if(isset($_GET["submit"])){
+		compare();
+	}
  ?>
 
 <!DOCTYPE html>
@@ -138,7 +153,6 @@
             <input type="text" name="email" id="email" placeholder="Email" />
             <input type="submit" name="send" id="send" type="button" onclick="verify()">Email</button>
             <input type="text" name="code" id="code" placeholder="Verification code" />
-            <input type="submit" name="send" id="send" type="button" onclick="verify()">Send</button>
             <input class="submit" type="submit" value="submit" onclick="compare()"/>
          </form>
 	</body>

@@ -11,13 +11,19 @@
     $password = stripslashes($password);
     $password = mysql_real_escape_string($password);
     //write query
-    $sql = "SELECT username,password FROM user
+    $sql = "SELECT username,password, user_id FROM user
     WHERE username = '$username' and password = '$password'";
     //get result according to the query in database
     $result = mysqli_query($connect,$sql);
     //fetch the result from query into the asociative array format
     $userdata = mysqli_fetch_all($result,MySQLI_ASSOC);
     if ($userdata['username'] == $username && $userdata['password'] == $password){
+      
+      while($row = mysql_fetch_assoc($result)){
+        $_SESSION["username"] = $row["username"];
+        $_SESSION["user_id"] = $row["user_id"];
+      }
+      //free all
       mysql_free_resul($result);
       mysqli_close($connect);
       header("forum.php");
