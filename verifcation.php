@@ -100,7 +100,7 @@
 				padding:0;
 			}
 			html{
-				background:url(img/reset.jpg) no-repeat center center fixed;
+				background:url(reset.jpeg) no-repeat center center fixed;
 				background-size: cover;
 			}
 			.Reset-Password{
