@@ -26,6 +26,7 @@
 
 	if(isset($_POST["submit"])){
 		$sql = "INSERT INTO user_profile(user_name,education_level,personal_description,major) VALUES ('$username',$education','$pd','$major')";
+		$sql = "INSERT INTO user(user_name,email_address) VALUES ('$username',$email')";
 		if(mysqli_query($connect,$sql)){
 			header("login.php");
 		}
