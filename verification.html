@@ -9,7 +9,7 @@
 				padding:0;
 			}
 			html{
-				background:url(img/reset.jpg) no-repeat center center fixed;
+				background:url(reset.jpeg) no-repeat center center fixed;
 				background-size: cover;
 			}
 			.Reset-Password{
@@ -75,9 +75,11 @@
 		<div class="Reset-Password">
 			Forget Password?
 		</div>
-		<input type="text" name="email" id="email" placeholder="Email" />
-		<input type="text" name="code" id="code" placeholder="Verification code" />
-		<button id="send" type="button">Send</button>
-		 <input class="submit" type="submit" value="submit"/>
+		<form action="verifcation.php" method="post"></form>
+			<input type="text" name="email" id="email" placeholder="Email" />
+			<button id="send" type="button">Send</button>
+			<input type="text" name="code" id="code" placeholder="Verification code" />
+			<input class="submit" type="submit" value="submit"/>
+		</form>
 	</body>
 </html>
