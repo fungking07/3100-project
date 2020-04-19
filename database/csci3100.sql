@@ -61,15 +61,15 @@ CREATE TABLE `comment` (
   `post_id` int(8) UNSIGNED NOT NULL,
   `comments_content` text NOT NULL,
   `author_name` varchar(8) NOT NULL,
-  `like_number` int(8) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`, `like_number`) VALUES
-(1, '2020-03-22 16:00:00', 1, 'Thank you for effort\r\nBy Admin2', 'Admin2', 0);
+INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
+(1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
+(2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1');
 
 -- --------------------------------------------------------
 
