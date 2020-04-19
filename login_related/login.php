@@ -2,27 +2,31 @@
   //use helper function to connect to the database
   function login(){
     include(ConnectDatabase.php);
+
     // get the input
     $username = $_POST["user"]; //input id = user
     $password = $_POST["pw"];
+
     //prevent MySQL injection
     $username = stripslashes($username);
     $username = mysql_real_escape_string($username);
     $password = stripslashes($password);
     $password = mysql_real_escape_string($password);
+
     //write query
     $sql = "SELECT username,password, user_id FROM user
-    WHERE username = '$username' and password = '$password'";
+    WHERE username = $username and password = $password";
+
     //get result according to the query in database
     $result = mysqli_query($connect,$sql);
+
     //fetch the result from query into the asociative array format
     $userdata = mysqli_fetch_all($result,MySQLI_ASSOC);
     if ($userdata['username'] == $username && $userdata['password'] == $password){
-      
-      while($row = mysql_fetch_assoc($result)){
-        $_SESSION["username"] = $row["username"];
-        $_SESSION["user_id"] = $row["user_id"];
-      }
+
+        $_SESSION["username"] = $username
+        $_SESSION["user_id"] = $userdata["user_id"];
+
       //free all
       mysql_free_resul($result);
       mysqli_close($connect);
@@ -35,7 +39,7 @@
     }
   }
   if(isset($_GET["forget"])){
-    header("reset.php");
+    header("verification.php");
   }
   if(isset($_GET["register"])){
     header("register.php");
