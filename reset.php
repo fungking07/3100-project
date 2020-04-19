@@ -1,19 +1,22 @@
 <?php
   include(ConnectDatabase.php);
-  $newpw = $_POST["newpw"];
-  $confimpw = $_POST["confimpw"];
+  if(isset($_GET["id"]){
 
-  //prevent sql injection
-  $newpw = stripslashes($newpw);
-  $newpw = mysqli_real_escape_string($connect,$newpw);
-  $confimpw = stripslashes($confimpw);
-  $confimpw = mysqli_real_escape_string($connect,$confimpw);
+    $id = mysqli_real_escape_string($connect,$_GET["id"]);
 
+    $newpw = $_POST["newpw"];
+    $confimpw = $_POST["confimpw"];
+
+    //prevent sql injection
+    $newpw = stripslashes($newpw);
+    $newpw = mysqli_real_escape_string($connect,$newpw);
+    $confimpw = stripslashes($confimpw);
+    $confimpw = mysqli_real_escape_string($connect,$confimpw);
   if(isset($_POST["submit"])){
     if($newpw == $confimpw){
       //save data to database
       //sql for inset data to database
-      $sql = "UPDATE user SET password = $newpw";
+      $sql = "UPDATE user SET password = $newpw where userid = $id";
       //check if data save to database sucessfully
       if(mysqli_query($connect,$sql)){
         header("login.php");
@@ -27,10 +30,11 @@
       //promt errors
       mysql_free_resul($result);
       mysqli_close($connect);
-      echo "Login fail. Please try it again.";
+      echo "fail to change password . Please try it again.";
     }
   }
- ?>
+}
+?>
 
 
 
