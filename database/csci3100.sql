@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2020 at 03:17 PM
+-- Generation Time: Apr 19, 2020 at 04:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -140,7 +140,7 @@ CREATE TABLE `user` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `verify_code` varchar(8) DEFAULT NULL,
+  `verify_code` varchar(8) NOT NULL DEFAULT 'pokemon!',
   `email_address` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -149,9 +149,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
-(1, 'Admin1', 'csci3100', NULL, ''),
-(2, 'Admin2', 'csci3100', NULL, ''),
-(3, 'Admin3', 'csci3100', NULL, '');
+(1, 'Admin1', 'csci3100', 'sdhjhhhh', ''),
+(2, 'Admin2', 'csci3100', 'rcfctvgj', ''),
+(3, 'Admin3', 'csci3100', 'hhhhhbhk', '');
 
 -- --------------------------------------------------------
 
