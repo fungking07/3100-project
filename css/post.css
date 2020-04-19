@@ -43,18 +43,20 @@ body {
 
 /* Full-width textarea */
 .form-container textarea {
-  width: 90%;
-  float: left;
-  padding: 15px;
-  margin: 0px;
-  border: none;
-  background: #f1f1f1;
+  height: 100px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-color: #6FB6A4;
+  background-color: #B7D7CF;
   resize: none;
   min-height: 20px;
 }
 
 .form-container textarea:focus {
-  background-color: #ddd;
+  background-color: #B7D7CF;
   outline: none;
 }
 
@@ -65,12 +67,12 @@ body {
 }
 
 .btn2 {
-  float: left;
   font-size: 17px;
   background-color: rgb(76, 175, 167);
   color: white;
-  padding: 16px;
-  margin: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
   border: none;
   cursor: pointer;
   width: 8%;
