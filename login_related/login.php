@@ -24,7 +24,7 @@
     $userdata = mysqli_fetch_all($result,MySQLI_ASSOC);
     if ($userdata['username'] == $username && $userdata['password'] == $password){
 
-        $_SESSION["username"] = $username
+        $_SESSION["username"] = $username;
         $_SESSION["user_id"] = $userdata["user_id"];
 
       //free all
