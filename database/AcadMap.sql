@@ -1,16 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 19, 2020 at 04:07 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- 主機： localhost
+-- 產生時間： 2020 年 04 月 20 日 22:03
+-- 伺服器版本： 10.4.11-MariaDB
+-- PHP 版本： 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00"; 
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,40 +19,64 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `csci3100`
+-- 資料庫： `AcadMap`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- 資料表結構 `chat`
 --
 
 CREATE TABLE `chat` (
   `chatroom_id` int(8) UNSIGNED NOT NULL,
   `message` text NOT NULL,
   `message_date_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `sender_name` varchar(8) NOT NULL
+  `sender_name` varchar(8) NOT NULL,
+  `consultroom` tinyint(1) NOT NULL DEFAULT 0,
+  `msg_type` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `chat`
+--
+
+INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`, `consultroom`, `msg_type`) VALUES
+(1, 'this is for testing with longer input --- omg i am so panic (SCREAMMMM), the ddl is so close and our group seems to be lack in behind QAQ... I am already responsible for frontend (post, chatroom, chatlist, consultroom, post) and backend (post and chatroom) but still so many stuff unfinished... and I even got like really no previous knowledge in html php css js sql xampp.... I just learn them all. This did equip me with quite a lot of knowledge but I also have to dual with other asg and task... real stressful cry... I wanna learnt what I love but not spending so much time on this application... I really not planning to work in this field but instead doing research and machine learning... I wanna do other stuff and read papers and learn other things from online open lesson but I really dont have the choice... Crying hard', '2020-04-19 09:13:26', 'Admin2', 0, 'normal'),
+(1, 'me again and remark: the words are surrounding the avatar... have time then make a better alignment of word (though I dont think I have', '2020-04-19 17:08:12', 'Admin1', 0, 'normal'),
+(1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
+(1, 'okkkk let\'s open ar, request la', '2020-04-20 15:52:29', 'Admin2', 0, 'normal'),
+(1, '', '2020-04-20 21:29:46', 'Admin2', 0, 'request'),
+(1, '', '2020-04-20 21:58:04', 'Admin1', 0, 'accept');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatroom`
+-- 資料表結構 `chatroom`
 --
 
 CREATE TABLE `chatroom` (
   `chatroom_id` int(8) UNSIGNED NOT NULL,
   `user_id` int(8) NOT NULL,
   `opponent_id` int(8) NOT NULL,
-  `last_message_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `opponent_picture` varchar(200) DEFAULT NULL
+  `last_message_time` timestamp NULL DEFAULT NULL,
+  `opponent_picture` varchar(200) DEFAULT NULL,
+  `consultroom` tinyint(1) NOT NULL DEFAULT 0,
+  `hv_consult` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `chatroom`
+--
+
+INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
+(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
+(9, 1, 2, NULL, 'NULL', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- 資料表結構 `comment`
 --
 
 CREATE TABLE `comment` (
@@ -64,7 +88,7 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `comment`
+-- 傾印資料表的資料 `comment`
 --
 
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
@@ -74,7 +98,7 @@ INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consultation_comment`
+-- 資料表結構 `consultation_comment`
 --
 
 CREATE TABLE `consultation_comment` (
@@ -90,7 +114,7 @@ CREATE TABLE `consultation_comment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forum`
+-- 資料表結構 `forum`
 --
 
 CREATE TABLE `forum` (
@@ -105,7 +129,7 @@ CREATE TABLE `forum` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `forum`
+-- 傾印資料表的資料 `forum`
 --
 
 INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
@@ -114,7 +138,7 @@ INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_content`
+-- 資料表結構 `post_content`
 --
 
 CREATE TABLE `post_content` (
@@ -124,7 +148,7 @@ CREATE TABLE `post_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `post_content`
+-- 傾印資料表的資料 `post_content`
 --
 
 INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
@@ -133,7 +157,7 @@ INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 資料表結構 `user`
 --
 
 CREATE TABLE `user` (
@@ -145,7 +169,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- 傾印資料表的資料 `user`
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
@@ -156,7 +180,7 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_add
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_profile`
+-- 資料表結構 `user_profile`
 --
 
 CREATE TABLE `user_profile` (
@@ -170,108 +194,95 @@ CREATE TABLE `user_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `chat`
+-- 資料表索引 `chat`
 --
 ALTER TABLE `chat`
-  ADD KEY `chatroom_id` (`chatroom_id`);
+  ADD PRIMARY KEY (`message_date_time`);
 
 --
--- Indexes for table `chatroom`
+-- 資料表索引 `chatroom`
 --
 ALTER TABLE `chatroom`
-  ADD PRIMARY KEY (`chatroom_id`),
-  ADD KEY `opponent_picture` (`opponent_picture`);
+  ADD PRIMARY KEY (`chatroom_id`);
 
 --
--- Indexes for table `comment`
+-- 資料表索引 `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`comment_id`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `forum`
+-- 資料表索引 `forum`
 --
 ALTER TABLE `forum`
   ADD PRIMARY KEY (`post_id`),
   ADD KEY `like_number` (`like_number`);
 
 --
--- Indexes for table `post_content`
+-- 資料表索引 `post_content`
 --
 ALTER TABLE `post_content`
   ADD UNIQUE KEY `like_number` (`like_number`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `user`
+-- 資料表索引 `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `user_profile`
+-- 資料表索引 `user_profile`
 --
 ALTER TABLE `user_profile`
   ADD UNIQUE KEY `personal_picture` (`personal_picture`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
 --
--- AUTO_INCREMENT for table `chatroom`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `chatroom`
 --
 ALTER TABLE `chatroom`
-  MODIFY `chatroom_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `chatroom_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `forum`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
   MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `user`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- 已傾印資料表的限制式
 --
 
 --
--- Constraints for table `chat`
---
-ALTER TABLE `chat`
-  ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`chatroom_id`) REFERENCES `chatroom` (`chatroom_id`);
-
---
--- Constraints for table `chatroom`
---
-ALTER TABLE `chatroom`
-  ADD CONSTRAINT `chatroom_ibfk_1` FOREIGN KEY (`opponent_picture`) REFERENCES `user_profile` (`personal_picture`);
-
---
--- Constraints for table `forum`
+-- 資料表的限制式 `forum`
 --
 ALTER TABLE `forum`
   ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`like_number`) REFERENCES `post_content` (`like_number`);
 
 --
--- Constraints for table `post_content`
+-- 資料表的限制式 `post_content`
 --
 ALTER TABLE `post_content`
   ADD CONSTRAINT `post_content_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `forum` (`post_id`);
 
 --
--- Constraints for table `user_profile`
+-- 資料表的限制式 `user_profile`
 --
 ALTER TABLE `user_profile`
   ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
