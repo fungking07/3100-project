@@ -1,7 +1,7 @@
 <?php
   include("ConnectDatabase.php");
 
-  $sql = 'SELECT * FROM chat';
+  $sql = 'SELECT * FROM forum';
   $usersql = 'SELECT * FROM user Order BY user_ID';
   //get result accoriding to the query
   $defaultresult = mysqli_query($connect,$sql);
@@ -94,7 +94,7 @@
     </div> -->
     <!--Posts -->
     <div class="col-md-12">
-      <?php foreach($postinfo as post){?> 
+      <?php foreach($postinfo as $post){?> 
       <div id= "<?= $postinfo["post_id"]; ?>" class="containers" onclick="pagetrans()">
         <h1><?= $postinfo["post_title"] ;?></h1> <p>By &lt; <?= $postinfo["username"]; ?> &gt; at &lt; <?= $postinfo["post_date_time"]; ?> &gt;</p><hr>
         <a href="../html/post.html" class="btn btn-success">Read More</a> <!-- rediect to the correct post -->
