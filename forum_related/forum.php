@@ -9,8 +9,8 @@
 
   $postinfo = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
   $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-
-  //if (filter button is toggle){
+?>
+  <!-- //if (filter button is toggle){
   /*assign sql to each filter e.g $filter = 'SELECT * FROM chat Where category = 'ulife';
   //change $postinfo accordingly
   //fetch the result into the aoociative array format
@@ -22,15 +22,8 @@
 
 
   //output forum post prototype
-  //code skeleton of output forum post
-  <?php forreach($postinfo as post){
-    ?>
-    <div id= $postinfo["post_id"] class="containers" onclick="pagetrans()">
-      <h1>$postinfo["post_title"];</h1><p>By &lt;$postinfo["username"];&gt; at &lt;$postinfo["post_date_time"];p&gt;</p><hr>
-      <p><?php echo $postinfo["cotent"]; ?></p><hr>
-      <a href="../html/post.html" class="btn btn-success">Read More</a>//rediect to the correct post
-    </div>
-    <?php }}?>
+  //code skeleton of output forum post -->
+  
 
 
 <!DOCTYPE html>
@@ -54,16 +47,16 @@
           <li><a href="#">Forum</a></li>
           <li><a href="#">Chat</a></li>
           <li><a href="#">Consultation</a></li>
-          <input type="text" placeholder="Search..">
+          <!-- <input type="text" placeholder="Search.."> -->
           <li><a href="#">Welcome, User!</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="container-fluid">
-    <!--Filter-->
+    <!-- Filter
     <div class="col-md-2">
-      <!--The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
+      The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp 
       <button class="collapsible">Filter</button>
         <div class="content">
           <h3>Categroies:</h3>
@@ -97,11 +90,17 @@
           <a href="#" class="btn btn-success">Find Post</a>
         </div>
       </div>
-      <!--Adapatation ends here-->
-    </div>
+      Adapatation ends here
+    </div> -->
     <!--Posts -->
-    <div class="col-md-10">
-      <div id="1" class="containers" onclick="pagetrans()">
+    <div class="col-md-12">
+      <?php foreach($postinfo as post){?> 
+      <div id= "<?= $postinfo["post_id"]; ?>" class="containers" onclick="pagetrans()">
+        <h1><?= $postinfo["post_title"] ;?></h1> <p>By &lt; <?= $postinfo["username"]; ?> &gt; at &lt; <?= $postinfo["post_date_time"]; ?> &gt;</p><hr>
+        <a href="../html/post.html" class="btn btn-success">Read More</a> <!-- rediect to the correct post -->
+      </div>
+      <?php }?>
+      <!-- <div id="1" class="containers" onclick="pagetrans()">
         <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
         <a href="../html/post.html" class="btn btn-success">Read More</a>
@@ -125,12 +124,12 @@
         <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
         <a href="../html/post.html" class="btn btn-success">Read More</a>
-      </div>
+      </div> -->
     </div>
   </div>
 
   <!--The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp-->
-  <script>
+  <!-- <script>
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
@@ -145,6 +144,6 @@
         }
       });
     }
-    </script>
+    </script> -->
     <!--Adapatation ends here-->
 </body>
