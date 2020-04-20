@@ -1,17 +1,20 @@
 <?php
   //use helper function to connect to the database
-  function login(){
-    include(ConnectDatabase.php);
-
+  include("ConnectDatabase.php");
+  function login_check(){
+    global $connect;
     // get the input
     $username = $_POST["user"]; //input id = user
     $password = $_POST["pw"];
-
+    if($username == Null && $password == Null){
+      echo "Error!Login Failed!!!";
+      exit(1);
+    }
     //prevent MySQL injection
     $username = stripslashes($username);
-    $username = mysql_real_escape_string($username);
+    $username = mysqli_real_escape_string($connect,$username);
     $password = stripslashes($password);
-    $password = mysql_real_escape_string($password);
+    $password = mysqli_real_escape_string($connect,$password);
 
     //write query
     $sql = "SELECT username,password, user_id FROM user
@@ -23,35 +26,36 @@
     //fetch the result from query into the asociative array format
     $userdata = mysqli_fetch_all($result,MySQLI_ASSOC);
     if ($userdata['username'] == $username && $userdata['password'] == $password){
-
-        $_SESSION["username"] = $username;
-        $_SESSION["user_id"] = $userdata["user_id"];
-
-      //free all
-      mysql_free_resul($result);
-      mysqli_close($connect);
-      header("forum.php");
-    }
-    else{
-      mysql_free_resul($result);
-      mysqli_close($connect);
-      echo "Login fail. Please try it again.";
-    }
+        $_SESSION["signed_in"] = true;
+        while($row = mysql_fetch_assoc($result)){
+          $_SESSION["username"] = $row["username"];
+          $_SESSION["user_id"] = $userdata["user_id"];
+        }
+        mysqli_free_result($result);
+        mysqli_close($connect);
+        header("forum.php");
   }
-  if(isset($_GET["forget"])){
+  else{
+    mysqli_free_result($result);
+    mysqli_close($connect);
+    echo "Login fail. Please try it again.";
+  }
+}
+
+  if(isset($_POST["forget"])){
     header("verification.php");
   }
-  if(isset($_GET["register"])){
+  if(isset($_POST["register"])){
     header("register.php");
   }
-  if(isset($_GET["submit"])){
-      login();
-  }
+  if(isset($_POST["submit"])){
+      login_check();
+    }
   /*
    as we need to use database,
    we copy login.html to php in order to make action in html functional
   */
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -64,6 +68,11 @@
 <link rel="stylesheet" href="../css/login.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function redirect() {
+	window.location = "verification.php"
+}
+</script>
 </head>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -83,13 +92,13 @@
 <div class="content">
   <div class="split left">
     <div class="centered">
-      <form action="login.php" method="get">
+      <form  method="Post">
         <label for="fname">Username:</label>
         <input type="text" id="user" name="user"><br><br>
         <label for="lname">Password:</label>
         <input type="text" id="pw" name="pw"><br><br>
-        <button type="submit" class="btn2" onclick="regPage()" name= "submit" value = "submit">CONFIRM</button>
-        <button type="button" class="btn2" onclick="regPage()" name="forget" value = "forget">FORGET</button>
+        <button type="submit" class="btn2" onclick="regPage()" name= "submit" value ="submit">CONFIRM</button>
+        <a href="verification.php" class="btn2">Forget</a></button>
       </form>
     </div>
   </div>
@@ -98,7 +107,9 @@
     <div class="centered">
       <p>Not yet our member?</p>
       <h3>REGISTER HERE!</h3>
-      <button type="button" class="btn1" onclick="regPage()"name="register" value = "register">REGISTER</button>
+      <form action="register.php" method="Post">
+      <button type="submit" class="btn1" onclick="regPage()" name= "register" value = "register">REGISTER</button>
+      </form>
     </div>
   </div>
 </div>

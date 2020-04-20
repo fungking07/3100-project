@@ -9,6 +9,13 @@
 
   $postinfo = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
   $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+
+  $cat = $_POST["category"];
+  $cat_sql = 'SELECT * FROM forum Order BY category = $cat' ; 
+  $forum_result = mysqli_query($connect,$usersql);
+  $forum_result = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
+  header(forum.php);
+
 ?>
   <!-- //if (filter button is toggle){
   /*assign sql to each filter e.g $filter = 'SELECT * FROM chat Where category = 'ulife';
@@ -54,9 +61,9 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <!-- Filter
+    <!-- Filter -->
     <div class="col-md-2">
-      The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp 
+      <!-- The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
       <button class="collapsible">Filter</button>
         <div class="content">
           <h3>Categroies:</h3>
@@ -90,7 +97,8 @@
           <a href="#" class="btn btn-success">Find Post</a>
         </div>
       </div>
-      Adapatation ends here
+      <
+      <!-- Adapatation ends here -->
     </div> -->
     <!--Posts -->
     <div class="col-md-12">
