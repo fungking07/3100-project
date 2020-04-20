@@ -1,36 +1,37 @@
 <?php
-  include("ConnectDatabase.php");
+  // include("ConnectDatabase.php");
 
-  $sql = 'SELECT * FROM chat';
-  $sql = 'SELECT * FROM user Order BY user_id';
-  //get result accoriding to the query
-  $result = mysqli_query($connect,$sql);
-  $result = mysqli_query($connect,$usersql);
-  /*
-  SELECT * FROM chat
-  WHERE user_id = user.user_id
-  ORDER BY last_message_time
-   */
+  // $sql = 'SELECT * FROM chat';
+  // $sql = 'SELECT * FROM user Order BY user_id';
+  // //get result accoriding to the query
+  // $result = mysqli_query($connect,$sql);
+  // $result = mysqli_query($connect,$usersql);
+  // /*
+  // SELECT * FROM chat
+  // WHERE user_id = user.user_id
+  // ORDER BY last_message_time
+  //  */
 
-  //fetch the result into the aoociative array format
-  $chatinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-  $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+  // //fetch the result into the aoociative array format
+  // $chatinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+  // $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
 
-  if(isset($_GET["send_consult_doc"])){
-    /*
-    display consult_doc
-     */
-  }
-  if(isset($_GET["user_consult_ok"])){
-    /*
-    go to payment_site
-     */
-  }
+  // if(isset($_GET["send_consult_doc"])){
+  //   /*
+  //   display consult_doc
+  //    */
+  // }
+  // if(isset($_GET["user_consult_ok"])){
+  //   /*
+  //   go to payment_site
+  //    */
+  // }
   //get certain userID and data
   //output chatlist
   //code skeleton of output Chatlist
-<?php forreach($chattinfo as chat){
-    if(chat["userID"] == userID)
+//  forreach($chattinfo as chat){
+//     if(chat["userID"] == userID)
+?>
 
 <html>
 <head>
@@ -67,11 +68,11 @@
 
 <div class="content1">
 
-  <div id="2" class="cscontainer1" onclick="pagetrans()">
-    <img class="avatarname" src="../assets/avatar.png" alt="Avatar2" height="30" width="30">
-    <h4> Avatar2</h4>
-    <span class="time-right">time8</span>
-  </div>
+<div id="2" class="cscontainer1" onclick="pagetrans()">
+  <img class="avatarname" src="../assets/avatar.png" alt="Avatar2" height="30" width="30">
+  <h4> Avatar2</h4>
+  <span class="time-right">time8</span>
+</div>
 
 <div id="1" class="container1" onclick="pagetrans()">
   <img class="avatarname" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">

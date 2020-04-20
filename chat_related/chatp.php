@@ -10,29 +10,21 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
+  $crmid = '1'; //parse from url?
 
-  $commentsql = "SELECT * FROM comment ORDER BY comment_id DESC";
-  $commentResult = mysqli_query($conn,$commentsql);
-
-  $cmt=$_GET['cmt'];
+  $cmt=$_GET['msg'];
   if($_SESSION['signed_in']){
     $name = $_SESSION['user_name'];
   }
   else{
-    $name = "visitor";
+    $name = "Admin1"; //delete this
+    //error die("Cannot identity user account");
   }
   $time = date("Y-m-d H:i:s");
-  $postid = 1;
-  if(!$commentResult){
-    $cmtid = 1;
-  }
-  else{
-    $Commentinfo = mysqli_fetch_array($commentResult);
-    $cmtid = $Commentinfo['comment_id']+1;
-  }
+  $conrm = 0;
 
-  $commentsql = "INSERT INTO comment (comment_id, comment_date_time, post_id, comments_content, author_name)
-                  VALUES ('$cmtid','$time','$postid','$cmt','$name')";
+  $commentsql = "INSERT INTO chat (chatroom_id, message, message_date_time, sender_name, consultroom, msg_type)
+                  VALUES ('$crmid','$cmt','$time','$name','0','normal')";
 
   if (mysqli_multi_query($conn, $commentsql)) {
     echo "New records created successfully";

@@ -76,7 +76,7 @@
   $password = "";
 
   // Create connection
-  $conn = new mysqli($servername, $username, $password, 'test');
+  $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
   // Check connection
   if ($conn->connect_error) {
