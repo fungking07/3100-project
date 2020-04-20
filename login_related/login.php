@@ -98,7 +98,9 @@
     <div class="centered">
       <p>Not yet our member?</p>
       <h3>REGISTER HERE!</h3>
-      <button type="button" class="btn1" onclick="regPage()"name="register" value = "register">REGISTER</button>
+      <form action="register.php" method="Post">
+      <button type="submit" class="btn1" onclick="regPage()" name= "register" value = "register">REGISTER</button>
+      </form>
     </div>
   </div>
 </div>
