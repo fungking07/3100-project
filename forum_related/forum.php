@@ -9,6 +9,13 @@
 
   $postinfo = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
   $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+
+  $cat = $_POST["category"];
+  $cat_sql = 'SELECT * FROM forum Order BY category = $cat' ; 
+  $forum_result = mysqli_query($connect,$usersql);
+  $forum_result = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
+  header(forum.php);
+
 ?>
   <!-- //if (filter button is toggle){
   /*assign sql to each filter e.g $filter = 'SELECT * FROM chat Where category = 'ulife';
