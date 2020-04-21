@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include("ConnectDatabase.php");
 	$errors = array();
 	function register(){
@@ -67,7 +66,8 @@
 			$sql = "INSERT INTO user_profile(user_id,user_name,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
 			if(mysqli_query($connect,$usersql) && mysqli_query($connect,$sql)){
 				$_SESSION['username'] = $username;
-	  		$_SESSION['success'] = "You are now logged in";
+				$_SESSION['user_id'] = $userid;
+	  		$_SESSION['signed_in'] = True;
 	  		header('location: index.php');
 			}
 			else{
@@ -76,8 +76,7 @@
 				}
 		}
 		else{
-			echo "error";
-		}
+			echo "error";		}
 		}
 
 }
@@ -232,6 +231,11 @@
 				padding-left: 1%;
 				text-align: center;
 			}
+			.red_text{
+				margin-left:65%;
+				margin-top:2%;
+				color: red;
+			}
 			.inner-persnal-description{
 				border:none;
 				width:100%;
@@ -260,7 +264,6 @@
 			Start Your Bright Future
 		</div>
 		<form name="form" action="register.php" method="POST">
-		<?php include('error.php'); ?>
 		<div class="picture">
 		</div>
 		<button class="upload" type="button">Upload your portrait</button> <br>
@@ -294,6 +297,7 @@
 			<textarea class="inner-persnal-description" rows="10" cols="50" name = "person" placeholder="Personal Description: characteristics, habits..."></textarea>
 		</div>
 		 <input class="submit" type="submit" name="submit" value="submit"/>
+		 <div class="red_text"><?php include('error.php'); ?></div>
 	 </form>
 			<!-- <form cl
 		</div>
