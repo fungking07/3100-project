@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 21 日 04:21
+-- 產生時間： 2020 年 04 月 21 日 18:47
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -45,7 +45,9 @@ INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`
 (1, 'this is for testing with longer input --- omg i am so panic (SCREAMMMM), the ddl is so close and our group seems to be lack in behind QAQ... I am already responsible for frontend (post, chatroom, chatlist, consultroom, post) and backend (post and chatroom) but still so many stuff unfinished... and I even got like really no previous knowledge in html php css js sql xampp.... I just learn them all. This did equip me with quite a lot of knowledge but I also have to dual with other asg and task... real stressful cry... I wanna learnt what I love but not spending so much time on this application... I really not planning to work in this field but instead doing research and machine learning... I wanna do other stuff and read papers and learn other things from online open lesson but I really dont have the choice... Crying hard', '2020-04-19 09:13:26', 'Admin2', 0, 'normal'),
 (1, 'me again and remark: the words are surrounding the avatar... have time then make a better alignment of word (though I dont think I have', '2020-04-19 17:08:12', 'Admin1', 0, 'normal'),
 (1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
-(1, 'okkkk let\'s open ar, request la', '2020-04-20 15:52:29', 'Admin2', 0, 'normal');
+(1, '', '2020-04-21 12:21:21', 'Admin2', 0, 'request'),
+(1, '', '2020-04-21 12:21:39', 'Admin1', 0, 'accept'),
+(5, 'consult chatroom here~', '2020-04-21 12:27:36', 'Admin1', 0, 'normal');
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,10 @@ CREATE TABLE `chatroom` (
 --
 
 INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
-(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 0);
+(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
+(3, 1, 3, '2020-04-21 00:00:00', NULL, 0, 0),
+(4, 2, 3, '2020-04-22 00:00:00', NULL, 0, 0),
+(5, 1, 2, '2020-04-22 00:00:41', 'NULL', 1, 1);
 
 -- --------------------------------------------------------
 

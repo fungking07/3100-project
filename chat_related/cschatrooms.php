@@ -1,23 +1,3 @@
-<?php
-  // //as admin from now (change in later code)
-	// include(ConnectDatabase.php);
-
-  // $sql = 'SELECT message,message_date_time FROM chat Order By last_message_time';
-
-	// //get result accoriding to the query
-	// $result = mysqli_query($connect,$sql);
-
-
-	// //fetch the result into the aoociative array format
-	// $msginfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-
-  // //print message on screen using html below(added)
-
-  // if(isset($_POST["submit"])){
-  //   //save the $_POST["msg"] to database
-  // }
-
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,25 +13,9 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <a href="#" class="navbar-brand">AcadMap</a>
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Chat</a></li>
-        <li><a href="#">Consultation</a></li>
-        <input type="text" placeholder="Search..">
-        <li><a href="#">Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <?php
   session_start();
-  $_SESSION["user_id"]=1;
-  $_SESSION["username"]='Admin1';
+  
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -63,7 +27,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $crmid = '2'; //parse from url?
+  $crmid = $_GET['id'];//parse from url?
   $_SESSION["crmid"] = $crmid;
 
   //find the name the person are chatting w/ u
@@ -81,14 +45,28 @@
   $sql = "SELECT * FROM user WHERE user_id=$oppoid";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
-
-  echo "<nav class='header2'>
+  echo "
+  <nav class='navbar navbar-default navbar-fixed-top'>
+  <div class='container'>
+    <a href='#' class='navbar-brand'>AcadMap</a>
+    <div class='container-fluid'>
+      <ul class='nav navbar-nav'>
+        <li><a href='#'>Forum</a></li>
+        <li><a href='#'>Chat</a></li>
+        <li><a href='#'>Consultation</a></li>
+        <input type='text' placeholder='Search..'>
+        <li><a href='#'>Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class='header2'>
   <img src='../assets/avatar.png' alt='Avatar'>
   <p class='phead'>".$info['username']."</p>
-  </nav>";
+  </div>
+</nav>";
 ?>
 
-<div class="content1">
+<div class="content1" style="margin-top:100px">
 
 <div id='8888'>
 <?php
@@ -122,7 +100,7 @@
       <input class="btncs" style="margin-top:25px" type="submit" onclick="history.go(0);" value='End'>
   </form>
 
-  <form action="chatp.php" class="form-container">
+  <form action="chatp.php" class="form-container" id='bottom'>
     <textarea placeholder="Type message.." name="msg" required></textarea>
     <input class="btncs" type="submit" onclick="history.go(0);"> 
   </form>

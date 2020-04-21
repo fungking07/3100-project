@@ -28,7 +28,7 @@
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
   
-  header("Location: {$_SERVER["HTTP_REFERER"]}");
+  header("Location: {$_SERVER["HTTP_REFERER"]}#bottom");
   // echo "<script>
   // history.go(-1);
   // </script>";

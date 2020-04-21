@@ -1,32 +1,3 @@
-<!-- things to do -->
-<!-- 
-  -avatar name error msg becuz not yet have login implemented
-  -the header part need to move w/ down scrolling
-  -do the soft reload instead of hard reload
-  -replace the hardcode chatroom id and userid with session
-  -link to 'chatroom' button after accepting consultation to cschatroom 
--->
-
-<?php
-  // //as admin from now (change in later code)
-	// include(ConnectDatabase.php);
-
-  // $sql = 'SELECT message,message_date_time FROM chat Order By last_message_time';
-
-	// //get result accoriding to the query
-	// $result = mysqli_query($connect,$sql);
-
-
-	// //fetch the result into the aoociative array format
-	// $msginfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-
-  // //print message on screen using html below(added)
-
-  // if(isset($_POST["submit"])){
-  //   //save the $_POST["msg"] to database
-  // }
-
- ?>
 <!DOCTYPE html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
@@ -44,29 +15,13 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <a href="#" class="navbar-brand">AcadMap</a>
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Chat</a></li>
-        <li><a href="#">Consultation</a></li>
-        <input type="text" placeholder="Search..">
-        <li><a href="#">Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 
 <?php
   session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $_SESSION["user_id"]=2;
-  $_SESSION["username"]='Admin2';
+
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -74,7 +29,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $crmid = '1'; //parse from url?
+  $crmid = $_GET['id']; //parse from url?
 
   //find the name the person are chatting w/ u
   $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
@@ -92,13 +47,28 @@
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
 
-  echo "<div class='header1'>
+  echo "
+  <nav class='navbar navbar-default navbar-fixed-top'>
+  <div class='container'>
+    <a href='#' class='navbar-brand'>AcadMap</a>
+    <div class='container-fluid'>
+      <ul class='nav navbar-nav'>
+        <li><a href='#'>Forum</a></li>
+        <li><a href='#'>Chat</a></li>
+        <li><a href='#'>Consultation</a></li>
+        <input type='text' placeholder='Search..'>
+        <li><a href='#'>Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class='header1'>
   <img src='../assets/avatar.png' alt='Avatar'>
   <p class='phead'>".$info['username']."</p>
-  </div> ";
+  </div>
+</nav>";
 ?>
 
-<div class="content1">
+<div class="content1" style="margin-top:100px">
   <div id='8888'>
     <?php
 
@@ -135,11 +105,15 @@
             </div>";
           }
           else if($info['msg_type']=='accept'){
+            $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
+            $ccidResult = mysqli_query($conn,$ccidsql);
+            $ccidinfo = mysqli_fetch_array($ccidResult);
+            $ccid = $ccidinfo['chatroom_id'];
             echo "<div class=\"container1 darker\">
             <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
             <div class=\"containerdoc\">
               <p>ACCEPTED, new chatroom is created in the chatlist.</p>
-              <button class=\"btnsend\">chatroom</button>
+              <button class=\"btnsend\" onclick=\"window.location.href='cschatrooms.php?id=$ccid'\">chatroom</button>
             </div>
             <span class=\"time-left\">".$info['message_date_time']."</span>
             </div>";
@@ -207,7 +181,7 @@
       <input class="btn" style="margin-top:25px" type="submit" onclick="window.location.reload();" value='Consult'>
   </form>
 
-  <form action="chatp.php" class="form-container">
+  <form action="chatp.php" class="form-container" id='bottom'>
     <textarea placeholder="Type message.." name="msg" required></textarea>
     <input class="btn" type="submit" onclick="document.getElementById('msg').value = '';"> 
   </form>

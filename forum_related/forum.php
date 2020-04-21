@@ -12,12 +12,112 @@
 
   $postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
   $userinfo = mysqli_fetch_assoc($userresult);
+ 
+  if(isset($_POST["find"])){
+   //echo "finding...\n"; //cannot go in to the loop
+  $cat_flag = ($_POST["category"] == "all") ? false : true;
 
-
-  if (isset($_Post["ulife"])){
-  $filter = "SELECT * FROM forum Where category = 'ulife'";
-  $postinfo = mysqli_fetch_all($filter,MySQLI_ASSOC);
+  $date_flag = 0;
+  switch($_POST['date']){
+    case 'default':
+      $date_flag = 0; break;
+    case 'Oldest':
+      $date_flag = 1; break;
+    case 'Newest':
+      $date_flag = 2; break;
   }
+
+  $likes_flag = 3;
+  switch($_POST['likes']){
+    case 'default':
+      $likes_flag = 3; break;
+    case 'Least':
+      $likes_flag = 4; break;
+    case 'Most':
+      $likes_flag = 5; break;
+  }
+  //echo $cat_flag."\n";
+  //echo $date_flag."\n";
+  //echo $likes_flag."\n";
+  
+  if($cat_flag){  //need to find cat
+    switch ($date_flag) {
+      case 0:
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].'';  break;
+          case 4:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY like_number ASC'; break;
+          case 5:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY like_number DEC';  break;
+        }
+        break;
+      case 1:
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC';  break;
+          case 4:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC Order BY like_number ASC'; break;
+          case 5:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC Order BY like_number DEC';  break;
+        }
+        break;
+      case 2:
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC';  break;
+          case 4:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC Order BY like_number ASC'; break;
+          case 5:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC Order BY like_number DEC';  break;
+        }
+        break;
+    }
+  }
+  else
+  {
+    switch ($date_flag) {
+      case 0:
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum Order By post_id';  break;
+          case 4:
+            $sql = 'SELECT * FROM forum Order BY like_number ASC'; break;
+          case 5:
+            $sql = 'SELECT * FROM forum Order BY like_number DEC';  break;
+        }
+        break;
+      case 1:
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC';  break;
+          case 4:
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC Order BY like_number ASC'; break;
+          case 5:
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC Order BY like_number DEC';  break;
+        }
+        break;
+      case 2:
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum Order BY Post_date DEC';  break;
+          case 4:
+            $sql = 'SELECT * FROM forum Order BY Post_date DEC Order BY like_number ASC'; break;
+          case 5:
+            $sql = 'SELECT * FROM forum Order BY Post_date DEC Order BY like_number DEC';  break;
+        }
+        break;
+    }
+  }
+  //echo $sql."\n";
+  $find_result = mysqli_query($connect,$sql);
+  $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
+}
+
+
+// $defaultresult = mysqli_query($connect,$sql);
+  //$postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
+
   //search is not implemented
 
   //navigation bar should be implement by html(still not done)
@@ -59,48 +159,46 @@
   </nav>
   <div class="container-fluid">
     <!-- Filter -->
-    <div class="col-md-2">
+    <div class="col-sm-4">
       <!-- The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
       <button class="collapsible">Filter</button>
         <div class="content">
           <h3>Categroies:</h3>
-          <form action ='forum.php' method = "post">
-          <input type="checkbox" id="ulife" name="ulife" value="ulife">
+          <form action ='#' method = "POST">
+          <input type="radio" id="all" name="category" value="all" checked>
+          <label for="all"> ALL category</label><br>
+          <input type="radio" id="ulife" name="category" value="ulife">
           <label for="ulife"> University life</label><br>
-          <input type="checkbox" id="study" name="study" value="study">
+          <input type="radio" id="study" name="category" value="study">
           <label for="study"> University study</label><br>
-          <input type="checkbox" id="career" name="career" value="career">
+          <input type="radio" id="career" name="category" value="career">
           <label for="career"> Future career</label><br>
           <hr>
           <h3>Post date:</h3>
-          <input type="checkbox" id="1wless" name="1wless" value="1wless">
-          <label for="1wless"> Less than 1 week</label><br>
-          <input type="checkbox" id="1wto2w" name="1wto2w" value="1wto2w">
-          <label for="1wto2w"> 1 week to 2 weeks</label><br>
-          <input type="checkbox" id="2wto1m" name="2wto1m" value="2wto1m">
-          <label for="2wto1m"> 2 weeks to 1 month</label><br>
-          <input type="checkbox" id="1mup" name="1mup" value="1mup">
-          <label for="1mup"> More then 1 month</label><br>
+          <input type="radio" id="default" name="date" value="default" checked>
+          <label for="default"> default</label><br>
+          <input type="radio" id="Oldest" name="date" value="Oldest">
+          <label for="Oldest"> Oldest</label><br>
+          <input type="radio" id="Newest" name="date" value="Newest">
+          <label for="Newest"> Newest</label><br>
           <hr>
-          <h3>Likes:</h3>
-          <input type="checkbox" id="10lesslikes" name="10lesslikes" value="10lesslikes">
-          <label for="10lesslikes"> Less than 10 likes</label><br>
-          <input type="checkbox" id="10to50likes" name="10to50likes" value="10to50likes">
-          <label for="10to50likes"> 10 to 50 likes</label><br>
-          <input type="checkbox" id="50to100likes" name="50to100likes" value="50to100likes">
-          <label for="50to100likes"> 50 to 100 likes</label><br>
-          <input type="checkbox" id="100uplikes" name="100uplikes" value="100uplikes">
-          <label for="100uplikes"> More than 100 likes</label><br>
+          <h3>Sort by:</h3>
+          <input type="radio" id="default" name="likes" value="default" checked>
+          <label for="default"> default</label><br>
+          <input type="radio" id="Least" name="likes" value="Least">
+          <label for="Least"> Least likes</label><br>
+          <input type="radio" id="Most" name="likes" value="Most">
+          <label for="Most"> Most likes</label><br>
+          <hr>
+          <input class="submit btn btn-success" type="submit" name="find" value="find"/>
         </form>
-          <hr>
-          <a href="#" class="btn btn-success">Find Post</a>
         </div>
       </div>
       
       <!-- Adapatation ends here -->
     </div>
     <!--Posts -->
-    <div class="col-md-12">
+    <div class="col-sm-8">
       <?php include("FetchPost.php") ?>
     </div>
   </div>

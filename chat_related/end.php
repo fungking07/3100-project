@@ -66,9 +66,8 @@
     }
     echo "<script>
     alert('The consult chatroom is close and the transaction will be pass to the consulter.');
-    history.go(-1);
     </script>";
-    //header("Location: {$_SERVER["HTTP_REFERER"]}");
+    header("Location: {$_SERVER["HTTP_REFERER"]}#bottom"); //actually shd return to chatroom list la as the consultroom is closed
   }
 
 ?>

@@ -1,43 +1,8 @@
-<?php
-  // include("ConnectDatabase.php");
-
-  // $sql = 'SELECT * FROM chat';
-  // $sql = 'SELECT * FROM user Order BY user_id';
-  // //get result accoriding to the query
-  // $result = mysqli_query($connect,$sql);
-  // $result = mysqli_query($connect,$usersql);
-  // /*
-  // SELECT * FROM chat
-  // WHERE user_id = user.user_id
-  // ORDER BY last_message_time
-  //  */
-
-  // //fetch the result into the aoociative array format
-  // $chatinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-  // $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-
-  // if(isset($_GET["send_consult_doc"])){
-  //   /*
-  //   display consult_doc
-  //    */
-  // }
-  // if(isset($_GET["user_consult_ok"])){
-  //   /*
-  //   go to payment_site
-  //    */
-  // }
-  //get certain userID and data
-  //output chatlist
-  //code skeleton of output Chatlist
-//  forreach($chattinfo as chat){
-//     if(chat["userID"] == userID)
-?>
-
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="device-width, initial-scale = 1">
-<title>chat</title>
+<title>chats</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/chat_msg.css">
 <link rel="stylesheet" href="../css/main.css">
@@ -68,41 +33,61 @@
 
 <div class="content1">
 
-<div id="2" class="cscontainer1" onclick="pagetrans()">
-  <img class="avatarname" src="../assets/avatar.png" alt="Avatar2" height="30" width="30">
-  <h4> Avatar2</h4>
-  <span class="time-right">time8</span>
-</div>
+<?php
+  session_start();
+  //$_SESSION["user_id"]=1;
+  //$_SESSION["username"]='Admin1';
 
-<div id="1" class="container1" onclick="pagetrans()">
-  <img class="avatarname" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
-  <h4> Avatar1</h4>
-  <span class="time-right">time1</span>
-</div>
+  $myid = $_SESSION["user_id"];
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
 
-<div id="2" class="container1" onclick="pagetrans()">
-  <img class="avatarname" src="../assets/avatar.png" alt="Avatar2" height="30" width="30">
-  <h4> Avatar2</h4>
-  <span class="time-right">time2</span>
-</div>
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
-<div id="3" class="container1" onclick="pagetrans()">
-  <img class="avatarname" src="../assets/avatar.png" alt="Avatar3" height="30" width="30">
-  <h4> Avatar3</h4>
-  <span class="time-right">time3</span>
-</div>
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
 
-<div id="4" class="container1" onclick="pagetrans()">
-  <img class="avatarname" src="../assets/avatar.png" alt="Avatar4" height="30" width="30">
-  <h4> Avatar4</h4>
-  <span class="time-right">time4</span>
-</div>
+  $sql = "SELECT * FROM chatroom WHERE user_id=$myid OR opponent_id=$myid ORDER BY last_message_time DESC";
+  $Result = mysqli_query($conn,$sql);
 
-<div id="5" class="container1" onclick="pagetrans()">
-  <img class="avatarname" src="../assets/avatar.png" alt="Avatar5" height="30" width="30">
-  <h4> Avatar5</h4>
-  <span class="time-right">time5</span>
-</div>
+  $col = mysqli_num_rows($Result);
+  $myname = $_SESSION['username'];
+  for ($x = 0; $x < $col; $x++) {
+    $info = mysqli_fetch_array($Result);
+
+    //find the oppo_id
+    if($info['user_id']==$myid){
+      $oppoid = $info['opponent_id'];
+    }
+    else{
+      $oppoid = $info['user_id'];
+    }
+
+    //find the name of ppl that I have connection to
+    $sql2 = "SELECT * FROM user WHERE user_id=$oppoid";
+    $Result2 = mysqli_query($conn,$sql2);
+    $info2 = mysqli_fetch_array($Result2);
+    $rmid = $info['chatroom_id'];
+    if($info['consultroom']!=0){
+      echo "<div id=$rmid class='cscontainer1' onclick=\"window.location.href='cschatrooms.php?id=$rmid'\">
+            <img class='avatarname' src='../assets/avatar.png' alt='Avatar' height='30' width='30'>
+            <h4> ".$info2['username']."</h4>
+            <span class='time-right'>".$info['last_message_time']."</span>
+            </div>";
+    }
+    else{
+      echo "<div id=$rmid class='container1' onclick=\"window.location.href='chatrooms.php?id=$rmid'\">
+            <img class='avatarname' src='../assets/avatar.png' alt='Avatar' height='30' width='30'>
+            <h4> ".$info2['username']."</h4>
+            <span class='time-right'>".$info['last_message_time']."</span>
+            </div>";
+    }
+  }
+?>
 
 </div>
 

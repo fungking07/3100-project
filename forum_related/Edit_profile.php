@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		*{
+			margin:0;
+			padding:0;
+		}
+		html{
+			background-color: #98f5ff;
+		}
+		.top{
+			width:60%;
+			height:270px;
+			margin:30px auto 0;
+			padding:20px 0;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			background-image: url(../assets/profile_bac.jpg);
+			background-size: cover;
+		}
+		.circle{
+			width:120px;
+			height:120px;
+			border-radius: 60px;
+			border-style: solid;
+			border-color: gray;
+			margin:0 auto;
+			background-image: url(../assets/profile_default.jpg);
+			background-size: cover;
+		}
+		.username{
+			width:150px;
+			height:50px;
+			margin:25px auto 10px;
+			text-align: center;
+			font-size: 27px;
+		}
+		.username_input{
+			width:150px;
+			height:35px;
+			border-color: gray;
+			border-style: solid;
+			font-size: 27px;
+		}
+		.institute{
+			width:300px;
+			height:50px;
+			margin:0 auto;
+			text-align: center;
+		}
+		.institute_input{
+			width:300px;
+			height:30px;
+			border-color: gray;
+			border-style: solid;
+			font-size: 20px;
+		}
+		.content{
+			width: 60%;
+			margin:0 auto;
+			background-color: white;
+		}
+		.consult{
+			display:inline-block;
+			width: 25%;
+			height:75px;
+			margin-left:20%;
+			margin-top:3%;
+			font-size:20px;
+			border-radius: 10px;
+			border-style: solid;
+			background-color: #e0ffff;
+			font-family:Cooper Black;
+		}
+		.match{
+			margin-left:13%;
+			margin-top:3%;
+			display:inline-block;
+			width: 25%;
+			height:75px;
+			font-size:20px;
+			border-radius: 10px;
+			border-style: solid;
+			background-color: #e0ffff;
+			font-family:Cooper Black;
+		}
+		button:hover{
+			background-color: #bfa;
+		}
+		.rank{
+			margin-left:10%;
+			margin-top:25px;
+			font-size: 27px;
+		}
+		.rating1{
+			display:inline-block;
+			margin-top:15px;
+			margin-left:20%;
+			width:57px;
+			height:55px;
+			background-size: cover;
+			background-image: url(../assets/blank-star.png);
+		}
+		.rating{
+			display:inline-block;
+			margin-top:15px;
+			margin-left:7%;
+			width:57px;
+			height:55px;
+			background-size: cover;
+			background-image: url(../assets/blank-star.png);
+		}
+		.bac-info{
+			margin-left:10%;
+			margin-top:25px;
+			font-size: 27px;
+			margin-bottom: 30px;
+		}
+		.status,.email,.major,.user_status{
+			display: inline-block;
+			margin-left:10%;
+			background-color: #bfa;
+			width:78%;
+			height: 35px;
+			border-style: none;
+			border-width: 0.5px;
+			border-color: #0bf;
+			font-size:20px;
+			padding:0 3%;
+			padding-top: 5px;
+			vertical-align: center;
+		}
+		.education,.email1,.major1,.user_status1{
+			float:right;
+		}
+		.education_input{
+			width:80%;
+			height:30px;
+			float:right;
+			font-size: 20px;
+			outline: none;
+			opacity:0.5;
+		}
+		.email_input{
+			width:100%;
+			height:30px;
+			float:right;
+			font-size: 20px;
+			outline: none;
+			opacity:0.5;
+		}
+		.major_input{
+			width:60%;
+			height:30px;
+			float:right;
+			font-size: 20px;
+			outline: none;
+			opacity:0.5;
+		}
+		.status{
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+		}
+		.user_status{
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+		}
+		.status:hover{
+			background-color: skyblue;
+		}
+		.email:hover{
+			background-color: skyblue;
+		}
+		.major:hover{
+			background-color: skyblue;
+		}
+		.user_status:hover{
+			background-color: skyblue;
+		}
+		.des{
+			margin-left:10%;
+			font-size: 27px;
+			margin-top:20px;
+		}
+		.description{
+			width:80%;
+			height:120px;
+			margin-left:10%;
+			margin-top:20px;
+			font-size: 27px;
+			border-style: solid;
+			border-color: gray;
+			padding:1% 2%;
+			border-radius: 20px;
+			outline:none;
+			background-color: #e0ffff;
+		}
+		.description:hover{
+			border-color: #00BBFF;
+		}
+		.description:focus{
+			border-color: #00BBFF;
+		}
+		.con{
+			margin-left:10%;
+			font-size: 27px;
+			margin-top:20px;
+		}
+		.consultation_content1{
+			margin-left:10%;
+			margin-top:20px;
+			width:85%;
+			height:200px;
+			border-radius: 20px;
+			background-color: #e6e6fa;
+		}
+		.text{
+			width:100%;
+			height:50%;
+			background-color: #e6e6fa;
+			font-size: 27px;
+			border-style: none;
+			border-radius: 20px;
+		}
+		.day{
+			display:inline-block;
+			width:100%;
+			height:50%;
+			background-color: #e6e6fa;
+			font-size: 20px;
+			border-radius: 20px;
+		}
+		.star{
+			display:inline-block;
+			background-size: cover;
+			background-image: url(../assets/blank-star1.png);
+			width:37px;
+			height:37px;
+		}
+		.consultation_content2{
+			margin-left:10%;
+			margin-top:20px;
+			width:85%;
+			height:200px;
+			border-radius: 20px;
+			background-color: #e6e6fa;
+
+		}
+		.edit{
+			margin-left:40%;
+			margin-top:20px;
+			margin-bottom: 40px;
+			width:25%;
+			height:60px;
+			border-radius: 10px;
+			border-style: solid;
+			background-color: #e0ffff;
+			font-family:Cooper Black;
+			font-size:20px;
+		}
+		</style>
+	</head>
+	<body>
+		<form class="" action="new_myprofile_after.php" method="get">
+			<div class="top">
+				<div class="circle">
+				</div>
+				<div class="username">
+					<input type="text" name="user_name" value="" class="username_input" placeholder="username">
+				</div>
+				<div class="institute">
+					<input type="text" name="" value="" class="institute_input" placeholder="institute">
+				</div>
+
+			</div>
+			<div class="content">
+
+				<button class="consult" type="button">Consult</button>
+				<button class="match" type="button">Match to consult</button>
+				<div class="rank">
+					Consultation Rating
+				</div>
+				<div class="rating1" >
+				</div>
+				<div class="rating rating2" >
+				</div>
+				<div class="rating rating3" >
+				</div>
+				<div class="rating rating4" >
+				</div>
+				<div class="rating rating5" >
+				</div>
+
+					<div class="bac-info">
+						Background Information
+					</div>
+					<div class="status" >Education:<div class="education">
+						<input type="text" name="" value="" class="education_input">
+					</div></div>
+					<div class="email" >Email-Address: <div class="email1">
+						<input type="text" name="" value="" class="email_input">
+					</div></div>
+					<div class="major" >Major:<div class="major1">
+						<input type="text" name="" value="" class="major_input">
+					</div></div>
+					<div class="user_status">User Level:<div class="user_status1">
+						Silver User
+					</div></div>
+
+
+				<div class="des">
+					Description
+				</div>
+				<textarea rows="3" cols="10" class="description">
+				</textarea>
+				<div class="con">
+					Your Consultation
+				</div>
+
+				<div class="consultation_content1">
+					<textarea class="text"></textarea>
+					<div class="day">
+						03/28/2020
+
+						<br>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+					    </div>
+					</div>
+				</div>
+				<div class="consultation_content2">
+					<textarea class="text"></textarea>
+					<div class="day">
+						03/28/2020
+
+						<br>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+					    </div>
+					</div>
+				</div>
+				<div class="consultation_content2">
+					<textarea class="text"></textarea>
+					<div class="day">
+						03/28/2020
+
+						<br>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+						</div>
+						<div class="star">
+					    </div>
+					</div>
+				</div>
+				<input class="edit" type="submit" value="Save">
+			</div>
+
+		</form>
+
+	</body>
+</html>
