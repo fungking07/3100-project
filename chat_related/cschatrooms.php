@@ -55,7 +55,7 @@
 
 <div class="content1">
 
-
+<div id='8888'>
 <?php
   session_start();
   $_SESSION["user_id"]=1;
@@ -96,6 +96,7 @@
     }
   }
 ?>
+</div>
 <div class="chat" id="myForm">
   <form action="end.php" class="form-container">
       <input class="btncs" style="margin-top:25px" type="submit" onclick="history.go(0);" value='End'>
@@ -108,5 +109,8 @@
 </div>
 
 </div>
+<script>
+  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 20000);
+</script>
 </body>
 </html> 
