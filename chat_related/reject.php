@@ -41,6 +41,15 @@
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
+
+      //delete the request msg
+      $sql = "DELETE FROM chat WHERE chatroom_id=$crmid AND msg_type='request'";
+      if (mysqli_multi_query($conn, $sql)) {
+        echo "delete successfully";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
+
       header("Location: {$_SERVER["HTTP_REFERER"]}#bottom");
     }
   }

@@ -1,29 +1,3 @@
-<!-- things to do -->
-<!-- 
-  -do the reload and keeping the original pos
-  -link to 'chatroom' button after accepting consultation to cschatroom 
--->
-
-<?php
-  // //as admin from now (change in later code)
-	// include(ConnectDatabase.php);
-
-  // $sql = 'SELECT message,message_date_time FROM chat Order By last_message_time';
-
-	// //get result accoriding to the query
-	// $result = mysqli_query($connect,$sql);
-
-
-	// //fetch the result into the aoociative array format
-	// $msginfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-
-  // //print message on screen using html below(added)
-
-  // if(isset($_POST["submit"])){
-  //   //save the $_POST["msg"] to database
-  // }
-
- ?>
 <!DOCTYPE html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
@@ -47,8 +21,7 @@
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $_SESSION["user_id"]=1;
-  $_SESSION["username"]='Admin1';
+
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -56,7 +29,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $crmid = '1'; //parse from url?
+  $crmid = $_GET['id']; //parse from url?
 
   //find the name the person are chatting w/ u
   $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
@@ -132,11 +105,15 @@
             </div>";
           }
           else if($info['msg_type']=='accept'){
+            $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
+            $ccidResult = mysqli_query($conn,$ccidsql);
+            $ccidinfo = mysqli_fetch_array($ccidResult);
+            $ccid = $ccidinfo['chatroom_id'];
             echo "<div class=\"container1 darker\">
             <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
             <div class=\"containerdoc\">
               <p>ACCEPTED, new chatroom is created in the chatlist.</p>
-              <button class=\"btnsend\">chatroom</button>
+              <button class=\"btnsend\" onclick=\"window.location.href='cschatrooms.php?id=$ccid'\">chatroom</button>
             </div>
             <span class=\"time-left\">".$info['message_date_time']."</span>
             </div>";

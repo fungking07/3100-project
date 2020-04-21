@@ -54,10 +54,15 @@
       $Result = mysqli_query($conn,$sql);
       $info = mysqli_fetch_array($Result);
       $max = $info['max_id'] + 1;
+      $time = date("Y-m-d H:i:s");
+      $oppoid = $_SESSION['oppoid']; //ppl request for consultation
+      $myid = $_SESSION['user_id'];
 
       //insert new chatroom to the list
-      $commentsql = "INSERT INTO chatroom (chatroom_id,user_id, opponent_id, opponent_picture, consultroom, hv_consult)
-                      VALUES ('$max','1','2','NULL','$crmid','1')"; //hard code user_id be 1 and 2 needa use session la RMB THAT USER_ID shd be ppl request
+      $commentsql = "INSERT INTO chatroom (chatroom_id,user_id, opponent_id, last_message_time, opponent_picture, consultroom, hv_consult)
+                      VALUES ('$max','$oppoid','$myid','$time','NULL','$crmid','1')"; //hard code user_id be 1 and 2 needa use session la RMB THAT USER_ID shd be ppl request
+
+      $_SESSION['ccid']=$max;
 
       if (mysqli_multi_query($conn, $commentsql)) {
         echo "New records to chatroom created successfully";
