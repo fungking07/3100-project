@@ -1,39 +1,88 @@
 <?php
-	include(ConnectDatabase.php);
-	$firstname = $_POST["first"];
-	$lastname = $_POST["last"];
-	$username = $_POST["user"];
-	$email = $_POST["email"];
-	$major = $_POST["major"];
-	$education = $_POST["education"];
-	$pd = $_POST["person"];
+	session_start();
+	include("ConnectDatabase.php");
+	$errors = array();
+	function register(){
+		//variable declaration
+		global $connect;
+		global $errors;
 
-	//prevent sql injection
-  $firstname = stripslashes($firstname);
-  $firstname = mysqli_real_escape_string($connect,$firstname);
-  $lastname = stripslashes($lastname);
-  $lastname = mysqli_real_escape_string($connect,$lastname);
-	$username= stripslashes($username);
-  $username = mysqli_real_escape_string($connect,$username);
-  $email = stripslashes($email);
-  $email = mysqli_real_escape_string($connect,$email);
-	$major= stripslashes($major);
-  $major = mysqli_real_escape_string($connect,$major);
-  $pd = stripslashes($pd);
-  $pd = mysqli_real_escape_string($connect,$pd);
 
-	$name = $firstname . $lastname;
+		//get data from user inpuy
+		$firstname = $_POST["first"];
+		$lastname = $_POST["last"];
+		$username = $_POST["user"];
+		$email = $_POST["email"];
+		$major = $_POST["major"];
+		$education = $_POST["education"];
+		$pd = "";
 
-	if(isset($_POST["submit"])){
-		$sql = "INSERT INTO user_profile(user_name,education_level,personal_description,major) VALUES ('$username',$education','$pd','$major')";
-		$sql = "INSERT INTO user(user_name,email_address) VALUES ('$username',$email')";
-		if(mysqli_query($connect,$sql)){
-			header("login.php");
+		//prevent sql injection
+	  $firstname = stripslashes($firstname);
+	  $firstname = mysqli_real_escape_string($connect,$firstname);
+	  $lastname = stripslashes($lastname);
+	  $lastname = mysqli_real_escape_string($connect,$lastname);
+		$username= stripslashes($username);
+	  $username = mysqli_real_escape_string($connect,$username);
+	  $email = stripslashes($email);
+	  $email = mysqli_real_escape_string($connect,$email);
+		$major= stripslashes($major);
+	  $major = mysqli_real_escape_string($connect,$major);
+		$pd = stripslashes($pd);
+		$pd = mysqli_real_escape_string($connect,$pd);
+
+		$name = $firstname . $lastname;
+
+		if (empty($username)) { array_push($errors, "Username is required"); }
+  	if (empty($email)) { array_push($errors, "Email is required"); }
+  	//if (empty($password)) { array_push($errors, "Password is required"); }
+
+		$user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+		$result = mysqli_query($connect, $user_check_query);
+		if($result != False){
+			$user = mysqli_fetch_assoc($result);
+			if ($user) { // if user exists
+			if ($user['username'] == $username) {
+				array_push($errors, "Username already exists");
+			}
+			if ($user['email'] == $email) {
+				array_push($errors, "email already exists");
+			}
+		}
+		}
+
+
+
+		//
+		if (count($errors) == 0) {
+		$usersql = "INSERT INTO user(username,email_address) VALUES ('$username','$email')";
+		$useridsql = "SELECT  user_id FROM user
+		WHERE username = '$username'";
+		$idresult = mysqli_query($connect,$useridsql);
+		if($idresult != False){
+				$userdata = mysqli_fetch_assoc($idresult);
+				$userid = $userdata["user_id"];
+		}
+		if($userid != Null){
+			$sql = "INSERT INTO user_profile(user_id,user_name,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
+			if(mysqli_query($connect,$usersql) && mysqli_query($connect,$sql)){
+				$_SESSION['username'] = $username;
+	  		$_SESSION['success'] = "You are now logged in";
+	  		header('location: index.php');
+			}
+			else{
+				//prompt error
+				echo 'query error:' . mysqli_error($connect);
+				}
 		}
 		else{
-			//prompt error
-			echo 'query error:' . mysqli_error($connect);
-			}
+			echo "error";
+		}
+		}
+
+}
+	if(isset($_POST["submit"])){
+		register();
 	}
  ?>
 
@@ -210,9 +259,10 @@
 		<div class="register">
 			Start Your Bright Future
 		</div>
+		<form name="form" action="register.php" method="POST">
+		<?php include('error.php'); ?>
 		<div class="picture">
 		</div>
-<form action = "login.php" class="main" method="Post">
 		<button class="upload" type="button">Upload your portrait</button> <br>
 		<input type="text" class="first" name="first" placeholder="First Name" />
 		<input type="text" class="last" name="last" placeholder="Last Name" />
@@ -241,9 +291,9 @@
 			</select>
 		</div>
 		<div class="per-des">
-			<textarea class="inner-persnal-description" rows="10" cols="50" placeholder="Personal Description: characteristics, habits..."></textarea>
+			<textarea class="inner-persnal-description" rows="10" cols="50" name = "person" placeholder="Personal Description: characteristics, habits..."></textarea>
 		</div>
-		 <input class="submit" type="submit" value="submit"/>
+		 <input class="submit" type="submit" name="submit" value="submit"/>
 	 </form>
 			<!-- <form cl
 		</div>
