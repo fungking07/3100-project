@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	include("ConnectDatabase.php");
 	$errors = array();
 	function register(){
@@ -67,7 +66,8 @@
 			$sql = "INSERT INTO user_profile(user_id,user_name,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
 			if(mysqli_query($connect,$usersql) && mysqli_query($connect,$sql)){
 				$_SESSION['username'] = $username;
-	  		$_SESSION['success'] = "You are now logged in";
+				$_SESSION['user_id'] = $userid;
+	  		$_SESSION['signed_in'] = True;
 	  		header('location: index.php');
 			}
 			else{
@@ -76,8 +76,7 @@
 				}
 		}
 		else{
-			echo "error";
-		}
+			echo "error";		}
 		}
 
 }
@@ -98,9 +97,8 @@
 				padding:0;
 				outline:none;
 			}
-			/*  */
 			html{
-				background:url(img/register_bac.jpg) no-repeat center center fixed;
+				background:url(../assets/register_bac.jpeg) no-repeat center center fixed;
 				background-size: cover;
 			}
 			.register{
@@ -130,7 +128,9 @@
 				margin-left:3%;
 				width: 170px;
 				height:35px;
-				border-style: none;
+				border-color: gray;
+				border-style: solid;
+				border-width: 2px;
 				font-size: 15px;
 			}
 			.upload:hover{
@@ -169,6 +169,10 @@
 				border-width: 2px;
 				border-color: skyblue;
 			}
+			.confirm:hover{
+				border-width: 2px;
+				border-color: skyblue;
+			}
 			.per-des:active{
 				border-width: 2px;
 				border-color: skyblue;
@@ -185,6 +189,37 @@
 			}
 			.last,.user{
 				margin-left:2%;
+			}
+			.password{
+				margin-left:45%;
+				margin-top:2%;
+				width: 49%;
+				height:35px;
+				border-style: solid;
+				font-size: 16px;
+				border-color: gray;
+				padding-left: 1%;
+			}
+			.con_password{
+				margin-left:45%;
+				margin-top:2%;
+				width: 38%;
+				height:35px;
+				border-style: solid;
+				font-size: 16px;
+				border-color: gray;
+				padding-left: 1%;
+			}
+			.confirm{
+				display:inline-block;
+				margin-top:2%;
+				margin-left:1%;
+				width: 9.6%;
+				height:35px;
+				border-color: gray;
+				border-style: solid;
+				border-width: 2px;
+				font-size: 15px;
 			}
 			.email{
 				margin-left:45%;
@@ -259,17 +294,18 @@
 		<div class="register">
 			Start Your Bright Future
 		</div>
-		<form name="form" action="register.php" method="POST">
-		<?php include('error.php'); ?>
 		<div class="picture">
 		</div>
 		<button class="upload" type="button">Upload your portrait</button> <br>
 		<input type="text" class="first" name="first" placeholder="First Name" />
 		<input type="text" class="last" name="last" placeholder="Last Name" />
 		<input type="text" class="user" name="user" placeholder="Username" />
-		<input type="text" class="email" name="email" placeholder="Email Address" />
+		<input type="password" class="password" name="password" placeholder="password" />
+		<input type="password" class="con_password" name="con_password" placeholder="confirm password"/>
+		<button class="confirm" type="button">confirm</button>
+		<input type="text" class="email" placeholder="Email Address" />
 		<div class="major">
-			<select name = "major" >
+			<select  >
 				<option style="display: none;" value ="">major</option>
 				<option value ="Arts">Arts</option>
 				<option value ="Business">Business</option>
@@ -282,7 +318,7 @@
 			</select>
 		</div>
 		<div class="education">
-			<select name = "education">
+			<select >
 				<option style="display: none;" value ="">Education</option>
 				<option value ="High Schoool">High Schoool</option>
 				<option value ="Undergraduate">Undergraduate</option>
@@ -291,70 +327,8 @@
 			</select>
 		</div>
 		<div class="per-des">
-			<textarea class="inner-persnal-description" rows="10" cols="50" name = "person" placeholder="Personal Description: characteristics, habits..."></textarea>
+			<textarea class="inner-persnal-description" rows="10" cols="50" placeholder="Personal Description: characteristics, habits..."></textarea>
 		</div>
-		 <input class="submit" type="submit" name="submit" value="submit"/>
-	 </form>
-			<!-- <form cl
-		</div>
-		ass="form">
-			<div class="picture">
-
-			</div>
-			<br>
-				<div class="inner-1">
-					UserID:
-				</div>
-				<input class="inner-2" type="text" name="userID" />
-			<br>
-				<div class="inner-1">
-					Username:
-				</div>
-				<input class="inner-2" type="text" name="username" />
-			<br>
-				<div class="inner-1">
-					Password:
-				</div>
-				<input class="inner-2" type="password" name="password" />
-			<br>
-				<div class="inner-1">
-					Email:
-				</div>
-				<input class="inner-2" type="text" name="email" />
-			<br>
-				<div class="inner-1">
-					Major:
-				</div>
-			<select class="inner-2">
-				<option style="display: none;" value =""></option>
-				<option value ="Arts">Arts</option>
-				<option value ="Business">Business</option>
-				<option value ="Education">Education</option>
-				<option value ="Engineering">Engineering</option>
-				<option value ="Law">Law</option>
-				<option value ="Medicine">Medicine</option>
-				<option value ="Science">Science</option>
-				<option value ="Social Sciennce">Social Science</option>
-			</select>
-			<br>
-				<div class="inner-1">
-					Education:
-				</div>
-				<select class="inner-2">
-					<option style="display: none;" value =""></option>
-					<option value ="High Schoool">High Schoool</option>
-					<option value ="Undergraduate">Undergraduate</option>
-					<option value ="Master">Master</option>
-					<option value ="Post Graduate">Post Graduate</option>
-				</select>
-			<br>
-				<div class="inner-per">
-					Personal Description:
-				</div>
-				<br>
-				<textarea class="inner-persnal-description" rows="10" cols="50" name="person"> </textarea> />
-			<br>
-			<input class="submit" type="submit" name = "submit" value="submit"/>
-		</form> -->
+		 <input class="submit" type="submit" value="submit"/>
 	</body>
 </html>

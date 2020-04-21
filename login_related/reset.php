@@ -1,11 +1,12 @@
 <?php
-  session_start();
   include('ConnectDatabase.php');
-  if(isset($_POST["id"])){
+  $errors = array();
+  if(isset($_SESSION["user_id"])){
     $id = mysqli_real_escape_string($connect,$_SESSION["user_id"]);
   }
   function changepw(){
     global $connect;
+    global $errors;
     $newpw = $_POST["newpw"];
     $confimpw = $_POST["confirmpw"];
 
@@ -14,24 +15,26 @@
     $newpw = mysqli_real_escape_string($connect,$newpw);
     $confimpw = stripslashes($confimpw);
     $confimpw = mysqli_real_escape_string($connect,$confimpw);
+    if (empty($newpw)) { array_push($errors, "password is required"); }
+  	if (empty($confimpw)) { array_push($errors, "Confirm password needed"); }
     if($newpw == $confimpw){
       //save data to database
       //sql for inset data to database
-      $sql = "UPDATE user SET password = '$newpw' where user_id = '$id'";
+      $sql = "UPDATE user SET password = '$newpw' where user_id = '1'";
       //check if data save to database sucessfully
       if(mysqli_query($connect,$sql)){
         header("login.php");
       }
       else{
         //prompt error
-        echo 'query error:' . mysqli_error($connect);
+        push($errors,'query error:' . mysqli_error($connect));
         }
     }
     else{
       //promt errors
       mysql_free_resul($result);
       mysqli_close($connect);
-      echo "fail to change password . Please try it again.";
+      push($errors,"fail to change password . Please try it again.");
     }
   }
 
@@ -88,6 +91,11 @@
 				padding-left: 1%;
 				outline: none;
 			}
+      .red_text{
+        margin-left:44%;
+        margin-top:65px;
+        color: red;
+      }
 			.submit{
 				margin-left:44%;
 				margin-top:65px;
@@ -109,6 +117,7 @@
     <form action = "reset.php" method="Post">
 		    <input type="text" name="newpw" id="new" placeholder="New Password" />
 		    <input type="text" name="confirmpw" id="confirm" placeholder="Confirm Password" />
+        <div class="red_text"><?php include('error.php'); ?></div>
 		    <input class="submit" name = "submit" type="submit" value="submit"/>
     </form>
 	</body>
