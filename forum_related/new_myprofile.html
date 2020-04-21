@@ -3,14 +3,41 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+	    <link rel="stylesheet" href="../css/post.css">
 		<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		.container {
+		  border: 2px solid #A2E2F1;
+		  background-color: #B8E8F3;
+		  border-radius: 5px;
+		  padding: 10px;
+		  width: 100%;
+		  opacity: 0.8;
+
+		}
+		.navbar-brand{
+			display:inline-block;
+			margin-left:10%;
+			color:gray;
+		}
+		.search{
+			border-style: none;
+			background-color: #B8E8F3;
+			margin-left: 3%;
+			font-size: 18px;
+			opacity: 0.8;
+		}
 			a{
+				margin-left: 3%;
 				text-decoration: none;
-				color:black;
+				color:gray;
 			}
-			*{
-				margin:0;
-				padding:0;
+			a:hover{
+				color: #383d43;
 			}
 			html{
 				background-color: #98f5ff;
@@ -18,7 +45,7 @@
 			.top{
 				width:60%;
 				height:270px;
-				margin:30px auto 0;
+				margin:0 auto;
 				padding:20px 0;
 				border-top-left-radius: 20px;
 				border-top-right-radius: 20px;
@@ -229,6 +256,18 @@
 		</style>
 	</head>
 	<body>
+
+	    <div class="container">
+	      <a href="#" class="navbar-brand">AcadMap</a>
+
+	          <a href="#">Forum</a>
+	          <a href="#">Chat</a>
+	          <a href="#">Consultation</a>
+	          <a href="#">Welcome, User!</a>
+						<input type="text" class="search" placeholder="Search..">
+
+	      </div>
+
 		<div class="top">
 			<div class="circle">
 			</div>
@@ -340,6 +379,5 @@
 			</div>
 			<button class="edit" type="button">Edit</button>
 		</div>
-
 	</body>
 </html>
