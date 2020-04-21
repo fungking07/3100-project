@@ -96,9 +96,9 @@
           <a href="#" class="btn btn-success">Find Post</a>
         </div>
       </div>
-      <
+      
       <!-- Adapatation ends here -->
-    </div> -->
+    </div>
     <!--Posts -->
     <div class="col-md-12">
       <?php include("FetchPost.php") ?>
@@ -106,7 +106,7 @@
   </div>
 
   <!--The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp-->
-  <!-- <script>
+  <script>
     var coll = document.getElementsByClassName("collapsible");
     var i;
 
@@ -121,6 +121,6 @@
         }
       });
     }
-    </script> -->
+    </script>
     <!--Adapatation ends here-->
 </body>
