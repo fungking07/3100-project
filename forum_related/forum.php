@@ -1,4 +1,7 @@
 <?php
+  define('MYSQL_BOTH',MYSQLI_BOTH);
+  define('MYSQL_NUM',MYSQLI_NUM);
+  define('MYSQL_ASSOC',MYSQLI_ASSOC);
   include("ConnectDatabase.php");
 
   $sql = 'SELECT * FROM forum';
@@ -7,22 +10,14 @@
   $defaultresult = mysqli_query($connect,$sql);
   $userresult = mysqli_query($connect,$usersql);
 
-  $postinfo = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
-  $userinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+  $postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
+  $userinfo = mysqli_fetch_assoc($userresult);
 
-  $cat = $_POST["category"];
-  $cat_sql = 'SELECT * FROM forum Order BY category = $cat' ; 
-  $forum_result = mysqli_query($connect,$usersql);
-  $forum_result = mysqli_fetch_all($defaultresult,MySQLI_ASSOC);
-  header(forum.php);
 
-?>
-  <!-- //if (filter button is toggle){
-  /*assign sql to each filter e.g $filter = 'SELECT * FROM chat Where category = 'ulife';
-  //change $postinfo accordingly
-  //fetch the result into the aoociative array format
-  }*/
-
+  if (isset($_Post["ulife"])){
+  $filter = "SELECT * FROM forum Where category = 'ulife'";
+  $postinfo = mysqli_fetch_all($filter,MySQLI_ASSOC);
+  }
   //search is not implemented
 
   //navigation bar should be implement by html(still not done)
@@ -30,7 +25,9 @@
 
   //output forum post prototype
   //code skeleton of output forum post -->
-  
+?>
+
+
 
 
 <!DOCTYPE html>
@@ -67,6 +64,7 @@
       <button class="collapsible">Filter</button>
         <div class="content">
           <h3>Categroies:</h3>
+          <form action ='forum.php' method = "post">
           <input type="checkbox" id="ulife" name="ulife" value="ulife">
           <label for="ulife"> University life</label><br>
           <input type="checkbox" id="study" name="study" value="study">
@@ -93,6 +91,7 @@
           <label for="50to100likes"> 50 to 100 likes</label><br>
           <input type="checkbox" id="100uplikes" name="100uplikes" value="100uplikes">
           <label for="100uplikes"> More than 100 likes</label><br>
+        </form>
           <hr>
           <a href="#" class="btn btn-success">Find Post</a>
         </div>
@@ -102,37 +101,7 @@
     </div> -->
     <!--Posts -->
     <div class="col-md-12">
-      <?php foreach($postinfo as $post){?> 
-      <div id= "<?= $postinfo["post_id"]; ?>" class="containers" onclick="pagetrans()">
-        <h1><?= $postinfo["post_title"] ;?></h1> <p>By &lt; <?= $postinfo["username"]; ?> &gt; at &lt; <?= $postinfo["post_date_time"]; ?> &gt;</p><hr>
-        <a href="../html/post.html" class="btn btn-success">Read More</a> <!-- rediect to the correct post -->
-      </div>
-      <?php }?>
-      <!-- <div id="1" class="containers" onclick="pagetrans()">
-        <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
-        <a href="../html/post.html" class="btn btn-success">Read More</a>
-      </div>
-      <div id="2" class="containers" onclick="pagetrans()">
-        <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
-        <a href="../html/post.html" class="btn btn-success">Read More</a>
-      </div>
-      <div id="3" class="containers" onclick="pagetrans()">
-        <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
-        <a href="../html/post.html" class="btn btn-success">Read More</a>
-      </div>
-      <div id="4" class="containers" onclick="pagetrans()">
-        <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
-        <a href="../html/post.html" class="btn btn-success">Read More</a>
-      </div>
-      <div id="5" class="containers" onclick="pagetrans()">
-        <h1>Post Title</h1><p>By &lt;author&gt; at &lt;timestamp&gt;</p><hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit mauris ac tempor rhoncus. Aenean aliquet enim urna ...</p><hr>
-        <a href="../html/post.html" class="btn btn-success">Read More</a>
-      </div> -->
+      <?php include("FetchPost.php") ?>
     </div>
   </div>
 
