@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<style type="text/css">
 
-				.container {
+				/*.container {
 					border: 2px solid #A2E2F1;
 					background-color: #B8E8F3;
 					border-radius: 5px;
@@ -25,7 +26,7 @@
 					margin-left: 3%;
 					font-size: 18px;
 					opacity: 0.8;
-				}
+				}*/
 					a{
 						margin-left: 3%;
 						text-decoration: none;
@@ -247,13 +248,20 @@
 	</head>
 	<body>
 		<div class="container">
-			<a href="#" class="navbar-brand">AcadMap</a>
-
-					<a href="#">Forum</a>
-					<a href="#">Chat</a>
-					<a href="#">Consultation</a>
-					<a href="#">Welcome, User!</a>
-					<input type="text" class="search" placeholder="Search..">
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container">
+					<a href="#" class="navbar-brand">AcadMap</a>
+					<div class="container-fluid">
+						<ul class="nav navbar-nav">
+							<li><a href="#">Forum</a></li>
+							<li><a href="#">Chat</a></li>
+							<li><a href="#">Consultation</a></li>
+							<!-- <input type="text" placeholder="Search.."> -->
+							<li><a href="#">Welcome, User!</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 
 			</div>
 		<div class="top">
