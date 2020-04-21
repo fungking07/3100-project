@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 20 日 22:03
+-- 產生時間： 2020 年 04 月 21 日 04:21
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -45,9 +45,7 @@ INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`
 (1, 'this is for testing with longer input --- omg i am so panic (SCREAMMMM), the ddl is so close and our group seems to be lack in behind QAQ... I am already responsible for frontend (post, chatroom, chatlist, consultroom, post) and backend (post and chatroom) but still so many stuff unfinished... and I even got like really no previous knowledge in html php css js sql xampp.... I just learn them all. This did equip me with quite a lot of knowledge but I also have to dual with other asg and task... real stressful cry... I wanna learnt what I love but not spending so much time on this application... I really not planning to work in this field but instead doing research and machine learning... I wanna do other stuff and read papers and learn other things from online open lesson but I really dont have the choice... Crying hard', '2020-04-19 09:13:26', 'Admin2', 0, 'normal'),
 (1, 'me again and remark: the words are surrounding the avatar... have time then make a better alignment of word (though I dont think I have', '2020-04-19 17:08:12', 'Admin1', 0, 'normal'),
 (1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
-(1, 'okkkk let\'s open ar, request la', '2020-04-20 15:52:29', 'Admin2', 0, 'normal'),
-(1, '', '2020-04-20 21:29:46', 'Admin2', 0, 'request'),
-(1, '', '2020-04-20 21:58:04', 'Admin1', 0, 'accept');
+(1, 'okkkk let\'s open ar, request la', '2020-04-20 15:52:29', 'Admin2', 0, 'normal');
 
 -- --------------------------------------------------------
 
@@ -57,8 +55,8 @@ INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`
 
 CREATE TABLE `chatroom` (
   `chatroom_id` int(8) UNSIGNED NOT NULL,
-  `user_id` int(8) NOT NULL,
-  `opponent_id` int(8) NOT NULL,
+  `user_id` int(8) UNSIGNED NOT NULL,
+  `opponent_id` int(8) UNSIGNED NOT NULL,
   `last_message_time` timestamp NULL DEFAULT NULL,
   `opponent_picture` varchar(200) DEFAULT NULL,
   `consultroom` tinyint(1) NOT NULL DEFAULT 0,
@@ -70,8 +68,7 @@ CREATE TABLE `chatroom` (
 --
 
 INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
-(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
-(9, 1, 2, NULL, 'NULL', 1, 1);
+(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -207,7 +204,9 @@ ALTER TABLE `chat`
 -- 資料表索引 `chatroom`
 --
 ALTER TABLE `chatroom`
-  ADD PRIMARY KEY (`chatroom_id`);
+  ADD PRIMARY KEY (`chatroom_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `opponent_id` (`opponent_id`);
 
 --
 -- 資料表索引 `comment`
@@ -248,12 +247,6 @@ ALTER TABLE `user_profile`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `chatroom`
---
-ALTER TABLE `chatroom`
-  MODIFY `chatroom_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
@@ -268,6 +261,13 @@ ALTER TABLE `user`
 --
 -- 已傾印資料表的限制式
 --
+
+--
+-- 資料表的限制式 `chatroom`
+--
+ALTER TABLE `chatroom`
+  ADD CONSTRAINT `chatroom_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `chatroom_ibfk_2` FOREIGN KEY (`opponent_id`) REFERENCES `user` (`user_id`);
 
 --
 -- 資料表的限制式 `forum`

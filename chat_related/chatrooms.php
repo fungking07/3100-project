@@ -1,3 +1,12 @@
+<!-- things to do -->
+<!-- 
+  -avatar name error msg becuz not yet have login implemented
+  -the header part need to move w/ down scrolling
+  -do the soft reload instead of hard reload
+  -replace the hardcode chatroom id and userid with session
+  -link to 'chatroom' button after accepting consultation to cschatroom 
+-->
+
 <?php
   // //as admin from now (change in later code)
 	// include(ConnectDatabase.php);
@@ -21,7 +30,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta HTTP-EQUIV="refresh" CONTENT="100000">
+<meta HTTP-EQUIV="refresh" CONTENT="1000">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="device-width, initial-scale = 1">
 <title>chatroom</title>
@@ -49,21 +58,14 @@
   </div>
 </nav>
 
-<div class="header1">
-  <img src="../assets/avatar.png" alt="Avatar1">
-  <p class="phead"> AvaterName </p>
-</div>
-
-
-<div class="content1">
-
 
 <?php
-
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
-
+  $_SESSION["user_id"]=2;
+  $_SESSION["username"]='Admin2';
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -72,11 +74,36 @@
       die("Connection failed: " . $conn->connect_error);
   }
   $crmid = '1'; //parse from url?
+  $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
+  $Result = mysqli_query($conn,$sql);
+  $info = mysqli_fetch_array($Result);
+  if($_SESSION["user_id"] == $info['user_id']){
+    $oppoid = $info['opponent_id'];
+  }
+  else{
+    $oppoid = $info['user_id'];
+  }
+  $_SESSION["oppoid"] = $oppoid;
+
+  $sql = "SELECT * FROM user WHERE user_id=$oppoid";
+  $Result = mysqli_query($conn,$sql);
+  $info = mysqli_fetch_array($Result);
+
+  echo "<div class='header1'>
+  <img src='../assets/avatar.png' alt='Avatar'>
+  <p class='phead'>".$info['username']."</p>
+  </div>";
+?>
+
+<div class="content1">
+<?php
+
+  $_SESSION["crmid"] = $crmid;
   $sql = "SELECT * FROM chat WHERE chatroom_id=$crmid ORDER BY message_date_time";
   $Result = mysqli_query($conn,$sql);
 
   $col = mysqli_num_rows($Result);
-  $myname = 'Admin1'; //$_SESSION['user_name']
+  $myname = $_SESSION['username'];
   for ($x = 0; $x < $col; $x++) {
     $info = mysqli_fetch_array($Result);
     
@@ -173,12 +200,12 @@
 <div class="chat" id="myForm">
 
   <form action="consult.php" class="form-container">
-      <input class="btn" style="margin-top:25px" type="submit" onclick="history.go(0);" value='Consult'>
+      <input class="btn" style="margin-top:25px" type="submit" onclick="window.location.reload();" value='Consult'>
   </form>
 
   <form action="chatp.php" class="form-container">
     <textarea placeholder="Type message.." name="msg" required></textarea>
-    <input class="btn" type="submit" onclick="history.go(0);"> 
+    <input class="btn" type="submit" onclick="window.location.reload();"> 
   </form>
 
 </div>

@@ -1,4 +1,5 @@
 <?php
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -10,8 +11,8 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $crmid = '1'; //parse from url?
 
+  $crmid = $_SESSION["crmid"]; 
   $cmt=$_GET['msg'];
   if($_SESSION['signed_in']){
     $name = $_SESSION['user_name'];

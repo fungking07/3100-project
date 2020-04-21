@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -11,7 +11,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $crmid = '1'; //parse from url?
+  $crmid = $_SESSION["crmid"]; 
   $sql = "SELECT * FROM chatroom WHERE chatroom_id=$crmid ";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
@@ -24,18 +24,12 @@
     $sql = "SELECT * FROM chat WHERE chatroom_id=$crmid AND msg_type='request' ORDER BY message_date_time DESC";
     $Result = mysqli_query($conn,$sql);
     $info = mysqli_fetch_array($Result);
-    if ($info['sender_name']=='Admin1'){//$_SESSION['signed_in']){
+    if ($info['sender_name']==$_SESSION['username']){
       echo "<script>alert('You need to wait confirmation from the other side.'); history.go(-1);</script>";
     }
     else{
       //insert msg to the block
-      if($_SESSION['signed_in']){
-        $name = $_SESSION['user_name'];
-      }
-      else{
-        $name = "Admin1"; //delete this
-        //error die("Cannot identity user account");
-      }
+      $name = $_SESSION['username'];
       $time = date("Y-m-d H:i:s");
       $conrm = 0;
       

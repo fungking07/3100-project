@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -11,7 +11,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $crmid = '1'; //parse from url?
+  $crmid = $_SESSION["crmid"]; 
   $sql = "SELECT * FROM chatroom WHERE chatroom_id=$crmid ";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
@@ -24,13 +24,8 @@
     $sql = "SELECT * FROM chat WHERE chatroom_id=$crmid";
     $Result = mysqli_query($conn,$sql);
   
-    if($_SESSION['signed_in']){
-      $name = $_SESSION['user_name'];
-    }
-    else{
-      $name = "Admin1"; //delete this
-      //error die("Cannot identity user account");
-    }
+    $name = $_SESSION['username'];
+
     $time = date("Y-m-d H:i:s");
     $conrm = 0;
     
