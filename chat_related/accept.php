@@ -64,9 +64,7 @@
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
-      echo "<script>
-      history.go(-1);
-      </script>";
+      header("Location: {$_SERVER["HTTP_REFERER"]}#bottom");
     }
   }
 ?>

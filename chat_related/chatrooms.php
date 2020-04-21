@@ -1,9 +1,6 @@
 <!-- things to do -->
 <!-- 
-  -avatar name error msg becuz not yet have login implemented
-  -the header part need to move w/ down scrolling
-  -do the soft reload instead of hard reload
-  -replace the hardcode chatroom id and userid with session
+  -do the reload and keeping the original pos
   -link to 'chatroom' button after accepting consultation to cschatroom 
 -->
 
@@ -44,29 +41,14 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <a href="#" class="navbar-brand">AcadMap</a>
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Chat</a></li>
-        <li><a href="#">Consultation</a></li>
-        <input type="text" placeholder="Search..">
-        <li><a href="#">Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 
 <?php
   session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $_SESSION["user_id"]=2;
-  $_SESSION["username"]='Admin2';
+  $_SESSION["user_id"]=1;
+  $_SESSION["username"]='Admin1';
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -92,13 +74,28 @@
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
 
-  echo "<div class='header1'>
+  echo "
+  <nav class='navbar navbar-default navbar-fixed-top'>
+  <div class='container'>
+    <a href='#' class='navbar-brand'>AcadMap</a>
+    <div class='container-fluid'>
+      <ul class='nav navbar-nav'>
+        <li><a href='#'>Forum</a></li>
+        <li><a href='#'>Chat</a></li>
+        <li><a href='#'>Consultation</a></li>
+        <input type='text' placeholder='Search..'>
+        <li><a href='#'>Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class='header1'>
   <img src='../assets/avatar.png' alt='Avatar'>
   <p class='phead'>".$info['username']."</p>
-  </div> ";
+  </div>
+</nav>";
 ?>
 
-<div class="content1">
+<div class="content1" style="margin-top:100px">
   <div id='8888'>
     <?php
 
@@ -207,7 +204,7 @@
       <input class="btn" style="margin-top:25px" type="submit" onclick="window.location.reload();" value='Consult'>
   </form>
 
-  <form action="chatp.php" class="form-container">
+  <form action="chatp.php" class="form-container" id='bottom'>
     <textarea placeholder="Type message.." name="msg" required></textarea>
     <input class="btn" type="submit" onclick="document.getElementById('msg').value = '';"> 
   </form>
