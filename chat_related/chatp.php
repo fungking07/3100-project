@@ -14,13 +14,8 @@
 
   $crmid = $_SESSION["crmid"]; 
   $cmt=$_GET['msg'];
-  if($_SESSION['signed_in']){
-    $name = $_SESSION['user_name'];
-  }
-  else{
-    $name = "Admin1"; //delete this
-    //error die("Cannot identity user account");
-  }
+
+  $name = $_SESSION['username'];
   $time = date("Y-m-d H:i:s");
   $conrm = 0;
 

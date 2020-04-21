@@ -75,6 +75,8 @@
       die("Connection failed: " . $conn->connect_error);
   }
   $crmid = '1'; //parse from url?
+
+  //find the name the person are chatting w/ u
   $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
@@ -93,7 +95,7 @@
   echo "<div class='header1'>
   <img src='../assets/avatar.png' alt='Avatar'>
   <p class='phead'>".$info['username']."</p>
-  </div>";
+  </div> ";
 ?>
 
 <div class="content1">

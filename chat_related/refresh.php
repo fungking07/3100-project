@@ -3,8 +3,7 @@
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $_SESSION["user_id"]=2;
-  $_SESSION["username"]='Admin2';
+
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 

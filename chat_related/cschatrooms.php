@@ -48,14 +48,6 @@
   </div>
 </nav>
 
-<div class="header2">
-  <img src="../assets/avatar.png" alt="Avatar1">
-  <p class="phead"> AvaterName </p>
-</div>
-
-<div class="content1">
-
-<div id='8888'>
 <?php
   session_start();
   $_SESSION["user_id"]=1;
@@ -73,6 +65,34 @@
   }
   $crmid = '2'; //parse from url?
   $_SESSION["crmid"] = $crmid;
+
+  //find the name the person are chatting w/ u
+  $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
+  $Result = mysqli_query($conn,$sql);
+  $info = mysqli_fetch_array($Result);
+  if($_SESSION["user_id"] == $info['user_id']){
+    $oppoid = $info['opponent_id'];
+  }
+  else{
+    $oppoid = $info['user_id'];
+  }
+  $_SESSION["oppoid"] = $oppoid;
+
+  $sql = "SELECT * FROM user WHERE user_id=$oppoid";
+  $Result = mysqli_query($conn,$sql);
+  $info = mysqli_fetch_array($Result);
+
+  echo "<nav class='header2'>
+  <img src='../assets/avatar.png' alt='Avatar'>
+  <p class='phead'>".$info['username']."</p>
+  </nav>";
+?>
+
+<div class="content1">
+
+<div id='8888'>
+<?php
+
   $sql = "SELECT * FROM chat WHERE chatroom_id=$crmid ORDER BY message_date_time";
   $Result = mysqli_query($conn,$sql);
 
