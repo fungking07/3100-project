@@ -1,22 +1,23 @@
 <?php
+  session_start();
   include('ConnectDatabase.php');
-  if(isset($_GET["id"])){
-
-    $id = mysqli_real_escape_string($connect,$_GET["id"]);
-
+  if(isset($_POST["id"])){
+    $id = mysqli_real_escape_string($connect,$_SESSION["user_id"]);
+  }
+  function changepw(){
+    global $connect;
     $newpw = $_POST["newpw"];
-    $confimpw = $_POST["confimpw"];
+    $confimpw = $_POST["confirmpw"];
 
     //prevent sql injection
     $newpw = stripslashes($newpw);
     $newpw = mysqli_real_escape_string($connect,$newpw);
     $confimpw = stripslashes($confimpw);
     $confimpw = mysqli_real_escape_string($connect,$confimpw);
-  if(isset($_POST["submit"])){
     if($newpw == $confimpw){
       //save data to database
       //sql for inset data to database
-      $sql = "UPDATE user SET password = $newpw where userid = $id";
+      $sql = "UPDATE user SET password = '$newpw' where user_id = '$id'";
       //check if data save to database sucessfully
       if(mysqli_query($connect,$sql)){
         header("login.php");
@@ -33,7 +34,10 @@
       echo "fail to change password . Please try it again.";
     }
   }
-}
+
+  if(isset($_POST["submit"])){
+    changepw();
+  }
 ?>
 
 
@@ -102,10 +106,10 @@
 		<div class="Reset-Password">
 			Reset
 		</div>
-    <form class="main" method="Post">
+    <form action = "reset.php" method="Post">
 		    <input type="text" name="newpw" id="new" placeholder="New Password" />
 		    <input type="text" name="confirmpw" id="confirm" placeholder="Confirm Password" />
-		    <input class="submit" type="submit" value="submit"/>
+		    <input class="submit" name = "submit" type="submit" value="submit"/>
     </form>
 	</body>
 </html>
