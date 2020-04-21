@@ -10,10 +10,12 @@
 		//get data from user inpuy
 		$firstname = $_POST["first"];
 		$lastname = $_POST["last"];
-		$username = $_POST["user"];
+		$username = $_POST["username"];
 		$email = $_POST["email"];
 		$major = $_POST["major"];
 		$education = $_POST["education"];
+		$password = $_POST["password"];
+		$conpassword = $_POST["confirmpassword"];
 		$pd = "";
 
 		//prevent sql injection
@@ -25,6 +27,10 @@
 	  $username = mysqli_real_escape_string($connect,$username);
 	  $email = stripslashes($email);
 	  $email = mysqli_real_escape_string($connect,$email);
+		$password = stripslashes($password);
+	  $password = mysqli_real_escape_string($connect,$password);
+		$conpassword = stripslashes($conpassword);
+	  $conpassword = mysqli_real_escape_string($connect,$conpassword);
 		$major= stripslashes($major);
 	  $major = mysqli_real_escape_string($connect,$major);
 		$pd = stripslashes($pd);
@@ -35,26 +41,31 @@
 		if (empty($username)) { array_push($errors, "Username is required"); }
   	if (empty($email)) { array_push($errors, "Email is required"); }
   	//if (empty($password)) { array_push($errors, "Password is required"); }
-
-		$user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+		if(empty($conpassword)){
+			array_push($errors, "Confirm password is required");
+		}
+		if(empty($password)){
+			array_push($errors, "Password is required");
+		}
+		if($password != $conpassword){
+			array_push($errors, "Password not matched");
+		}
+		$user_check_query = "SELECT * FROM user WHERE username = '$username' OR email_address = '$email'";
 		$result = mysqli_query($connect, $user_check_query);
-		if($result != False){
-			$user = mysqli_fetch_assoc($result);
-			if ($user) { // if user exists
-			if ($user['username'] == $username) {
+		$user = mysqli_fetch_assoc($result);
+			if ($user){ // if user exists
+			if ($user['username'] == $username){
 				array_push($errors, "Username already exists");
 			}
-			if ($user['email'] == $email) {
+			if ($user['email_address'] == $email){
 				array_push($errors, "email already exists");
 			}
 		}
-		}
-
-
 
 		//
-		if (count($errors) == 0) {
-		$usersql = "INSERT INTO user(username,email_address) VALUES ('$username','$email')";
+		if (count($errors) == 0){
+		$usersql = "INSERT INTO user(username,password,email_address) VALUES ('$username','$password','$email')";
+		mysqli_query($connect,$usersql);
 		$useridsql = "SELECT  user_id FROM user
 		WHERE username = '$username'";
 		$idresult = mysqli_query($connect,$useridsql);
@@ -64,7 +75,7 @@
 		}
 		if($userid != Null){
 			$sql = "INSERT INTO user_profile(user_id,user_name,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
-			if(mysqli_query($connect,$usersql) && mysqli_query($connect,$sql)){
+			if(mysqli_query($connect,$sql);){
 				$_SESSION['username'] = $username;
 				$_SESSION['user_id'] = $userid;
 	  		$_SESSION['signed_in'] = True;
@@ -97,8 +108,9 @@
 				padding:0;
 				outline:none;
 			}
+			/*  */
 			html{
-				background:url(../assets/register_bac.jpeg) no-repeat center center fixed;
+				background:url(img/register_bac.jpg) no-repeat center center fixed;
 				background-size: cover;
 			}
 			.register{
@@ -128,9 +140,7 @@
 				margin-left:3%;
 				width: 170px;
 				height:35px;
-				border-color: gray;
-				border-style: solid;
-				border-width: 2px;
+				border-style: none;
 				font-size: 15px;
 			}
 			.upload:hover{
@@ -169,10 +179,6 @@
 				border-width: 2px;
 				border-color: skyblue;
 			}
-			.confirm:hover{
-				border-width: 2px;
-				border-color: skyblue;
-			}
 			.per-des:active{
 				border-width: 2px;
 				border-color: skyblue;
@@ -189,37 +195,6 @@
 			}
 			.last,.user{
 				margin-left:2%;
-			}
-			.password{
-				margin-left:45%;
-				margin-top:2%;
-				width: 49%;
-				height:35px;
-				border-style: solid;
-				font-size: 16px;
-				border-color: gray;
-				padding-left: 1%;
-			}
-			.con_password{
-				margin-left:45%;
-				margin-top:2%;
-				width: 38%;
-				height:35px;
-				border-style: solid;
-				font-size: 16px;
-				border-color: gray;
-				padding-left: 1%;
-			}
-			.confirm{
-				display:inline-block;
-				margin-top:2%;
-				margin-left:1%;
-				width: 9.6%;
-				height:35px;
-				border-color: gray;
-				border-style: solid;
-				border-width: 2px;
-				font-size: 15px;
 			}
 			.email{
 				margin-left:45%;
@@ -267,6 +242,11 @@
 				padding-left: 1%;
 				text-align: center;
 			}
+			.red_text{
+				margin-left:65%;
+				margin-top:2%;
+				color: red;
+			}
 			.inner-persnal-description{
 				border:none;
 				width:100%;
@@ -294,18 +274,18 @@
 		<div class="register">
 			Start Your Bright Future
 		</div>
+		<form name="form" action="register.php" method="POST">
 		<div class="picture">
 		</div>
 		<button class="upload" type="button">Upload your portrait</button> <br>
 		<input type="text" class="first" name="first" placeholder="First Name" />
 		<input type="text" class="last" name="last" placeholder="Last Name" />
-		<input type="text" class="user" name="user" placeholder="Username" />
-		<input type="password" class="password" name="password" placeholder="password" />
-		<input type="password" class="con_password" name="con_password" placeholder="confirm password"/>
-		<button class="confirm" type="button">confirm</button>
-		<input type="text" class="email" placeholder="Email Address" />
+		<input type="text" class="user" name="username" placeholder="Username" />
+		<input type="password" class="email" name="password" placeholder="password" />
+		<input type="password" class="email" name="confirmpassword" placeholder="confirm password"/>
+		<input type="text" class="email" name="email" placeholder="Email Address" />
 		<div class="major">
-			<select  >
+			<select name = "major" >
 				<option style="display: none;" value ="">major</option>
 				<option value ="Arts">Arts</option>
 				<option value ="Business">Business</option>
@@ -318,7 +298,7 @@
 			</select>
 		</div>
 		<div class="education">
-			<select >
+			<select name = "education">
 				<option style="display: none;" value ="">Education</option>
 				<option value ="High Schoool">High Schoool</option>
 				<option value ="Undergraduate">Undergraduate</option>
@@ -327,8 +307,10 @@
 			</select>
 		</div>
 		<div class="per-des">
-			<textarea class="inner-persnal-description" rows="10" cols="50" placeholder="Personal Description: characteristics, habits..."></textarea>
+			<textarea class="inner-persnal-description" rows="10" cols="50" name = "person" placeholder="Personal Description: characteristics, habits..."></textarea>
 		</div>
-		 <input class="submit" type="submit" value="submit"/>
+		 <input class="submit" type="submit" name="submit" value="submit"/>
+		 <div class="red_text"><?php include('error.php'); ?></div>
+	 </form>
 	</body>
 </html>
