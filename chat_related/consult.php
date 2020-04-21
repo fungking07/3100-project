@@ -37,6 +37,10 @@
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-    header("Location: {$_SERVER["HTTP_REFERER"]}");
+    echo "<script>
+    alert('$200 is charged from your account for the consultation when the consulter accept the request.');
+    history.go(-1);
+    </script>";
+    //header("Location: {$_SERVER["HTTP_REFERER"]}");
   }
 ?>
