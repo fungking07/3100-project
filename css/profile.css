@@ -28,9 +28,9 @@
         height:120px;
         border-radius: 60px;
         border-style: solid;
-        border-color: gray;
+        border-color: burlywood;
         margin:0 auto;
-        background-image: url(../assets/profile_default.jpg);
+        background-image: url(../assets/avatar.png);
         background-size: cover;
       }
       .username1{
@@ -124,7 +124,7 @@
         font-size: 20px;
         margin-bottom: 6px;
       }
-      .status1,.email2,.major2,.user_status2{
+      .status1,.email2,.major2,.user_status1{
         display: inline-block;
         margin-left:10%;
         background-color: #bfa;
@@ -138,7 +138,7 @@
         padding-top: 5px;
         vertical-align: center;
       }
-      .education1,.email1,.major1,.user_status1{
+      .education1,.email1,.major1,.user_status2{
         float:right;
       }
       .status1{
@@ -234,7 +234,7 @@
         height:30px;
       }
       .inputbox{
-        width:100%;
+        width:300px;
         height:30px;
         float:right;
         font-size: 16px;

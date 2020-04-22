@@ -17,20 +17,6 @@
   <link rel="stylesheet" href="../css/profile.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<a href="#" class="navbar-brand">AcadMap</a>
-				<div class="container-fluid">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Forum</a></li>
-						<li><a href="#">Chat</a></li>
-						<li><a href="#">Consultation</a></li>
-						<!-- <input type="text" placeholder="Search.."> -->
-						<li><a href="#">Welcome,User!</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
 		<div style="background-color: #e1f5f7">
 		<div class="space1"></div>
 		
@@ -60,49 +46,57 @@
 				<div class='institute1'>".$Commentinfo['institute']."</div>
 				</div>";
 
+
 		?>
-		
+			
 		<div class="content1">
-			<form action="buildcroom.php" class="form-container">
-				<input class="consult1"  type="submit" value='Consult'>
-			</form>
+			<?php
+				  if(isset($_SESSION["signed_in"])){
+					  echo '<form id="myBtn" action="buildcroom.php" class="form-container">
+								<input class="consult1"  type="submit" value="Consult">
+							</form>';
+				  }
+				  else{
+						echo '<input class="consult1" type="submit" value="Consult" disabled>';
+				  }
+			?>
 			<div class="rank1">
 				Consultation Rating
 			</div>
 
 			<?php
-				$starsql = "SELECT AVG(score) AS maxs FROM consultation_comment WHERE user_id=$uid";
+				$starsql = "SELECT consult_rating FROM user_profile WHERE user_id=$uid";
 				$starResult = mysqli_query($conn,$starsql);
 				$starinfo = mysqli_fetch_array($starResult);
-				if($starinfo['maxs']>4){
+				if($starinfo['consult_rating']>4){
 					echo '<div class="ratings11"></div>
 					<div class="ratings11 ratings2"></div>
 					<div class="ratings11 ratings3"></div>
 					<div class="ratings11 ratings4"></div>
 					<div class="ratings11 ratings5"></div>';
 				}
-				else if($starinfo['maxs']>3){
+				else if($starinfo['consult_rating']>3){
 					echo '<div class="ratings11"></div>
 					<div class="ratings11 ratings2"></div>
 					<div class="ratings11 ratings3"></div>
 					<div class="ratings11 ratings4"></div>
 					<div class="rating11 rating5"></div>';
 				}
-				else if($starinfo['maxs']>2){
+				else if($starinfo['consult_rating']>2){
 					echo '<div class="ratings11"></div>
 					<div class="ratings11 ratings2"></div>
 					<div class="ratings11 ratings3"></div>
 					<div class="rating11 rating4"></div>
 					<div class="rating11 rating5"></div>';
 				}
-				else if($starinfo['maxs']>1){
+				else if($starinfo['consult_rating']>1){
 					echo '<div class="ratings11"></div>
 					<div class="ratings11 ratings2"></div>
 					<div class="rating11 rating4"></div>
 					<div class="rating11 rating4"></div>
 					<div class="rating11 rating5"></div>';
 				}
-				else if($starinfo['maxs']>0){
+				else if($starinfo['consult_rating']>0){
 					echo '<div class="ratings11"></div>
 					<div class="rating11 rating4"></div>
 					<div class="rating11 rating4"></div>
@@ -136,8 +130,8 @@
 						<div class="major2" >Major:
 							<div class="major1">'.$Commentinfo['major'].'</div>
 						</div>
-						<div class="user_status2">Institute:
-							<div class="user_status1">'.$Commentinfo['institute'].'</div>
+						<div class="user_status1">Institute:
+							<div class="user_status2">'.$Commentinfo['institute'].'</div>
 						</div>';
 				?>
 

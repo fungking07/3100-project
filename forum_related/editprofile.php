@@ -10,50 +10,56 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   	<script src="../js/bootstrap.min.js"></script>
  	<link rel="stylesheet" href="../css/profile.css">
-  	<style type="text/css">
+	  <style type="text/css">
 	</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<a href="#" class="navbar-brand">AcadMap</a>
-				<div class="container-fluid">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Forum</a></li>
-						<li><a href="#">Chat</a></li>
-						<li><a href="#">Consultation</a></li>
-						<!-- <input type="text" placeholder="Search.."> -->
-						<li><a href="#">Welcome,User!</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
+	<form action="storeprofile.php">
 		<div style="background-color: #e1f5f7">
-
 		<div class="space1"></div>
-		<div class="top1">
-			<div class="circle1">
-			</div>
-			<div class="username1">
-				<input type="text" id="uname" value="" placeholder="username">
-			</div>
-		</div>
+		<?php
+			session_start();
+			include("../navbar.php");
+			$uid = $_SESSION['user_id'];
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, 'AcadMap');
+
+			// Check connection
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+
+			$commentsql = "SELECT * FROM user_profile WHERE user_id=$uid";
+			$commentResult = mysqli_query($conn,$commentsql);
+			$Commentinfo = mysqli_fetch_array($commentResult);
+
+			$usersql = "SELECT * FROM user WHERE user_id=$uid";
+			$userResult = mysqli_query($conn,$usersql);
+			$userinfo = mysqli_fetch_array($userResult);
+			
+			$name = $Commentinfo['username'];
+			$edu_lv = $Commentinfo['education_level'];
+			$email = $userinfo['email_address'];
+			$inst = $Commentinfo['institute'];
+			$major = $Commentinfo['major'];
+			$prof = $Commentinfo['personal_description'];
+			echo "<div class='top1'><div class='circle1'></div>
+				<div class='username1'><input type='text' name='uname' id='name' value='$name' placeholder='username'></div>
+				</div>";
+
+		?>
 
 		<div class="content1">
-			<button class="consult1" type="button" onclick="">Match A Consult</button>
+			<button class="consult1" type="button" onclick="" disabled>Match A Consult</button>
 			<div class="rank1">
 				Consultation Rating
 			</div>
 
 			<?php
-				session_start();
-				$_SESSION['user_id']=1;
-				$uid = $_SESSION['user_id'];
-				$servername = "localhost";
-				$username = "root";
-				$password = "";
-
 				// Create connection
 				$conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -111,21 +117,37 @@
 		<div class="bac-info1">Background Information</div>
 
 			<div class="status1" >Education:<div class="education1">
-				<input type="text" id="educ" placeholder="Your education level" class="inputbox">
+				<select name = "edu_lv" class='inputbox'>
+				<option style="display: none;" value =""></option>
+				<option value ="High Schoool" <?php if($edu_lv == 'High Schoool'){echo("selected");}?>>High Schoool</option>
+				<option value ="Undergraduate" <?php if($edu_lv == 'Undergraduate'){echo("selected");}?>>Undergraduate</option>
+				<option value ="Master" <?php if($edu_lv == 'Master'){echo("selected");}?>>Master</option>
+				<option value ="Post Graduate" <?php if($edu_lv == 'Post Graduate'){echo("selected");}?>>Post Graduate</option>
+			</select>
 			</div></div>
 			<div class="email2" >Email-Address: <div class="email1">
-				<input type="text" id="email" placeholder="Your email" class="inputbox">
+				<?php echo "<input type=\"text\" value='$email' placeholder=\"Your email\" name='email' class=\"inputbox\">";?>
 			</div></div>
+			
 			<div class="major2" >Major:<div class="major1">
-				<input type="text" id="major" placeholder="Your major" class="inputbox">
+				<select name = "major" class='inputbox'>
+				<?php echo "<option style=\"display: none;\" >$major</option>";?>
+				<option value ="Arts" <?php if($major == 'Arts'){echo("selected");}?>>Arts</option>
+				<option value ="Business" <?php if($major == 'Business'){echo("selected");}?>>Business</option>
+				<option value ="Education" <?php if($major == 'Education'){echo("selected");}?>>Education</option>
+				<option value ="Engineering" <?php if($major == 'Engineering'){echo("selected");}?>>Engineering</option>
+				<option value ="Law" <?php if($major == 'Law'){echo("selected");}?>>Law</option>
+				<option value ="Medicine" <?php if($major == 'Medicine'){echo("selected");}?>>Medicine</option>
+				<option value ="Science" <?php if($major == 'Science'){echo("selected");}?>>Science</option>
+				<option value ="Social Sciennce" <?php if($major == 'Social Sciennce'){echo("selected");}?>>Social Science</option>
+				</select>
 			</div></div>
-			<div class="user_status2" >Institute:<div class="major1">
-				<input type="text" id="inst" placeholder="Your education institute" class="inputbox">
+			<div class="user_status1" >Institute:<div class="user_status2">
+				<?php echo "<input type=\"text\" name=\"inst\" value='$inst' placeholder=\"Your education institute\" id='inst' class=\"inputbox\">";?>
 			</div></div>
 
 			<div class="des1">Description</div>
-			<textarea rows="3" cols="10" id="desc" placeholder="Type your description, e.g. majors, habits..." class="description1">
-			</textarea>
+			<?php echo "<textarea rows=\"3\" cols=\"10\" name=\"prof\" placeholder=\"Type your description, e.g. majors, habits...\" class=\"description1\" id='prof'>".$prof."</textarea>";?>
 			
 			<div class="con1">
 				Your Consultation
@@ -227,10 +249,11 @@
 					echo '<div style="height:10px"></div><div style="margin-left:100px">There is no consultation yet.</div>';
 				}
 			?>
-			<form action="storeprofile.php">
-				<input class="consult1" type=submit value="Confirm">
-			</form>
+
+				<input class="consult1" type="submit" value="Confirm">
+			
 			<div class="space1"></div>
 		</div>
+		</form>
 	</body>
 </html>

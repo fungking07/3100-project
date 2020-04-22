@@ -77,12 +77,18 @@
   }
 ?>
 
+<?php
+  if(isset($_SESSION["signed_in"])){
+    if($_SESSION["signed_in"]==true){
+      echo '<form action="process.php" class="form-container" method="get">
+      Comment:<br>
+        <textarea type="text" placeholder="Type comment.." name="cmt"></textarea>
+        <input class="btn2" type="submit" onclick="history.go(0);">
+      </form>';
+    }
+  }
+?>
 
-<form action="process.php" class="form-container" method="get">
-Comment:<br>
-  <textarea type="text" placeholder="Type comment.." name="cmt"></textarea>
-  <input class="btn2" type="submit" onclick="history.go(0);">
-</form>
 
 </div>
 
