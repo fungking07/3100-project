@@ -1,7 +1,3 @@
-<!-- TODO:  -->
--profile have choice for major and education
--
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +31,7 @@
 		
 		<?php
 			session_start();
+			$_SESSION['user_id']=1;
 			$uid = $_GET['uid']; 
 			$_SESSION['oppoid']=$uid;
 			$servername = "localhost";
@@ -118,8 +115,9 @@
 
 
 
-			<div class="bac-info1">Background Information</div>
-
+			<div class="bac-info1">
+					Background Information
+				</div>
 				<?php
 					$sql = "SELECT * FROM user WHERE user_id=$uid";
 					$Result = mysqli_query($conn,$sql);

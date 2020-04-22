@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="device-width, initial-scale = 1">
-  <title>profile</title>
+  <title>Forum skeleton</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/post.css">
@@ -32,6 +32,7 @@
 		
 		<?php
 			session_start();
+			$_SESSION['user_id'] = 1;
 			$uid = $_SESSION['user_id'];
 			$servername = "localhost";
 			$username = "root";
