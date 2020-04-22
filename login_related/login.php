@@ -98,7 +98,7 @@
         <label for="fname">Username:</label>
         <input type="text" id="user" name="user"><br><br>
         <label for="lname">Password:</label>
-        <input type="text" id="pw" name="pw"><br><br>
+        <input type="password" id="pw" name="pw"><br><br>
         <button type="submit" class="btn2" onclick="regPage()" name= "submit" value ="submit">CONFIRM</button>
         <a href="verification.php" class="btn2">Forget</a></button>
       </form>
