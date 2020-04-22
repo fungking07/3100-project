@@ -80,7 +80,7 @@
 				$_SESSION['username'] = $username;
 				$_SESSION['user_id'] = $userid;
 	  		$_SESSION['signed_in'] = True;
-	  		header('location: index.php');
+	  		header('location: login.php');
 			}
 			else{
 				//prompt error
