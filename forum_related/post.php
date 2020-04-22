@@ -1,36 +1,3 @@
-<?php
-  //$sql = 'SELECT * FROM post Order BY post_id';
-  //$result = mysqli_query($connect,$sql);
-
-  /*
-  $comment_sql = 'SELECT * FROM comment
-  WHERE post.post_id = comment.post_id
-  ORDER BY comment.comment_id'
-  //end of sql
-  //output $post_comment_sql
-  */
-
-
-  //$Postinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
-  //$Commentinfo = mysqli_fetch_all($commentResult,MySQLI_ASSOC);
-  //mysql_free_resul($result);
-
-  //if(isset($_GET["submit"])){
-    //direct user to another page to write comment
-    //header("comment.php");
-  //}
-  //output the post_title and post_content in the html below(done partially)
-
-
-  //output the post_title and post_content in the html below(not done)
-  /*code skeleton of poutputinf Comment*/
-
-  //php way
-  //<?php forreach($commentinfo as comment){
-  //  if(post_id = current_post_id){
-  //
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,18 +30,12 @@
 
 <div class="content1">
 
-<div class="container1">
-  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
-  <p class="name">Avatar 1</p>
-  <span class="time-right">time1</span>
-  <p>ar idk how to get the forum id... from the url?</p>
-</div>
-
 <?php
   session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
+  $postid=$_GET['post_id'];
 
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
@@ -84,7 +45,22 @@
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $commentsql = "SELECT * FROM comment";
+  $sql = "SELECT * FROM post_content WHERE post_id=$postid";
+  $Result = mysqli_query($conn,$sql);
+  $info = mysqli_fetch_array($Result);
+
+  $fsql = "SELECT * FROM forum WHERE post_id=$postid";
+  $fResult = mysqli_query($conn,$fsql);
+  $finfo = mysqli_fetch_array($fResult);
+
+  echo "<div class='container1' style='margin-top:50px'>
+  <img class='left' src='../assets/avatar.png' alt='Avatar1' height='30' width='30'>
+  <p class='name'>".$finfo['author_name']."</p>
+  <span class='time-right'>".$finfo['post_date']."</span>
+  <p>".$info['post_content']."</p>
+  </div>";
+
+  $commentsql = "SELECT * FROM comment WHERE post_id=$postid";
   $commentResult = mysqli_query($conn,$commentsql);
 
   $col = mysqli_num_rows($commentResult);
@@ -113,7 +89,6 @@
             </div>";
     }
   }
-  echo $_SESSION['username'];
 ?>
 
 
