@@ -25,6 +25,7 @@
     $password = mysqli_real_escape_string($connect,$password);
 
     //write query
+    $password = substr(md5($password),0,15);
     $sql = "SELECT username,password,user_id FROM user
     WHERE username = '$username' AND password = '$password'";
 
@@ -41,7 +42,7 @@
             $_SESSION["user_id"] = $userdata["user_id"];
           mysqli_free_result($result);
           mysqli_close($connect);
-          header("location:reset.php");
+          header("location:forum.php");
     }
   }
   else{

@@ -21,10 +21,11 @@
     if($newpw == $confimpw){
       //save data to database
       //sql for inset data to database
-      $sql = "UPDATE user SET password = '$newpw' where user_id = '$id'";
+      $password = substr(md5($newpw),0,15);
+      $sql = "UPDATE user SET password = '$password' where user_id = '$id'";
       //check if data save to database sucessfully
       if(mysqli_query($connect,$sql)){
-        header("login.php");
+        header("location:login.php");
       }
       else{
         //prompt error

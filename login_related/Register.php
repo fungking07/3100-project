@@ -64,6 +64,7 @@
 
 		//
 		if (count($errors) == 0){
+		$password = substr(md5($password),0,15);
 		$usersql = "INSERT INTO user(username,password,email_address) VALUES ('$username','$password','$email')";
 		mysqli_query($connect,$usersql);
 		$useridsql = "SELECT  user_id FROM user
@@ -79,7 +80,7 @@
 				$_SESSION['username'] = $username;
 				$_SESSION['user_id'] = $userid;
 	  		$_SESSION['signed_in'] = True;
-	  		header('location: login.php');
+	  		header('location: index.php');
 			}
 			else{
 				//prompt error
