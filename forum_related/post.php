@@ -113,8 +113,9 @@
             </div>";
     }
   }
-
+  echo $_SESSION['username'];
 ?>
+
 
 <form action="process.php" class="form-container" method="get">
 Comment:<br>

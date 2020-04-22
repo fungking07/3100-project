@@ -14,7 +14,7 @@
 
 2. user_profile
 + user_id, Foreign key constraints, both restrict from user.user_id
-+ username, max 16 char, name of user
++ user_name, max 16 char, name of user
 + personal_picture, max 200 char,for uploading picture, default NULL, you can take a look:[How to upload image to MySQL database and display it using php](https://www.youtube.com/watch?v=Ipa9xAs_nTg)
 + educuational_level, default NULL
 + personal_description

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="device-width, initial-scale = 1">
-  <title>profile</title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/main.css">
+  	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  	<meta name="viewport" content="device-width, initial-scale = 1">
+  	<title>Forum skeleton</title>
+  	<link rel="stylesheet" href="../css/bootstrap.min.css">
+  	<link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/post.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/profile.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  	<script src="../js/bootstrap.min.js"></script>
+ 	<link rel="stylesheet" href="../css/profile.css">
+  	<style type="text/css">
+	</style>
 	</head>
 	<body>
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -28,33 +30,15 @@
 		</nav>
 
 		<div style="background-color: #e1f5f7">
+
 		<div class="space1"></div>
-		
-		<?php
-			session_start();
-			$uid = $_SESSION['user_id'];
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, 'AcadMap');
-
-			// Check connection
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
-
-			$commentsql = "SELECT * FROM user_profile WHERE user_id=$uid";
-			$commentResult = mysqli_query($conn,$commentsql);
-			$Commentinfo = mysqli_fetch_array($commentResult);
-
-			echo "<div class='top1'><div class='circle1'></div>
-				<div class='username1'>".$Commentinfo['username']."</div>
-				<div class='institute1'>".$Commentinfo['institute']."</div>
-				</div>";
-
-		?>
+		<div class="top1">
+			<div class="circle1">
+			</div>
+			<div class="username1">
+				<input type="text" id="uname" value="" placeholder="username">
+			</div>
+		</div>
 
 		<div class="content1">
 			<button class="consult1" type="button" onclick="">Match A Consult</button>
@@ -63,6 +47,20 @@
 			</div>
 
 			<?php
+				session_start();
+				$_SESSION['user_id']=1;
+				$uid = $_SESSION['user_id'];
+				$servername = "localhost";
+				$username = "root";
+				$password = "";
+
+				// Create connection
+				$conn = new mysqli($servername, $username, $password, 'AcadMap');
+
+				// Check connection
+				if ($conn->connect_error) {
+					die("Connection failed: " . $conn->connect_error);
+				}
 				$starsql = "SELECT AVG(score) AS maxs FROM consultation_comment WHERE user_id=$uid";
 				$starResult = mysqli_query($conn,$starsql);
 				$starinfo = mysqli_fetch_array($starResult);
@@ -110,34 +108,24 @@
 				}
 			?>
 
-			<div class="bac-info1">
-					Background Information
-				</div>
-				<?php
-					$sql = "SELECT * FROM user WHERE user_id=$uid";
-					$Result = mysqli_query($conn,$sql);
-					$info = mysqli_fetch_array($Result);
+		<div class="bac-info1">Background Information</div>
 
-					echo '<div class="status1" >
-							Education:<div class="education1">'.$Commentinfo['education_level'].'</div>
-						</div>
-						<div class="email2" >Email-Address: 
-							<div class="email1">'.$info['email_address'].'</div>
-						</div>
-						<div class="major2" >Major:
-							<div class="major1">'.$Commentinfo['major'].'</div>
-						</div>
-						<div class="user_status2">Institute:
-							<div class="user_status1">'.$Commentinfo['institute'].'</div>
-						</div>';
-				?>
+			<div class="status1" >Education:<div class="education1">
+				<input type="text" id="educ" placeholder="Your education level" class="inputbox">
+			</div></div>
+			<div class="email2" >Email-Address: <div class="email1">
+				<input type="text" id="email" placeholder="Your email" class="inputbox">
+			</div></div>
+			<div class="major2" >Major:<div class="major1">
+				<input type="text" id="major" placeholder="Your major" class="inputbox">
+			</div></div>
+			<div class="user_status2" >Institute:<div class="major1">
+				<input type="text" id="inst" placeholder="Your education institute" class="inputbox">
+			</div></div>
 
 			<div class="des1">Description</div>
-			<div rows="3" cols="10" class="description1">
-			<?php
-					echo $Commentinfo['personal_description'];
-			?>
-			</div>
+			<textarea rows="3" cols="10" id="desc" placeholder="Type your description, e.g. majors, habits..." class="description1">
+			</textarea>
 			
 			<div class="con1">
 				Your Consultation
@@ -239,8 +227,9 @@
 					echo '<div style="height:10px"></div><div style="margin-left:100px">There is no consultation yet.</div>';
 				}
 			?>
-
-			<button class="consult1" type="button">Edit</button>
+			<form action="storeprofile.php">
+				<input class="consult1" type=submit value="Confirm">
+			</form>
 			<div class="space1"></div>
 		</div>
 	</body>

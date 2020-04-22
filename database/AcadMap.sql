@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 22 日 11:22
+-- 產生時間： 2020 年 04 月 22 日 16:17
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -72,8 +72,7 @@ CREATE TABLE `chatroom` (
 INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
 (1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
 (2, 1, 2, '2020-04-22 00:00:00', NULL, 1, 1),
-(4, 2, 3, '2020-04-22 00:00:00', NULL, 0, 0),
-(5, 3, 1, '2020-04-22 11:15:05', 'NULL', 0, 0);
+(3, 3, 1, '2020-04-22 15:10:01', 'NULL', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -96,7 +95,8 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
 (1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
 (2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1'),
-(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor');
+(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor'),
+(4, '2020-04-22 16:09:45', 1, 'hiiii', 'visitor');
 
 -- --------------------------------------------------------
 
@@ -186,7 +186,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
 (1, 'Admin1', 'csci3100', 'sdhjhhhh', 'admin1@acadmap.com'),
 (2, 'Admin2', 'csci3100', 'rcfctvgj', ''),
-(3, 'Admin3', 'csci3100', 'hhhhhbhk', '');
+(3, 'Admin3', 'csci3100', 'hhhhhbhk', ''),
+(5, 'Cccc', '320345c910f1144', 'pokemon!', 'cin@acadmap.com');
 
 -- --------------------------------------------------------
 
@@ -281,7 +282,7 @@ ALTER TABLE `forum`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 已傾印資料表的限制式
