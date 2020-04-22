@@ -32,6 +32,7 @@
 		
 		<?php
 			session_start();
+			include("../navbar.php");
 			$uid = $_SESSION['user_id'];
 			$servername = "localhost";
 			$username = "root";

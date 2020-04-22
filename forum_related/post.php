@@ -13,25 +13,11 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <a href="#" class="navbar-brand">AcadMap</a>
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Chat</a></li>
-        <li><a href="#">Consultation</a></li>
-        <input type="text" placeholder="Search..">
-        <li><a href="#">Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <div class="content1">
 
 <?php
   session_start();
+  include("../navbar.php");
   $servername = "localhost";
   $username = "root";
   $password = "";
