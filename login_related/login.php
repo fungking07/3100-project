@@ -53,7 +53,7 @@
 }
 
   if(isset($_POST["register"])){
-    header("register.php");
+    header("location:register.php");
   }
   if(isset($_POST["submit"])){
       login_check();

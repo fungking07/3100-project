@@ -7,6 +7,11 @@ html{
   background:url(../assets/register_bac.jpeg) no-repeat center center fixed;
   background-size: cover;
 }
+.red_text{
+margin-left:65%;
+margin-top:2%;
+color: red;
+}
 .register{
   margin-left:42%;
   margin-top:3%;

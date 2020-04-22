@@ -1,21 +1,22 @@
 <?php
   //use helper function to connect to the database
+  include("ConnectDatabase.php");
   function verify(){
-    include(ConnectDatabase.php);
+    global $connect;
     // get the input
     $email = $_POST["email"]; //input email
     //prevent MySQL injection
     $email = stripslashes($email);
-    $email = mysql_real_escape_string($email);
+    $email = mysqli_real_escape_string($connect,$email);
     // generate code
     //write query
-    $sql = "SELECT email_address FROM user
+    $sql = "SELECT username,email_address FROM user
     WHERE email_address = '$email' ";
     //get result according to the query in database
     $result = mysqli_query($connect,$sql);
     //fetch the result from query into the asociative array format
-    $userdata = mysqli_fetch_all($result,MySQLI_ASSOC);
-    if ($result == NULL){
+    $userdata = mysqli_fetch_assoc($result);
+    if ($result == False){
         // red message of user not exist
         echo "user with you email address not exist.";
     }
@@ -28,35 +29,40 @@
         else{
             echo "Error: set code";
         }
+        $user = $userdata["username"];
         //email
         $email_to = "$email";
         $email_subject = "Please Verify Your AcadMap Account";
         $header = "From: noreply@AcapMap.com";
-        $message = "Dear $user,/n
+        $message = "Dear '$user',
             This mail is to verify your email address. Please enter the following verification code:
                 \n\n$code\n\nThank you.\n\nRegrads,\nThe AcadMap team";
-                
-        mail($email,$email_subject,$message,[$header]);
+
+        mail($email,$email_subject,$message,$header);
 	}
-	mysql_free_resul($result);
+	mysqli_free_result($result);
     mysqli_close($connect);
 }
     function compare(){
-    include(ConnectDatabase.php);
+    global $connect;
 	// get the input
-	$email = $_POST["email"]; //input email
+	 $email = $_POST["email"]; //input email
     //prevent MySQL injection
     $email = stripslashes($email);
-	$email = mysql_real_escape_string($email);
+	   $email = mysql_real_escape_string($email);
 	//
     $verify_code = $_POST["code"]; //input = code
-	$verify_code = stripslashes($verify_code);
-	$verify_code = mysql_real_escape_string($verify_code);
+	   $verify_code = stripslashes($verify_code);
+	    $verify_code = mysql_real_escape_string($verify_code);
+
 	$sql = "SELECT verify_code FROM user
     WHERE email_address = '$email' ";
-	if($code == $verify_code){
+    $result = mysqli_query($connect,$sql);
+    $code = mysqli_fetch_assoc($result);
+	if($code["verify_code"] == $verify_code){
+    echo "vertification code  match.";
 		$_SESSION["email"]= $email;
-		header("reset.php");
+		header("location:reset.php");
 	}
 	else{
 		echo "vertification code not match.";
@@ -65,10 +71,10 @@
     mysqli_close($connect);
 }
 
-	if(isset($_GET["send"])){
+	if(isset($_POST["send"])){
 		verify();
 	}
-	if(isset($_GET["submit"])){
+	if(isset($_POST["submit"])){
 		compare();
 	}
  ?>
@@ -84,7 +90,7 @@
 		<div class="Reset-Password">
 			Forget Password?
         </div>
-        <form action="verifcation.php">
+        <form action="verification.php" method="post">
             <input type="text" name="email" id="email" placeholder="Email" />
             <input type="submit" name="send" id="send" type="button" onclick="verify()">Email</button>
             <input type="text" name="code" id="code" placeholder="Verification code" />
