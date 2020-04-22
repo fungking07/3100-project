@@ -37,13 +37,11 @@
     if($userdata != false){
       if($userdata['username'] == $username && $userdata['password'] == $password){
           $_SESSION["signed_in"] = true;
-          while($row = mysqli_fetch_assoc($result)){
-            $_SESSION["username"] = $row["username"];
-            $_SESSION["user_id"] = $row["user_id"];
-          }
+            $_SESSION["username"] = $userdata["username"];
+            $_SESSION["user_id"] = $userdata["user_id"];
           mysqli_free_result($result);
           mysqli_close($connect);
-          header("location:forum.php");
+          header("location:reset.php");
     }
   }
   else{

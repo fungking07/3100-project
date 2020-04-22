@@ -7,6 +7,7 @@
   function changepw(){
     global $connect;
     global $errors;
+    global $id;
     $newpw = $_POST["newpw"];
     $confimpw = $_POST["confirmpw"];
 
@@ -20,7 +21,7 @@
     if($newpw == $confimpw){
       //save data to database
       //sql for inset data to database
-      $sql = "UPDATE user SET password = '$newpw' where user_id = '1'";
+      $sql = "UPDATE user SET password = '$newpw' where user_id = '$id'";
       //check if data save to database sucessfully
       if(mysqli_query($connect,$sql)){
         header("login.php");

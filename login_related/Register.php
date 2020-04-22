@@ -75,11 +75,11 @@
 		}
 		if($userid != Null){
 			$sql = "INSERT INTO user_profile(user_id,user_name,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
-			if(mysqli_query($connect,$sql);){
+			if(mysqli_query($connect,$sql)){
 				$_SESSION['username'] = $username;
 				$_SESSION['user_id'] = $userid;
 	  		$_SESSION['signed_in'] = True;
-	  		header('location: index.php');
+	  		header('location: login.php');
 			}
 			else{
 				//prompt error
@@ -91,7 +91,7 @@
 		}
 
 }
-	if(isset($_POST["submit"]){
+	if(isset($_POST["submit"])){
 		register();
 	}
  ?>
