@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 21 日 18:47
+-- 產生時間： 2020 年 04 月 22 日 11:22
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -71,9 +71,9 @@ CREATE TABLE `chatroom` (
 
 INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
 (1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
-(3, 1, 3, '2020-04-21 00:00:00', NULL, 0, 0),
+(2, 1, 2, '2020-04-22 00:00:00', NULL, 1, 1),
 (4, 2, 3, '2020-04-22 00:00:00', NULL, 0, 0),
-(5, 1, 2, '2020-04-22 00:00:41', 'NULL', 1, 1);
+(5, 3, 1, '2020-04-22 11:15:05', 'NULL', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,8 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
 (1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
-(2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1');
+(2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1'),
+(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor');
 
 -- --------------------------------------------------------
 
@@ -108,10 +109,18 @@ CREATE TABLE `consultation_comment` (
   `author_id` int(8) NOT NULL,
   `score` int(1) NOT NULL,
   `comments` text NOT NULL,
-  `status_consultee` tinyint(1) DEFAULT 0,
-  `status_consultor` tinyint(1) DEFAULT 0,
   `comment_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `consultation_comment`
+--
+
+INSERT INTO `consultation_comment` (`user_id`, `author_id`, `score`, `comments`, `comment_date`) VALUES
+(1, 2, 4, 'Really detail advice! This really allow me to make a better decision for my future career! Thx!', '2020-04-22 05:34:46'),
+(1, 4, 5, 'testing', '2020-04-22 09:04:07'),
+(1, 12, 2, 'testing', '2020-04-22 09:04:19'),
+(1, 1020, 1, 'testing', '2020-04-22 09:04:42');
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
-(1, 'Admin1', 'csci3100', 'sdhjhhhh', ''),
+(1, 'Admin1', 'csci3100', 'sdhjhhhh', 'admin1@acadmap.com'),
 (2, 'Admin2', 'csci3100', 'rcfctvgj', ''),
 (3, 'Admin3', 'csci3100', 'hhhhhbhk', '');
 
@@ -187,13 +196,24 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_add
 
 CREATE TABLE `user_profile` (
   `user_id` int(8) UNSIGNED NOT NULL,
-  `user_name` varchar(16) NOT NULL,
+  `username` varchar(16) NOT NULL,
   `personal_picture` varchar(200) DEFAULT NULL,
   `education_level` varchar(64) NOT NULL,
   `personal_description` text NOT NULL,
   `major` varchar(120) NOT NULL,
-  `consultation_status` tinyint(1) NOT NULL
+  `user_level` varchar(15) NOT NULL,
+  `institute` varchar(40) DEFAULT NULL,
+  `consult_rating` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `user_profile`
+--
+
+INSERT INTO `user_profile` (`user_id`, `username`, `personal_picture`, `education_level`, `personal_description`, `major`, `user_level`, `institute`, `consult_rating`) VALUES
+(2, 'Admin2', NULL, 'Master', 'I want to pursue another degree in a new field!', 'Fashion and Design', 'member', 'The Hong Kong Polytechnic University', 0),
+(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Computer Science', 'member', 'The Chinese University of Hong Kong', 0),
+(3, 'Admin3', NULL, 'Undergraduate', 'I want to know about other major and gossip there xd', 'Information Engineering', 'member', 'The Chinese University of Hong Kong', 0);
 
 --
 -- 已傾印資料表的索引

@@ -26,14 +26,14 @@
 				</div>
 			</div>
 		</nav>
-
 		<div style="background-color: #e1f5f7">
 		<div class="space1"></div>
 		
 		<?php
 			session_start();
-			$_SESSION['user_id'] = 1;
-			$uid = $_SESSION['user_id'];
+			$_SESSION['user_id']=1;
+			$uid = $_GET['uid']; 
+			$_SESSION['oppoid']=$uid;
 			$servername = "localhost";
 			$username = "root";
 			$password = "";
@@ -56,9 +56,11 @@
 				</div>";
 
 		?>
-
+		
 		<div class="content1">
-			<button class="consult1" type="button" onclick="">Match A Consult</button>
+			<form action="buildcroom.php" class="form-container">
+				<input class="consult1"  type="submit" value='Consult'>
+			</form>
 			<div class="rank1">
 				Consultation Rating
 			</div>
@@ -111,6 +113,8 @@
 				}
 			?>
 
+
+
 			<div class="bac-info1">
 					Background Information
 				</div>
@@ -133,6 +137,7 @@
 						</div>';
 				?>
 
+
 			<div class="des1">Description</div>
 			<div rows="3" cols="10" class="description1">
 			<?php
@@ -143,7 +148,6 @@
 			<div class="con1">
 				Your Consultation
 			</div>
-
 
 			<?php
 				$sql = "SELECT * FROM consultation_comment WHERE user_id=$uid";
@@ -241,8 +245,7 @@
 				}
 			?>
 
-			<button class="consult1" type="button">Edit</button>
 			<div class="space1"></div>
-		</div>
+		<div>
 	</body>
 </html>

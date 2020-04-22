@@ -71,6 +71,7 @@
 </div>
 
 <?php
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -90,13 +91,29 @@
 
   for ($x = 0; $x < $col; $x++) {
     $Commentinfo = mysqli_fetch_array($commentResult);
-    echo "<div class=\"container1 reply\">
-          <img class=\"left\" src=\"../assets/avatar.png\" alt=\"Avatar1\" height=\"30\" width=\"30\">
-          <p class=\"name\">".$Commentinfo['author_name']."</p>
-          <p>".$Commentinfo['comments_content']."</p>
-          <span class=\"time-right\">".$Commentinfo['comment_date_time']."</span>
-          </div>";
+    $aname = $Commentinfo['author_name'];
+    if($aname=='visitor'){
+      echo "<div class=\"container1 reply\">
+            <img class=\"left\" src=\"../assets/avatar.png\" alt=\"Avatar1\" height=\"30\" width=\"30\">
+            <p class=\"name\">".$Commentinfo['author_name']."</p>
+            <p>".$Commentinfo['comments_content']."</p>
+            <span class=\"time-right\">".$Commentinfo['comment_date_time']."</span>
+            </div>";
+    }
+    else{
+      $sql = "SELECT * FROM user WHERE username='$aname'";
+      $Result = mysqli_query($conn,$sql);
+      $info = mysqli_fetch_array($Result);
+      $aid = $info['user_id'];
+      echo "<div class=\"container1 reply\">
+            <img class=\"left\" src=\"../assets/avatar.png\" alt=\"Avatar1\" height=\"30\" width=\"30\">
+            <p class=\"name\"> <a href='othersprofile.php?uid=$aid'>".$Commentinfo['author_name']."</a></p>
+            <p>".$Commentinfo['comments_content']."</p>
+            <span class=\"time-right\">".$Commentinfo['comment_date_time']."</span>
+            </div>";
+    }
   }
+
 ?>
 
 <form action="process.php" class="form-container" method="get">
