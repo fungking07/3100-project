@@ -1,0 +1,195 @@
+*{
+  margin:0;
+  padding:0;
+  outline:none;
+}
+html{
+  background:url(../assets/register_bac.jpeg) no-repeat center center fixed;
+  background-size: cover;
+}
+.register{
+  margin-left:42%;
+  margin-top:3%;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Cooper Black';
+  margin-bottom: 25px;
+  color:skyblue;
+}
+.picture{
+  display:inline-block;
+  width:100px;
+  height:100px;
+  border-radius: 50px;
+  border-color: gray;
+  border-style: solid;
+  border-width: 2px;
+  background-color: white;
+  margin-left:45%;
+}
+.upload{
+  display:inline-block;
+  vertical-align: text-top;
+  margin-top:-60px;
+  margin-left:3%;
+  width: 170px;
+  height:35px;
+  border-color: gray;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 15px;
+}
+.upload:hover{
+  border-style:solid;
+  border-width: 2px;
+  border-color: skyblue;
+}
+.first{
+  margin-left:45%;
+}
+input:hover{
+  border-width: 2px;
+  border-color: skyblue;
+}
+input:focus{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.major:hover{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.major:active{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.education:hover{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.education:active{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.per-des:hover{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.confirm:hover{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.per-des:active{
+  border-width: 2px;
+  border-color: skyblue;
+}
+.first,.last,.user{
+  display:inline-block;
+  margin-top:2%;
+  width: 15%;
+  height:35px;
+  text-align: center;
+  border-style: solid;
+  font-size: 16px;
+  border-color: gray;
+}
+.last,.user{
+  margin-left:2%;
+}
+.password{
+  margin-left:45%;
+  margin-top:2%;
+  width: 49%;
+  height:35px;
+  border-style: solid;
+  font-size: 16px;
+  border-color: gray;
+  padding-left: 1%;
+}
+.con_password{
+  margin-left:45%;
+  margin-top:2%;
+  width: 38%;
+  height:35px;
+  border-style: solid;
+  font-size: 16px;
+  border-color: gray;
+  padding-left: 1%;
+}
+.confirm{
+  display:inline-block;
+  margin-top:2%;
+  margin-left:1%;
+  width: 9.6%;
+  height:35px;
+  border-color: gray;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 15px;
+}
+.email{
+  margin-left:45%;
+  margin-top:2%;
+  width: 49%;
+  height:35px;
+  border-style: solid;
+  font-size: 16px;
+  border-color: gray;
+  padding-left: 1%;
+}
+.major{
+  margin-left:45%;
+  margin-top:2%;
+  width: 50%;
+  height:35px;
+  border-style: solid;
+  font-size: 16px;
+  border-color: gray;
+}
+select{
+  border:none;
+  width:100%;
+  height:100%;
+  appearance: none;
+  font-size: 16px;
+  padding-left: 1%;
+}
+.education{
+  margin-left:45%;
+  margin-top:2%;
+  width: 50%;
+  height:35px;
+  border-style: solid;
+  font-size: 16px;
+  border-color: gray;
+}
+.per-des{
+  margin-left:45%;
+  margin-top:2%;
+  width: 49%;
+  height:100px;
+  border-style: solid;
+  border-color: gray;
+  padding-left: 1%;
+  text-align: center;
+}
+.inner-persnal-description{
+  border:none;
+  width:100%;
+  height:90%;
+  appearance: none;
+  font-size: 16px;
+  margin-left:-2%;
+  padding-left: 1%;
+  padding-top: 1%;
+}
+.submit{
+  margin-left:65%;
+  margin-top:2%;
+  width: 10%;
+  height:35px;
+  text-align: center;
+  border-style: none;
+  background-color: rgb(115,255,99);
+  font-size: 16px;
+}
