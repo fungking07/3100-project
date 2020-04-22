@@ -106,7 +106,7 @@
 		<link rel="stylesheet" href="../css/register.css">
 
 	</head>
-	<body style="height:2000px">
+	<body style="height:800px">
 		<div class="register">
 			Start Your Bright Future
 		</div>
