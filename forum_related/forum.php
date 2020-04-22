@@ -2,8 +2,8 @@
   define('MYSQL_BOTH',MYSQLI_BOTH);
   define('MYSQL_NUM',MYSQLI_NUM);
   define('MYSQL_ASSOC',MYSQLI_ASSOC);
-  include("ConnectDatabase.php");
-
+  include("../ConnectDatabase.php");
+  include("../navbar.php");
   $sql = 'SELECT * FROM forum';
   $usersql = 'SELECT * FROM user Order BY user_ID';
   //get result accoriding to the query
@@ -36,9 +36,9 @@
     case 'Most':
       $likes_flag = 5; break;
   }
-  //echo $cat_flag."\n";
-  //echo $date_flag."\n";
-  //echo $likes_flag."\n";
+  echo $cat_flag."\n";
+  echo $date_flag."\n";
+  echo $likes_flag."\n";
   if($cat_flag){  //need to find cat
     $cat = $_POST['category'];
     switch ($date_flag) {
@@ -109,9 +109,8 @@
         break;
     }
   }
-  //echo $sql."\n";
+  echo $sql."\n";
   $find_result = mysqli_query($connect,$sql);
-
   $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
 
 }
@@ -145,23 +144,14 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <a href="#" class="navbar-brand">AcadMap</a>
-      <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Forum</a></li>
-          <li><a href="#">Chat</a></li>
-          <li><a href="#">Consultation</a></li>
-          <!-- <input type="text" placeholder="Search.."> -->
-          <li><a href="#">Welcome, User!</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
   <div class="container-fluid">
+        <!--Posts -->
+        <div class="col-sm-9">
+      <?php include("FetchPost.php") ?>
+    </div>
     <!-- Filter -->
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <!-- The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
       <button class="collapsible">Filter</button>
         <div class="content">
@@ -194,15 +184,10 @@
           <hr>
           <input class="submit btn btn-success" type="submit" name="find" value="find"/>
         </form>
-        </div>
       </div>
-      
       <!-- Adapatation ends here -->
     </div>
-    <!--Posts -->
-    <div class="col-sm-8">
-      <?php include("FetchPost.php") ?>
-    </div>
+
   </div>
 
   <!--The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp-->

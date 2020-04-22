@@ -1,6 +1,7 @@
 <?php
   //use helper function to connect to the database
-  include("../ConnectDatabase.php");
+  include("../ConnectDatabase.php");  
+  include("../navbar.php");
   $errors = array();
   function login_check(){
     global $connect;

@@ -36,6 +36,7 @@
 		
 		<?php
 			session_start();
+			include("../navbar.php");
 			$uid = $_GET['uid']; 
 			$_SESSION['oppoid']=$uid;
 			$servername = "localhost";

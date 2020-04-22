@@ -15,7 +15,7 @@
 
 <?php
   session_start();
-  
+  include("../navbar.php");
   $servername = "localhost";
   $username = "root";
   $password = "";
