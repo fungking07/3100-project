@@ -5,12 +5,13 @@
         $user_result = mysql_query($connect,$usersql);
         $userinfo = mysql_fetch_array($find_result, MYSQLI_ASSOC);
         echo $userinfo["user_name"];
-        $allsql = 'SELECT user_name, eductional_level, faculty, institute,consult_rating from user_profile';
+        $allsql = 'SELECT user_id, user_name, eductional_level, faculty, institute, consult_rating from user_profile';
         $all_result = mysql_query($connect,$usersql);
         $allinfo = mysql_fetch_array($find_result, MYSQLI_ASSOC);
 
         $score_arr = array();
         $name_array = array();
+        $userid_array = array();
         foreach($userinfo as $key => $oneuser){
             $score = 0;
             if($oneuser["username"] != $userinfo["username"]){
@@ -23,12 +24,15 @@
                 if($oneuser["institute"] == $userinfo["institute"]){
                     $score += 1;
                 }
-                $score += ($oneuser["consult_rating"] / 5);
+                $score += ($oneuser["consult_rating"] / 5); 
             }
             array_push($name_array, $oneuser["username"]);
             array_push($score_arr, $score);
+            array_push($userid_array, $user_id)
         }
         $key = array_keys($score_arr, max($score_arr))[0];
         echo $name_array[$key];
+        $uid = $userid_array[$key];
+        echo "<a href='othersprofile.php?uid=$uid'></a>";
     }
 ?>
