@@ -39,37 +39,37 @@
   //echo $cat_flag."\n";
   //echo $date_flag."\n";
   //echo $likes_flag."\n";
-  
   if($cat_flag){  //need to find cat
+    $cat = $_POST['category'];
     switch ($date_flag) {
       case 0:
-        switch($likes_flag){
-          case 3:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].'';  break;
+        switch($likes_flag){ 
+          case 3: 
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number DEC';  break;
         }
         break;
       case 1:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"  Order BY Post_date ASC Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC Order BY like_number DEC';  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DEC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DEC Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DEC Order BY like_number DEC';  break;
         }
         break;
     }
@@ -111,7 +111,9 @@
   }
   //echo $sql."\n";
   $find_result = mysqli_query($connect,$sql);
+
   $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
+
 }
 
 

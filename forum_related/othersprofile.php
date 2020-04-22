@@ -1,6 +1,7 @@
 <!-- TODO:  -->
--profile have choice for major and education
--
+<!-- -profile have choice for major and education
+- -->
+
 
 <!DOCTYPE html>
 <html>

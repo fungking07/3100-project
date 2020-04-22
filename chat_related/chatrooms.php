@@ -21,7 +21,8 @@
   $servername = "localhost";
   $username = "root";
   $password = "";
-
+  $_SESSION['username']='Admin1';//'Cccc';
+  $_SESSION['user_id']=1;//5;
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -190,7 +191,7 @@
 </div>
 
 <script>
-  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 20000);
+  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 2000);
 </script>
 </body>
 </html> 
