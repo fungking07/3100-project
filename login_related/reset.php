@@ -1,13 +1,13 @@
 <?php
   include('ConnectDatabase.php');
   $errors = array();
-  if(isset($_SESSION["user_id"])){
-    $id = mysqli_real_escape_string($connect,$_SESSION["user_id"]);
+  if(isset($_SESSION["email"])){
+    $email = mysqli_real_escape_string($connect,$_SESSION["email"]);
   }
   function changepw(){
     global $connect;
     global $errors;
-    global $id;
+    global $email;
     $newpw = $_POST["newpw"];
     $confimpw = $_POST["confirmpw"];
 
@@ -22,7 +22,7 @@
       //save data to database
       //sql for inset data to database
       $password = substr(md5($newpw),0,15);
-      $sql = "UPDATE user SET password = '$password' where user_id = '$id'";
+      $sql = "UPDATE user SET password = '$password' where email_address = '$email'";
       //check if data save to database sucessfully
       if(mysqli_query($connect,$sql)){
         header("location:login.php");
