@@ -52,7 +52,7 @@
     $verify_code = $_POST["code"]; //input = code
 	$verify_code = stripslashes($verify_code);
 	$verify_code = mysql_real_escape_string($verify_code);
-	$sql = "SELECT verify_codeFROM user
+	$sql = "SELECT verify_code FROM user
     WHERE email_address = '$email' ";
 	if($code == $verify_code){
 		$_SESSION["email"]= $email;
