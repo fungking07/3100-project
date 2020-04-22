@@ -16,7 +16,7 @@
 		$education = $_POST["education"];
 		$password = $_POST["password"];
 		$conpassword = $_POST["confirmpassword"];
-		$pd = "";
+		$pd = $_POST["person"];
 
 		//prevent sql injection
 	  $firstname = stripslashes($firstname);
