@@ -78,73 +78,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<style type="text/css">
-			*{
-				margin:0;
-				padding:0;
-			}
-			html{
-				background:url(reset.jpeg) no-repeat center center fixed;
-				background-size: cover;
-			}
-			.Reset-Password{
-				margin-top:150px;
-				margin-left:37%;
-				font-size: 50px;
-				font-family: 'Cooper Black';
-				color:#8b7765;
-			}
-			#email{
-				margin-left:25%;
-				margin-top:80px;
-				width: 50%;
-				height:35px;
-				border-style: solid;
-				font-size: 20px;
-				border-radius: 20px;
-				border-color: gray;
-				padding-left: 1%;
-				outline: none;
-			}
-			#code{
-				display:inline-block;
-				margin-left:25%;
-				margin-top:50px;
-				width: 35%;
-				height:35px;
-				border-style: solid;
-				font-size: 20px;
-				border-radius: 20px;
-				border-color: gray;
-				padding-left: 1%;
-				outline: none;
-			}
-			#send{
-				display:inline-block;
-				margin-left:2%;
-				width: 13%;
-				height:42px;
-				border-radius: 20px;
-				padding-left: 1%;
-				border-style: solid;
-				font-size: 16px;
-				border-color: gray;
-				outline: none;
-				background-color: white;
-			}
-			.submit{
-				margin-left:47%;
-				margin-top:65px;
-				width: 10%;
-				height:35px;
-				border-radius: 20px;
-				text-align: center;
-				border-style: none;
-				background-color: #4876ff;
-				font-size: 16px;
-			}
-			
-		</style>
+		<link rel="stylesheet" href="../css/verification.css">
 	</head>
 	<body>
 		<div class="Reset-Password">
