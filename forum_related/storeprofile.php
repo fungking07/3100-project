@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	include("../navbar.php");
 	$uid = $_SESSION['user_id'];
 	$servername = "localhost";
 	$username = "root";
@@ -20,6 +19,11 @@
 	$inst = $_GET['inst'];
 	$email = $_GET['email'];
 	$major = $_GET['major'];
+	$cardname = $_GET['cardname'];
+	$cardnumber = $_GET['cardnumber'];
+	$exmth = $_GET['exmth'];
+	$exyr = $_GET['exyr'];
+	$cvv = $_GET['cvv'];
 
 	// echo 	$edu_lv.'<br>';
 	// echo 	$name.'<br>';
@@ -28,7 +32,7 @@
 	// echo 	$email.'<br>';
 	// echo 	$major.'<br>';
 
-	$commentsql = "UPDATE user_profile SET education_level='$edu_lv', username='$name', major='$major', personal_description='$prof', institute='$inst' WHERE user_id=$uid";
+	$commentsql = "UPDATE user_profile SET education_level='$edu_lv', username='$name', major='$major', personal_description='$prof', institute='$inst',cvv='$cvv', expire_mth='$exmth', expire_yr='$exyr', cardname='$cardname', cardnumber='$cardnumber'  WHERE user_id=$uid";
 
 	if (mysqli_multi_query($conn, $commentsql)) {
 	//echo "New records created successfully";

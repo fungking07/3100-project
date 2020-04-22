@@ -47,6 +47,11 @@
 			$inst = $Commentinfo['institute'];
 			$major = $Commentinfo['major'];
 			$prof = $Commentinfo['personal_description'];
+			$cardname = $Commentinfo['cardname'];
+			$cardnumber = $Commentinfo['cardnumber'];
+			$exmth = $Commentinfo['expire_mth'];
+			$exyr = $Commentinfo['expire_yr'];
+			$cvv = $Commentinfo['cvv'];
 			echo "<div class='top1'><div class='circle1'></div>
 				<div class='username1'><input type='text' name='uname' id='name' value='$name' placeholder='username'></div>
 				</div>";
@@ -142,6 +147,27 @@
 				<option value ="Social Sciennce" <?php if($major == 'Social Sciennce'){echo("selected");}?>>Social Science</option>
 				</select>
 			</div></div>
+
+			<div class="major2" >Name on Card:<div class="major1">
+				<?php echo "<input type=\"text\" class=\"inputbox\" name=\"cardname\" value='$cardname' placeholder=\"Name\">";?>
+			</div></div>
+
+			<div class="major2" >Credit card number:<div class="major1">
+				<?php echo "<input type=\"text\" class=\"inputbox\" name=\"cardnumber\" value='$cardnumber' placeholder=\"XXXXXXXXXXXXXXXX\">";?>
+			</div></div>
+
+			<div class="major2" >Exp Month:<div class="major1">
+				<?php echo "<input type=\"text\" class=\"inputbox\" name=\"exmth\" value='$exmth' placeholder=\"MM\">";?>
+			</div></div>
+
+			<div class="major2" >Exp Year:<div class="major1">
+				<?php echo "<input type=\"text\" class=\"inputbox\" name=\"exyr\" value='$exyr' placeholder=\"YYYY\">";?>
+			</div></div>
+
+			<div class="major2" >CVV:<div class="major1">
+			<?php echo "<input type=\"text\" class=\"inputbox\" name=\"cvv\" value='$cvv' placeholder=\"000\">";?>
+			</div></div>
+
 			<div class="user_status1" >Institute:<div class="user_status2">
 				<?php echo "<input type=\"text\" name=\"inst\" value='$inst' placeholder=\"Your education institute\" id='inst' class=\"inputbox\">";?>
 			</div></div>
