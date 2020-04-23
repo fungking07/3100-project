@@ -49,7 +49,7 @@
           case 4:
             $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number DESC';  break;
         }
         break;
       case 1:
@@ -57,19 +57,19 @@
           case 3:
             $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"  Order BY Post_date ASC Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"  Order BY Post_date ASC, like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC, like_number DESC';  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DEC Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC, like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DEC Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC, like_number DESC';  break;
         }
         break;
     }
@@ -84,7 +84,7 @@
           case 4:
             $sql = 'SELECT * FROM forum Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum Order BY like_number DESC';  break;
         }
         break;
       case 1:
@@ -92,19 +92,19 @@
           case 3:
             $sql = 'SELECT * FROM forum Order BY Post_date ASC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC, like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC, like_number DESC';  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum Order BY Post_date DEC';  break;
+            $sql = 'SELECT * FROM forum Order BY Post_date DESC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY Post_date DEC Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum Order BY Post_date DESC, like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY Post_date DEC Order BY like_number DEC';  break;
+            $sql = 'SELECT * FROM forum Order BY Post_date DESC, like_number DESC';  break;
         }
         break;
     }
@@ -114,18 +114,14 @@
   $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
 
 }
-
-
-// $defaultresult = mysqli_query($connect,$sql);
-  //$postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
-
-  //search is not implemented
-
-  //navigation bar should be implement by html(still not done)
-
-
-  //output forum post prototype
-  //code skeleton of output forum post -->
+ if(isset($_POST["add"])){  //need a button
+   if($_SESSION("username") == "visitor"){
+     echo "You are not allow to add post, please login first.";
+   }
+   else{
+    header("add_post.php");
+   }
+ }
 ?>
 
 
