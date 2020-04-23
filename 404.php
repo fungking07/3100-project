@@ -24,18 +24,18 @@
     <div class='text-center'>
     <h1>Oops, You've been to a mystery area.</h1><hr />
     </div>
-    <strong><?php echo $_SERVER['REQUEST_URI']; ?></strong> does not exist, sorry. Try the functions listed above first.<br>
+    <h3><strong><?php echo $_SERVER['REQUEST_URI']; ?></strong> does not exist, sorry. Try the functions listed above first.</h3><br>
   <?php
   if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])){
     $refuri = parse_url($_SERVER['HTTP_REFERER']); // use the parse_url() function to create an array containing information about the domain
     if($refuri['host'] == "localhost"){
     //the link was on your site
-    echo "Please send us an email for a dead link. Try the functions listed above and we owe you a drink.";
+    echo "<h3>Please send us an email for a dead link. Try the functions listed above and we owe you a drink.</h3>";
     }
   }
   else{
   //the visitor typed gibberish into the address bar
-  echo "If you got here from wherever you are, step away from us and listen to Michael's jokes first. And if you insist to do that, stop typing. You're filling my error logs with unnecessary junk.";
+  echo "<h3>If you got here from wherever you are, step away from us and listen to Michael's jokes first. And if you insist to do that, stop typing. You're filling my error logs with unnecessary junk.</h3>";
   }
   ?><br />
   <img src="../assets/404ee.jpg" />
