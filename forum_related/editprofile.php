@@ -1,7 +1,3 @@
-<?php
-  $errors = array();
-
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -280,7 +276,6 @@
 			?>
 
 				<input class="consult1" type="submit" value="Confirm">
-        <h6 class = "consult1"><?php include("error.php")?></h>
 			<div class="space1"></div>
 		</div>
 		</form>
