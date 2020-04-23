@@ -37,10 +37,10 @@
 			$user = mysqli_fetch_assoc($result);
 			if ($user){ // if user exists
 			if ($user['username'] == $name){
-				array_push($errors, "Username already exists");
+				echo "Username already exists";
 			}
 			if ($user['email_address'] == $email){
-				array_push($errors, "email already exists");
+				echo "email already exists";
 			}
 		}
 	}
