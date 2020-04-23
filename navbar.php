@@ -10,7 +10,7 @@
               echo "<li><a href='../forum_related/myprofile.php'>My Profile</a></li>";
               echo "<li><a href='../forum_related/user_post_history.php'>Post History</a></li>";
               echo "<li><a>Welcome, ".$_SESSION['username']."!</a></li>";
-              echo "<li><a href='#'>Logout</a></li>";
+              echo "<li><a href='../logout.php'>Logout</a></li>";
           }else{
               echo "<li><a href='../forum_related/forum.php'>Forum</a></li>";
               echo "<li><a href='../login_related/login.php'>Login</a></li>";
