@@ -4,6 +4,15 @@
   $username = "root";
   $password = "";
   $uid = $_SESSION['user_id'];
+  $feen = $_GET['fee'];
+  try{
+    $fee = (int)$feen;
+
+  }
+  catch (Exception $e){
+    //
+  }
+
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -49,7 +58,7 @@
       $conrm = 0;
       
       $commentsql = "INSERT INTO chat (chatroom_id, message, message_date_time, sender_name, consultroom, msg_type)
-                      VALUES ('$crmid','','$time','$name','0','request')";
+                      VALUES ('$crmid','$fee','$time','$name','0','request')";
     
       if (mysqli_multi_query($conn, $commentsql)) {
         echo "New records created successfully";
