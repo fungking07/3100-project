@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 22 日 11:22
+-- 產生時間： 2020 年 04 月 23 日 00:42
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -47,7 +47,15 @@ INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`
 (1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
 (1, '', '2020-04-21 12:21:21', 'Admin2', 0, 'request'),
 (1, '', '2020-04-21 12:21:39', 'Admin1', 0, 'accept'),
-(5, 'consult chatroom here~', '2020-04-21 12:27:36', 'Admin1', 0, 'normal');
+(5, 'consult chatroom here~', '2020-04-21 12:27:36', 'Admin1', 0, 'normal'),
+(6, 'hi\r\n', '2020-04-22 16:23:36', 'Cccc', 0, 'normal'),
+(6, 'and i would like to test', '2020-04-22 16:23:46', 'Cccc', 0, 'normal'),
+(6, '', '2020-04-22 16:25:20', 'Admin1', 0, 'reject'),
+(6, '', '2020-04-22 16:25:34', 'Admin1', 0, 'request'),
+(6, '', '2020-04-22 16:26:34', 'Cccc', 0, 'accept'),
+(7, 'here is consult chatroom', '2020-04-22 16:26:43', 'Cccc', 0, 'normal'),
+(7, 'yeah', '2020-04-22 16:26:46', 'Cccc', 0, 'normal'),
+(7, 'niceeeee', '2020-04-22 16:27:55', 'Admin1', 0, 'normal');
 
 -- --------------------------------------------------------
 
@@ -72,8 +80,7 @@ CREATE TABLE `chatroom` (
 INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
 (1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
 (2, 1, 2, '2020-04-22 00:00:00', NULL, 1, 1),
-(4, 2, 3, '2020-04-22 00:00:00', NULL, 0, 0),
-(5, 3, 1, '2020-04-22 11:15:05', 'NULL', 0, 0);
+(3, 2, 7, '2020-04-22 21:33:45', 'NULL', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -96,7 +103,8 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
 (1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
 (2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1'),
-(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor');
+(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor'),
+(4, '2020-04-22 16:09:45', 1, 'hiiii', 'visitor');
 
 -- --------------------------------------------------------
 
@@ -144,7 +152,8 @@ CREATE TABLE `forum` (
 --
 
 INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
-(1, '\0\0\0H\0\0\0e\0\0\0l\0\0\0l\0\0\0o\0\0\0 \0\0\0w\0\0\0o\0\0\0r\0\0\0l\0\0\0d\0\0\0!', '2020-03-22 14:18:50', 0, 'Admin1', NULL, 0, 0);
+(1, '\0\0\0H\0\0\0e\0\0\0l\0\0\0l\0\0\0o\0\0\0 \0\0\0w\0\0\0o\0\0\0r\0\0\0l\0\0\0d\0\0\0!', '2020-03-22 14:18:50', 0, 'Admin1', NULL, 0, 0),
+(6, 'ulife 1', '2020-04-22 14:54:32', 1, 'Admin1', 'ulife', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -163,7 +172,8 @@ CREATE TABLE `post_content` (
 --
 
 INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
-(1, 'Hello from Admin1!\r\nThis is the first post of Acadmap from Admin1.\r\nSurprise!?\r\nI hope so.\r\nHope you enjoy using Acadmap!', 0);
+(1, 'Hello from Admin1!\r\nThis is the first post of Acadmap from Admin1.\r\nSurprise!?\r\nI hope so.\r\nHope you enjoy using Acadmap!', 0),
+(6, 'hey', 0);
 
 -- --------------------------------------------------------
 
@@ -175,7 +185,6 @@ CREATE TABLE `user` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `verify_code` varchar(8) NOT NULL DEFAULT 'pokemon!',
   `email_address` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -183,10 +192,11 @@ CREATE TABLE `user` (
 -- 傾印資料表的資料 `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
-(1, 'Admin1', 'csci3100', 'sdhjhhhh', 'admin1@acadmap.com'),
-(2, 'Admin2', 'csci3100', 'rcfctvgj', ''),
-(3, 'Admin3', 'csci3100', 'hhhhhbhk', '');
+INSERT INTO `user` (`user_id`, `username`, `password`, `email_address`) VALUES
+(1, 'Admin1', 'csci3100', 'admin1@acadmap.com'),
+(2, 'Admin2', 'csci3100', ''),
+(3, 'Admin3', 'csci3100', ''),
+(7, 'Cin', '544b2efcc0e406a', 't60527486@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -201,19 +211,25 @@ CREATE TABLE `user_profile` (
   `education_level` varchar(64) NOT NULL,
   `personal_description` text NOT NULL,
   `major` varchar(120) NOT NULL,
-  `user_level` varchar(15) NOT NULL,
+  `user_level` varchar(15) NOT NULL DEFAULT 'member',
   `institute` varchar(40) DEFAULT NULL,
-  `consult_rating` int(1) NOT NULL DEFAULT 0
+  `consult_rating` int(1) NOT NULL DEFAULT 0,
+  `cvv` int(3) DEFAULT NULL,
+  `expire_yr` int(4) DEFAULT NULL,
+  `expire_mth` int(2) DEFAULT NULL,
+  `cardnumber` int(16) DEFAULT NULL,
+  `cardname` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `user_profile`
 --
 
-INSERT INTO `user_profile` (`user_id`, `username`, `personal_picture`, `education_level`, `personal_description`, `major`, `user_level`, `institute`, `consult_rating`) VALUES
-(2, 'Admin2', NULL, 'Master', 'I want to pursue another degree in a new field!', 'Fashion and Design', 'member', 'The Hong Kong Polytechnic University', 0),
-(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Computer Science', 'member', 'The Chinese University of Hong Kong', 0),
-(3, 'Admin3', NULL, 'Undergraduate', 'I want to know about other major and gossip there xd', 'Information Engineering', 'member', 'The Chinese University of Hong Kong', 0);
+INSERT INTO `user_profile` (`user_id`, `username`, `personal_picture`, `education_level`, `personal_description`, `major`, `user_level`, `institute`, `consult_rating`, `cvv`, `expire_yr`, `expire_mth`, `cardnumber`, `cardname`) VALUES
+(2, 'Admin2', NULL, 'Master', 'I want to pursue another degree in a new field!', 'Engineering', 'member', 'The Hong Kong Polytechnic University', 2, NULL, NULL, NULL, NULL, NULL),
+(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Education', 'member', 'The Chinese University of Hong Kong', 2, NULL, NULL, NULL, NULL, NULL),
+(3, 'Admin3', NULL, 'Undergraduate', 'I want to know about other major and gossip there xd', 'Engineering', 'member', 'The Chinese University of Hong Kong', 2, NULL, NULL, NULL, NULL, NULL),
+(7, 'Cin', NULL, 'Undergraduate', 'i love computer science', 'Engineering', 'member', NULL, 2, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- 已傾印資料表的索引
@@ -251,8 +267,8 @@ ALTER TABLE `forum`
 -- 資料表索引 `post_content`
 --
 ALTER TABLE `post_content`
-  ADD UNIQUE KEY `like_number` (`like_number`),
-  ADD KEY `post_id` (`post_id`);
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `like_number` (`like_number`) USING BTREE;
 
 --
 -- 資料表索引 `user`
@@ -275,13 +291,13 @@ ALTER TABLE `user_profile`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 已傾印資料表的限制式
