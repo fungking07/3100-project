@@ -22,6 +22,7 @@
   $username = "root";
   $password = "";
   $postid=$_GET['post_id'];
+  $_SESSION['postid']=$postid;
 
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');

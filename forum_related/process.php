@@ -16,14 +16,10 @@
   $commentResult = mysqli_query($conn,$commentsql);
 
   $cmt=$_GET['cmt'];
-  if(isset($_SESSION['signed_in'])){
-    $name = $_SESSION['username'];
-  }
-  else{
-    $name = "visitor";
-  }
+  $name = $_SESSION['username'];
   $time = date("Y-m-d H:i:s");
-  $postid = 1;
+  $postid = $_SESSION['postid'];
+  
   if(!$commentResult){
     $cmtid = 1;
   }
