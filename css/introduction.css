@@ -1,32 +1,25 @@
-*{
-  margin:0;
-  padding:0;
-}
 html{
-  background:url(../assets/introduction.jpg) no-repeat center center fixed;
-  background-size: cover;
+  background-color: skyblue;
+}
+.intro_container{
+  width: 60%;
+  height:650px;
+  background: #bfa;
+  margin-left: 20%;
+  margin-top:70px;
+  margin-bottom: 70px;
+  padding-top: 20px;
+  border-radius: 70px;
+  overflow: auto;
 }
 .intro_welcome{
-  margin-left: 50%;
-  margin-top: 7%;
-  color:blue;
-  font-size: 50px;
+  width: 40%;
+  margin:0 auto;
+  color:purple;
 }
 .intro_content{
-  margin-left: 42%;
-  margin-top: 4%;
-  color:blue;
-  font-size: 30px;
-}
-.worry{
-  margin-left: 60%;
-  margin-top: 4%;
-  color:blue;
-  font-size: 40px;
-}
-.professional{
-  margin-left: 42%;
-  margin-top: 3%;
-  color:blue;
-  font-size: 35px;
+  margin-left:10%;
+  width:84%;
+  font-size: 20px;
+  margin-bottom:10px;
 }
