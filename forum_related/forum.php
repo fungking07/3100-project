@@ -112,7 +112,7 @@
 
 }
  if(isset($_POST["add"])){  //need a button
-   if(!isset($_SESSION("username")){
+   if(!isset($_SESSION("username"))){
      echo "You are not allow to add post, please login first.";
    }
    else{
