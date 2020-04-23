@@ -72,6 +72,9 @@
       margin-left:35%;
       color: red;
       }
+      .link{
+      margin-left:81%;
+      }
     </style>
 	</head>
 	<body>
@@ -81,7 +84,7 @@
         <form action="verification.php" method="post">
             <input type="text" name="email" id="email" placeholder="Email" />
             <input type="submit" name="send" id="send" type="button" ></button>
-            <a href="login.php">Back to login page</a>
+            <a href="login.php" class="link">Back to login page</a>
          </form>
          <h4 class="red"><?php include("error.php")?></h>
 	</body>
