@@ -46,37 +46,40 @@ include("../navbar.php");
 
   $col = mysqli_num_rows($Result);
   $myname = $_SESSION['username'];
-  for ($x = 0; $x < $col; $x++) {
-    $info = mysqli_fetch_array($Result);
+  if($col>0){
+    for ($x = 0; $x < $col; $x++) {
+      $info = mysqli_fetch_array($Result);
 
-    //find the oppo_id
-    if($info['user_id']==$myid){
-      $oppoid = $info['opponent_id'];
-    }
-    else{
-      $oppoid = $info['user_id'];
-    }
+      //find the oppo_id
+      if($info['user_id']==$myid){
+        $oppoid = $info['opponent_id'];
+      }
+      else{
+        $oppoid = $info['user_id'];
+      }
 
-    //find the name of ppl that I have connection to
-    $sql2 = "SELECT * FROM user WHERE user_id=$oppoid";
-    $Result2 = mysqli_query($conn,$sql2);
-    $info2 = mysqli_fetch_array($Result2);
-    $rmid = $info['chatroom_id'];
-    if($info['consultroom']!=0){
-      echo "<div id=$rmid class='cscontainer1' onclick=\"window.location.href='cschatrooms.php?id=$rmid'\">
-            <img class='avatarname' src='../assets/avatar.png' alt='Avatar' height='30' width='30'>
-            <h4> ".$info2['username']."</h4>
-            <span class='time-right'>".$info['last_message_time']."</span>
-            </div>";
-    }
-    else{
-      echo "<div id=$rmid class='container1' onclick=\"window.location.href='chatrooms.php?id=$rmid'\">
-            <img class='avatarname' src='../assets/avatar.png' alt='Avatar' height='30' width='30'>
-            <h4> ".$info2['username']."</h4>
-            <span class='time-right'>".$info['last_message_time']."</span>
-            </div>";
+      //find the name of ppl that I have connection to
+      $sql2 = "SELECT * FROM user WHERE user_id=$oppoid";
+      $Result2 = mysqli_query($conn,$sql2);
+      $info2 = mysqli_fetch_array($Result2);
+      $rmid = $info['chatroom_id'];
+      if($info['consultroom']!=0){
+        echo "<div id=$rmid class='cscontainer1' onclick=\"window.location.href='cschatrooms.php?id=$rmid'\">
+              <img class='avatarname' src='../assets/avatar.png' alt='Avatar' height='30' width='30'>
+              <h4> ".$info2['username']."</h4>
+              <span class='time-right'>".$info['last_message_time']."</span>
+              </div>";
+      }
+      else{
+        echo "<div id=$rmid class='container1' onclick=\"window.location.href='chatrooms.php?id=$rmid'\">
+              <img class='avatarname' src='../assets/avatar.png' alt='Avatar' height='30' width='30'>
+              <h4> ".$info2['username']."</h4>
+              <span class='time-right'>".$info['last_message_time']."</span>
+              </div>";
+      }
     }
   }
+  
 ?>
 
 </div>

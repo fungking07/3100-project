@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 23 日 17:35
+-- 產生時間： 2020 年 04 月 23 日 17:49
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -37,19 +37,6 @@ CREATE TABLE `chat` (
   `msg_type` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- 傾印資料表的資料 `chat`
---
-
-INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`, `consultroom`, `msg_type`) VALUES
-(1, 'this is for testing with longer input --- omg i am so panic (SCREAMMMM), the ddl is so close and our group seems to be lack in behind QAQ... I am already responsible for frontend (post, chatroom, chatlist, consultroom, post) and backend (post and chatroom) but still so many stuff unfinished... and I even got like really no previous knowledge in html php css js sql xampp.... I just learn them all. This did equip me with quite a lot of knowledge but I also have to dual with other asg and task... real stressful cry... I wanna learnt what I love but not spending so much time on this application... I really not planning to work in this field but instead doing research and machine learning... I wanna do other stuff and read papers and learn other things from online open lesson but I really dont have the choice... Crying hard', '2020-04-19 09:13:26', 'Admin2', 0, 'normal'),
-(1, 'me again and remark: the words are surrounding the avatar... have time then make a better alignment of word (though I dont think I have', '2020-04-19 17:08:12', 'Admin1', 0, 'normal'),
-(1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
-(4, 'hiii', '2020-04-23 14:08:29', 'Cin', 0, 'normal'),
-(4, 'byeeeee', '2020-04-23 14:10:34', 'Admin1', 0, 'normal'),
-(4, '200', '2020-04-23 15:59:14', 'Admin1', 0, 'request'),
-(4, '', '2020-04-23 15:59:16', 'Cin', 0, 'accept');
-
 -- --------------------------------------------------------
 
 --
@@ -66,15 +53,6 @@ CREATE TABLE `chatroom` (
   `hv_consult` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- 傾印資料表的資料 `chatroom`
---
-
-INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
-(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 0),
-(3, 2, 7, '2020-04-22 21:33:45', 'NULL', 0, 0),
-(4, 1, 7, '2020-04-23 10:16:59', 'NULL', 0, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -88,14 +66,6 @@ CREATE TABLE `comment` (
   `comments_content` text NOT NULL,
   `author_name` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- 傾印資料表的資料 `comment`
---
-
-INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
-(1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
-(2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1');
 
 -- --------------------------------------------------------
 
@@ -265,7 +235,7 @@ ALTER TABLE `user_profile`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
