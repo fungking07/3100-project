@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 23, 2020 at 08:25 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- 主機： localhost
+-- 產生時間： 2020 年 04 月 23 日 00:42
+-- 伺服器版本： 10.4.11-MariaDB
+-- PHP 版本： 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `acadmap`
+-- 資料庫： `AcadMap`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- 資料表結構 `chat`
 --
 
 CREATE TABLE `chat` (
@@ -37,10 +37,30 @@ CREATE TABLE `chat` (
   `msg_type` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `chat`
+--
+
+INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`, `consultroom`, `msg_type`) VALUES
+(1, 'this is for testing with longer input --- omg i am so panic (SCREAMMMM), the ddl is so close and our group seems to be lack in behind QAQ... I am already responsible for frontend (post, chatroom, chatlist, consultroom, post) and backend (post and chatroom) but still so many stuff unfinished... and I even got like really no previous knowledge in html php css js sql xampp.... I just learn them all. This did equip me with quite a lot of knowledge but I also have to dual with other asg and task... real stressful cry... I wanna learnt what I love but not spending so much time on this application... I really not planning to work in this field but instead doing research and machine learning... I wanna do other stuff and read papers and learn other things from online open lesson but I really dont have the choice... Crying hard', '2020-04-19 09:13:26', 'Admin2', 0, 'normal'),
+(1, 'me again and remark: the words are surrounding the avatar... have time then make a better alignment of word (though I dont think I have', '2020-04-19 17:08:12', 'Admin1', 0, 'normal'),
+(1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
+(1, '', '2020-04-21 12:21:21', 'Admin2', 0, 'request'),
+(1, '', '2020-04-21 12:21:39', 'Admin1', 0, 'accept'),
+(5, 'consult chatroom here~', '2020-04-21 12:27:36', 'Admin1', 0, 'normal'),
+(6, 'hi\r\n', '2020-04-22 16:23:36', 'Cccc', 0, 'normal'),
+(6, 'and i would like to test', '2020-04-22 16:23:46', 'Cccc', 0, 'normal'),
+(6, '', '2020-04-22 16:25:20', 'Admin1', 0, 'reject'),
+(6, '', '2020-04-22 16:25:34', 'Admin1', 0, 'request'),
+(6, '', '2020-04-22 16:26:34', 'Cccc', 0, 'accept'),
+(7, 'here is consult chatroom', '2020-04-22 16:26:43', 'Cccc', 0, 'normal'),
+(7, 'yeah', '2020-04-22 16:26:46', 'Cccc', 0, 'normal'),
+(7, 'niceeeee', '2020-04-22 16:27:55', 'Admin1', 0, 'normal');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatroom`
+-- 資料表結構 `chatroom`
 --
 
 CREATE TABLE `chatroom` (
@@ -54,17 +74,18 @@ CREATE TABLE `chatroom` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `chatroom`
+-- 傾印資料表的資料 `chatroom`
 --
 
 INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
-(1, 8, 9, '2020-04-23 12:17:12', 'NULL', 0, 0),
-(2, 7, 9, '2020-04-23 12:18:15', 'NULL', 0, 0);
+(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
+(2, 1, 2, '2020-04-22 00:00:00', NULL, 1, 1),
+(3, 2, 7, '2020-04-22 21:33:45', 'NULL', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- 資料表結構 `comment`
 --
 
 CREATE TABLE `comment` (
@@ -76,31 +97,19 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `comment`
+-- 傾印資料表的資料 `comment`
 --
 
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
-(1, '2020-04-23 12:05:54', 35, 'hello\r\n', 'ttc'),
-(2, '2020-04-23 12:06:21', 34, 'No i am not excited\r\nYou are excited\r\nhahahaha\r\nhahah\r\nhahah', 'ttc'),
-(3, '2020-04-23 12:06:30', 34, 'No i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahah', 'ttc'),
-(4, '2020-04-23 12:06:35', 34, 'No i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahahNo i am not excited You are excited hahahaha hahah hahah', 'ttc'),
-(5, '2020-04-23 12:06:42', 34, 'ha/n', 'ttc'),
-(6, '2020-04-23 12:06:48', 34, 'ha\n\r\n', 'ttc'),
-(7, '2020-04-23 12:07:00', 34, 'ha\n\r\naaa', 'ttc'),
-(8, '2020-04-23 12:07:11', 34, 'ha\n\n\n\n', 'ttc'),
-(9, '2020-04-23 12:07:29', 34, 'ha\n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'ttc'),
-(10, '2020-04-23 12:08:35', 34, 'ha\n aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'ttc'),
-(11, '2020-04-23 12:09:59', 33, 'yo\r\n', 'ttc'),
-(12, '2020-04-23 12:10:28', 26, 'tttt', 'ttcttttt'),
-(13, '2020-04-23 12:10:48', 26, 'ttttttttt', 'ttcttttt'),
-(14, '2020-04-23 12:19:58', 36, 'Hi i am good\r\n', 'angus'),
-(15, '2020-04-23 12:20:09', 26, 'hi', 'angus'),
-(16, '2020-04-23 12:20:21', 26, 'Yo who are you I am better than you', 'angus');
+(1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
+(2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1'),
+(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor'),
+(4, '2020-04-22 16:09:45', 1, 'hiiii', 'visitor');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consultation_comment`
+-- 資料表結構 `consultation_comment`
 --
 
 CREATE TABLE `consultation_comment` (
@@ -112,17 +121,19 @@ CREATE TABLE `consultation_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `consultation_comment`
+-- 傾印資料表的資料 `consultation_comment`
 --
 
 INSERT INTO `consultation_comment` (`user_id`, `author_id`, `score`, `comments`, `comment_date`) VALUES
-(7, 1, 5, 'gooood', '2020-04-23 15:27:32'),
-(7, 1, 5, 'gooooood', '2020-04-23 15:29:32');
+(1, 2, 4, 'Really detail advice! This really allow me to make a better decision for my future career! Thx!', '2020-04-22 05:34:46'),
+(1, 4, 5, 'testing', '2020-04-22 09:04:07'),
+(1, 12, 2, 'testing', '2020-04-22 09:04:19'),
+(1, 1020, 1, 'testing', '2020-04-22 09:04:42');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forum`
+-- 資料表結構 `forum`
 --
 
 CREATE TABLE `forum` (
@@ -137,26 +148,17 @@ CREATE TABLE `forum` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `forum`
+-- 傾印資料表的資料 `forum`
 --
 
 INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
-(26, 'ulife', '2020-04-23 17:53:05', 8, 'ttc', 'ulife', 0, 0),
-(27, 'ulife2', '2020-04-23 17:53:21', 8, 'ttc', 'ulife', 0, 0),
-(28, 'ulife3', '2020-04-23 17:53:33', 8, 'ttc', 'ulife', 0, 0),
-(29, 'study', '2020-04-23 17:53:51', 8, 'ttc', 'study', 0, 0),
-(30, 'study2', '2020-04-23 17:53:59', 8, 'ttc', 'study', 0, 0),
-(31, 'study3', '2020-04-23 18:02:46', 8, 'ttc', 'study', 0, 0),
-(32, 'Future idk', '2020-04-23 18:03:13', 8, 'ttc', 'career', 0, 0),
-(33, 'career? i am so confused', '2020-04-23 18:03:40', 8, 'ttc', 'career', 0, 0),
-(34, 'future and career? i have completely no idea for them, but i am really looking forward to! ! ! ! !', '2020-04-23 18:04:44', 8, 'ttc', 'career', 0, 0),
-(35, 'future and career? i have completely no idea for them, but i am really looking forward to! ! ! ! !future and career? i have comp', '2020-04-23 18:05:11', 8, 'ttc', 'career', 0, 0),
-(36, 'mini project ', '2020-04-23 18:19:48', 9, 'angus', 'study', 0, 0);
+(1, '\0\0\0H\0\0\0e\0\0\0l\0\0\0l\0\0\0o\0\0\0 \0\0\0w\0\0\0o\0\0\0r\0\0\0l\0\0\0d\0\0\0!', '2020-03-22 14:18:50', 0, 'Admin1', NULL, 0, 0),
+(6, 'ulife 1', '2020-04-22 14:54:32', 1, 'Admin1', 'ulife', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_content`
+-- 資料表結構 `post_content`
 --
 
 CREATE TABLE `post_content` (
@@ -166,52 +168,40 @@ CREATE TABLE `post_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `post_content`
+-- 傾印資料表的資料 `post_content`
 --
 
 INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
-(26, 'haha', 0),
-(27, '2', 0),
-(28, '3', 0),
-(29, '1', 0),
-(30, '2', 0),
-(31, 'study', 0),
-(32, '...', 0),
-(33, 'arrrrrrrrr...', 0),
-(34, 'excited', 0),
-(35, '???', 0),
-(36, 'I am doing a project', 0);
+(1, 'Hello from Admin1!\r\nThis is the first post of Acadmap from Admin1.\r\nSurprise!?\r\nI hope so.\r\nHope you enjoy using Acadmap!', 0),
+(6, 'hey', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 資料表結構 `user`
 --
 
 CREATE TABLE `user` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `verify_code` varchar(8) NOT NULL DEFAULT 'pokemon!',
   `email_address` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- 傾印資料表的資料 `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
-(1, 'Admin1', 'csci3100', 'sdhjhhhh', 'admin1@acadmap.com'),
-(2, 'Admin2', 'csci3100', 'rcfctvgj', ''),
-(3, 'Admin3', 'csci3100', 'hhhhhbhk', ''),
-(7, 'Cin', '544b2efcc0e406a', 'pokemon!', 't60527486@gmail.com'),
-(8, 'ttctttttt', '544b2efcc0e406a', 'pokemon!', '1125110208@link.cuhk.edu.hk'),
-(9, 'angus', '4d277036ee53f4e', 'pokemon!', 'angusking47@gmail.com');
+INSERT INTO `user` (`user_id`, `username`, `password`, `email_address`) VALUES
+(1, 'Admin1', 'csci3100', 'admin1@acadmap.com'),
+(2, 'Admin2', 'csci3100', ''),
+(3, 'Admin3', 'csci3100', ''),
+(7, 'Cin', '544b2efcc0e406a', 't60527486@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_profile`
+-- 資料表結構 `user_profile`
 --
 
 CREATE TABLE `user_profile` (
@@ -223,38 +213,36 @@ CREATE TABLE `user_profile` (
   `major` varchar(120) NOT NULL,
   `user_level` varchar(15) NOT NULL DEFAULT 'member',
   `institute` varchar(40) DEFAULT NULL,
-  `consult_rating` double NOT NULL DEFAULT 0,
+  `consult_rating` int(1) NOT NULL DEFAULT 0,
   `cvv` int(3) DEFAULT NULL,
   `expire_yr` int(4) DEFAULT NULL,
   `expire_mth` int(2) DEFAULT NULL,
-  `cardnumber` varchar(17) DEFAULT NULL,
+  `cardnumber` int(16) DEFAULT NULL,
   `cardname` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_profile`
+-- 傾印資料表的資料 `user_profile`
 --
 
 INSERT INTO `user_profile` (`user_id`, `username`, `personal_picture`, `education_level`, `personal_description`, `major`, `user_level`, `institute`, `consult_rating`, `cvv`, `expire_yr`, `expire_mth`, `cardnumber`, `cardname`) VALUES
 (2, 'Admin2', NULL, 'Master', 'I want to pursue another degree in a new field!', 'Engineering', 'member', 'The Hong Kong Polytechnic University', 2, NULL, NULL, NULL, NULL, NULL),
-(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Education', 'member', 'The Chinese University of Hong Kong', 2, 444, 2222, 12, '1111222233334444', 'Cin Cind Cindy'),
+(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Education', 'member', 'The Chinese University of Hong Kong', 2, NULL, NULL, NULL, NULL, NULL),
 (3, 'Admin3', NULL, 'Undergraduate', 'I want to know about other major and gossip there xd', 'Engineering', 'member', 'The Chinese University of Hong Kong', 2, NULL, NULL, NULL, NULL, NULL),
-(7, 'Cin', NULL, 'Undergraduate', 'i love computer science', 'Engineering', 'member', NULL, 5, NULL, NULL, NULL, NULL, NULL),
-(8, 'ttctttttt', NULL, 'Undergraduate', 'haha', '', 'member', '', 0, 0, 0, 0, '', ''),
-(9, 'angus', NULL, 'Undergraduate', 'I am a bba student\r\n', '', 'member', NULL, 0, NULL, NULL, NULL, NULL, NULL);
+(7, 'Cin', NULL, 'Undergraduate', 'i love computer science', 'Engineering', 'member', NULL, 2, NULL, NULL, NULL, NULL, NULL);
 
 --
--- Indexes for dumped tables
+-- 已傾印資料表的索引
 --
 
 --
--- Indexes for table `chat`
+-- 資料表索引 `chat`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`message_date_time`);
 
 --
--- Indexes for table `chatroom`
+-- 資料表索引 `chatroom`
 --
 ALTER TABLE `chatroom`
   ADD PRIMARY KEY (`chatroom_id`),
@@ -262,72 +250,80 @@ ALTER TABLE `chatroom`
   ADD KEY `opponent_id` (`opponent_id`);
 
 --
--- Indexes for table `comment`
+-- 資料表索引 `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`comment_id`),
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `forum`
+-- 資料表索引 `forum`
 --
 ALTER TABLE `forum`
-  ADD PRIMARY KEY (`post_id`);
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `like_number` (`like_number`);
 
 --
--- Indexes for table `post_content`
+-- 資料表索引 `post_content`
 --
 ALTER TABLE `post_content`
-  ADD KEY `post_id` (`post_id`);
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `like_number` (`like_number`) USING BTREE;
 
 --
--- Indexes for table `user`
+-- 資料表索引 `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `user_profile`
+-- 資料表索引 `user_profile`
 --
 ALTER TABLE `user_profile`
   ADD UNIQUE KEY `personal_picture` (`personal_picture`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)
 --
 
 --
--- AUTO_INCREMENT for table `forum`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `user`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- 已傾印資料表的限制式
 --
 
 --
--- Constraints for table `chatroom`
+-- 資料表的限制式 `chatroom`
 --
 ALTER TABLE `chatroom`
   ADD CONSTRAINT `chatroom_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `chatroom_ibfk_2` FOREIGN KEY (`opponent_id`) REFERENCES `user` (`user_id`);
 
 --
--- Constraints for table `post_content`
+-- 資料表的限制式 `forum`
+--
+ALTER TABLE `forum`
+  ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`like_number`) REFERENCES `post_content` (`like_number`);
+
+--
+-- 資料表的限制式 `post_content`
 --
 ALTER TABLE `post_content`
   ADD CONSTRAINT `post_content_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `forum` (`post_id`);
 
 --
--- Constraints for table `user_profile`
+-- 資料表的限制式 `user_profile`
 --
 ALTER TABLE `user_profile`
   ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
