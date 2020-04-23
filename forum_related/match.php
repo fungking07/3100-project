@@ -1,6 +1,14 @@
+
 <?php
     define('MYSQL_ASSOC',MYSQLI_ASSOC);
     include("../ConnectDatabase.php");
+
+    $a = $_POST["p1"];
+    $b = $_POST['p2'];
+    $c = $_POST['p3'];
+    $fac = $_POST['Faculty'];
+    $edu = $_POST['education'];
+        
         //now all the sql not working
         $username = $_SESSION["username"];
         $usersql = "SELECT username, education_level, major, institute from user_profile WHERE username = '".$username."'";
@@ -19,22 +27,20 @@
             $oneuser = mysqli_fetch_array($all_result);
             $score = 0;
             if($oneuser["username"] != $userinfo["username"]){
-                if($oneuser["education_level"] == $userinfo["education_level"]){
-                    $score += 1;
+                if($oneuser["education_level"] == $edu){
+                    $score += $a;
                 }
-                if($oneuser["major"] == $userinfo["major"]){
-                    $score += 1;
+                if($oneuser["major"] == $fac){
+                    $score += $b;
                 }
-                if($oneuser["institute"] == $userinfo["institute"]){
-                    $score += 1;
-                }
-                $score += ($oneuser["consult_rating"] / 5); 
+                $score += ($oneuser["consult_rating"] / 5) * $c; 
             }
             array_push($name_array, $oneuser["username"]);
             array_push($score_arr, $score);
             array_push($userid_array, $oneuser["user_id"]);
         }
         $key = array_keys($score_arr, max($score_arr))[0];
+        
         echo $name_array[$key];
         $uid = $userid_array[$key];
         echo $uid;
