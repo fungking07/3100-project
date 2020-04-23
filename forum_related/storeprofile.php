@@ -25,12 +25,12 @@
 	$exyr = $_GET['exyr'];
 	$cvv = $_GET['cvv'];
 
-	echo 	$edu_lv.'<br>';
-	echo 	$name.'<br>';
-	echo 	$prof.'<br>';
-	echo 	$inst.'<br>';
-	echo 	$email.'<br>';
-	echo 	$major.'<br>';
+	// echo 	$edu_lv.'<br>';
+	// echo 	$name.'<br>';
+	// echo 	$prof.'<br>';
+	// echo 	$inst.'<br>';
+	// echo 	$email.'<br>';
+	// echo 	$major.'<br>';
 
 
 		$commentsql = "UPDATE user_profile SET education_level='$edu_lv', username='$name', major='$major', personal_description='$prof', institute='$inst',cvv='$cvv', expire_mth='$exmth', expire_yr='$exyr', cardname='$cardname', cardnumber='$cardnumber'  WHERE user_id=$uid";
