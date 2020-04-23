@@ -1,4 +1,5 @@
 <?php
+    define('MYSQL_ASSOC',MYSQLI_ASSOC);
     include("../ConnectDatabase.php");
     //function match(){
         //now all the sql not working

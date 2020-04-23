@@ -5,13 +5,10 @@
   include("../ConnectDatabase.php");
   include("../navbar.php");
   $sql = 'SELECT * FROM forum';
-  $usersql = 'SELECT * FROM user Order BY user_ID';
   //get result accoriding to the query
   $defaultresult = mysqli_query($connect,$sql);
-  $userresult = mysqli_query($connect,$usersql);
 
   $postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
-  $userinfo = mysqli_fetch_assoc($userresult);
  
   if(isset($_POST["find"])){
    //echo "finding...\n"; //cannot go in to the loop
@@ -36,9 +33,9 @@
     case 'Most':
       $likes_flag = 5; break;
   }
-  echo $cat_flag."\n";
-  echo $date_flag."\n";
-  echo $likes_flag."\n";
+  //echo $cat_flag."\n";
+  //echo $date_flag."\n";
+  //echo $likes_flag."\n";
   if($cat_flag){  //need to find cat
     $cat = $_POST['category'];
     switch ($date_flag) {
@@ -109,7 +106,7 @@
         break;
     }
   }
-  echo $sql."\n";
+  //echo $sql."\n";
   $find_result = mysqli_query($connect,$sql);
   $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
 
@@ -140,7 +137,11 @@
 </head>
 
 <body>
-
+<!-- add -->
+  <div class="content1">
+    <from method = "POST">
+			<input class="submit btn btn-success" type="submit" name="add" value="add"/>
+			</div>
   <div class="container-fluid">
         <!--Posts -->
         <div class="col-sm-9">
