@@ -93,6 +93,36 @@
             <span class=\"time-left\">".$info['message_date_time']."</span>
             </div>";
           }
+          else if($info['msg_type']=='money_r'){
+            echo "<div class=\"container1 darker\">
+            <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
+            <div class=\"containerdoc\">
+              <p>Consulation payment amount:</p>
+              <form action=\"accept.php\">
+                  <input name='money' type='text'>
+                  <input class=\"btnsend\" name='accept' type=\"submit\" onclick=\"history.go(0);\" value='accept'>
+
+                  <input class=\"btnsend\" name='reject' type=\"submit\" onclick=\"history.go(0);\" value='decline'>
+              </form>
+            </div>
+            <span class=\"time-left\">".$info['message_date_time']."</span>
+            </div>";
+          }
+          else if($info['msg_type']=='money_c'){
+            $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
+            $ccidResult = mysqli_query($conn,$ccidsql);
+            $ccidinfo = mysqli_fetch_array($ccidResult);
+            $ccid = $ccidinfo['chatroom_id'];
+            echo "<div class=\"container1 darker\">
+            <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
+            <div class=\"containerdoc\">
+              <p>ACCEPTED, new chatroom is created in the chatlist.<br>
+              Payment is received from the consultee.</p>
+              <button class=\"btnsend\">confirm</button>
+            </div>
+            <span class=\"time-left\">".$info['message_date_time']."</span>
+            </div>";
+          }
           else if($info['msg_type']=='accept'){
             $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
             $ccidResult = mysqli_query($conn,$ccidsql);
@@ -185,7 +215,7 @@
 </div>
 
 <script>
-  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 1000);
+  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 110000000);
 </script>
 </body>
 </html> 
