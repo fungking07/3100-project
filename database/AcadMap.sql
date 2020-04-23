@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 23 日 19:41
+-- 產生時間： 2020 年 04 月 23 日 21:55
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -37,6 +37,20 @@ CREATE TABLE `chat` (
   `msg_type` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `chat`
+--
+
+INSERT INTO `chat` (`chatroom_id`, `message`, `message_date_time`, `sender_name`, `consultroom`, `msg_type`) VALUES
+(1, 'this is for testing with longer input --- omg i am so panic (SCREAMMMM), the ddl is so close and our group seems to be lack in behind QAQ... I am already responsible for frontend (post, chatroom, chatlist, consultroom, post) and backend (post and chatroom) but still so many stuff unfinished... and I even got like really no previous knowledge in html php css js sql xampp.... I just learn them all. This did equip me with quite a lot of knowledge but I also have to dual with other asg and task... real stressful cry... I wanna learnt what I love but not spending so much time on this application... I really not planning to work in this field but instead doing research and machine learning... I wanna do other stuff and read papers and learn other things from online open lesson but I really dont have the choice... Crying hard', '2020-04-19 09:13:26', 'Admin2', 0, 'normal'),
+(1, 'me again and remark: the words are surrounding the avatar... have time then make a better alignment of word (though I dont think I have', '2020-04-19 17:08:12', 'Admin1', 0, 'normal'),
+(1, 'Testing for consultation chatroom, try open la', '2020-04-20 15:51:32', 'Admin1', 0, 'normal'),
+(1, '', '2020-04-21 12:21:21', 'Admin2', 0, 'request'),
+(1, '', '2020-04-21 12:21:39', 'Admin1', 0, 'accept'),
+(4, 'hiiii', '2020-04-23 21:31:59', 'Admin1', 0, 'normal'),
+(4, 'bye', '2020-04-23 21:32:03', 'Cin', 0, 'normal'),
+(5, 'hh', '2020-04-23 21:33:09', 'Admin1', 0, 'normal');
+
 -- --------------------------------------------------------
 
 --
@@ -52,6 +66,16 @@ CREATE TABLE `chatroom` (
   `consultroom` tinyint(1) NOT NULL DEFAULT 0,
   `hv_consult` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `chatroom`
+--
+
+INSERT INTO `chatroom` (`chatroom_id`, `user_id`, `opponent_id`, `last_message_time`, `opponent_picture`, `consultroom`, `hv_consult`) VALUES
+(1, 1, 2, '2020-04-20 15:55:30', NULL, 0, 1),
+(2, 1, 2, '2020-04-22 00:00:00', NULL, 1, 1),
+(3, 2, 7, '2020-04-22 21:33:45', 'NULL', 0, 0),
+(4, 1, 7, '2020-04-23 21:11:09', 'NULL', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -72,9 +96,12 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
-(1, '2020-04-23 19:10:01', 30, 'reply to myself xd', 'Cin'),
-(2, '2020-04-23 19:11:27', 30, 'oh it is not myself xdddd', 'Cin'),
-(3, '2020-04-23 19:11:34', 31, 'reply to myself', 'Cin');
+(1, '2020-03-22 16:00:00', 1, 'Thank you for effort', 'Admin2'),
+(2, '2020-03-22 17:00:00', 1, 'You are welcome xd', 'Admin1'),
+(3, '2020-04-22 09:00:07', 1, 'hihi', 'visitor'),
+(4, '2020-04-22 16:09:45', 1, 'hiiii', 'visitor'),
+(5, '2020-04-23 21:10:43', 7, 'hey bro', 'Cin'),
+(6, '2020-04-23 21:10:55', 1, 'hiiii', 'Cin');
 
 -- --------------------------------------------------------
 
@@ -95,8 +122,11 @@ CREATE TABLE `consultation_comment` (
 --
 
 INSERT INTO `consultation_comment` (`user_id`, `author_id`, `score`, `comments`, `comment_date`) VALUES
-(7, 1, 5, 'gooood', '2020-04-23 15:27:32'),
-(7, 1, 5, 'gooooood', '2020-04-23 15:29:32');
+(1, 2, 4, 'Really detail advice! This really allow me to make a better decision for my future career! Thx!', '2020-04-22 05:34:46'),
+(1, 4, 5, 'testing', '2020-04-22 09:04:07'),
+(1, 12, 2, 'testing', '2020-04-22 09:04:19'),
+(1, 1020, 1, 'testing', '2020-04-22 09:04:42'),
+(1, 7, 3, 'not bad', '2020-04-23 21:33:03');
 
 -- --------------------------------------------------------
 
@@ -120,13 +150,9 @@ CREATE TABLE `forum` (
 --
 
 INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
-(30, 'ulife1', '2020-04-23 16:58:12', 1, 'Admin1', 'ulife', 0, 0),
-(31, 'study1', '2020-04-23 16:59:47', 7, 'Cin', 'study', 0, 0),
-(32, 'future? I don\'t really know...', '2020-04-23 17:00:05', 7, 'Cin', 'career', 0, 0),
-(33, 'Ulife is so great!', '2020-04-23 17:00:23', 7, 'Cin', 'ulife', 0, 0),
-(34, 'study is so hard', '2020-04-23 17:00:37', 7, 'Cin', 'study', 0, 0),
-(35, 'career? I also don\'t really know', '2020-04-23 17:00:58', 7, 'Cin', 'career', 0, 0),
-(36, 'Ulife is so great and so tough and I am graduating soon...', '2020-04-23 17:01:29', 7, 'Cin', 'ulife', 0, 0);
+(1, '\0\0\0H\0\0\0e\0\0\0l\0\0\0l\0\0\0o\0\0\0 \0\0\0w\0\0\0o\0\0\0r\0\0\0l\0\0\0d\0\0\0!', '2020-03-22 14:18:50', 1, 'Admin1', NULL, 0, 0),
+(6, 'ulife 1', '2020-04-22 14:54:32', 1, 'Admin1', 'ulife', 0, 0),
+(7, 'I am so confuse for my future', '2020-04-23 19:10:36', 7, 'Cin', 'career', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -145,13 +171,9 @@ CREATE TABLE `post_content` (
 --
 
 INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
-(30, '1', 0),
-(31, 'study laaaa', 0),
-(32, 'confused', 0),
-(33, 'don\'t wanna grad', 0),
-(34, 'but I love it', 0),
-(35, 'arrr...', 0),
-(36, 'sigh', 0);
+(1, 'Hello from Admin1!\r\nThis is the first post of Acadmap from Admin1.\r\nSurprise!?\r\nI hope so.\r\nHope you enjoy using Acadmap!', 0),
+(6, 'hey', 0),
+(7, 'arrrrrr', 0);
 
 -- --------------------------------------------------------
 
@@ -163,7 +185,6 @@ CREATE TABLE `user` (
   `user_id` int(8) UNSIGNED NOT NULL,
   `username` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `verify_code` varchar(8) NOT NULL DEFAULT 'pokemon!',
   `email_address` varchar(320) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -171,11 +192,11 @@ CREATE TABLE `user` (
 -- 傾印資料表的資料 `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `verify_code`, `email_address`) VALUES
-(1, 'Admin1', 'csci3100', 'sdhjhhhh', 'admin1@acadmap.com'),
-(2, 'Admin2', 'csci3100', 'rcfctvgj', ''),
-(3, 'Admin3', 'csci3100', 'hhhhhbhk', ''),
-(7, 'Cin', '544b2efcc0e406a', 'pokemon!', 't60527486@gmail.com');
+INSERT INTO `user` (`user_id`, `username`, `password`, `email_address`) VALUES
+(1, 'Admin1', 'csci3100', 'admin1@acadmap.com'),
+(2, 'Admin2', 'csci3100', ''),
+(3, 'Admin3', 'csci3100', ''),
+(7, 'Cin', '544b2efcc0e406a', 't60527486@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -192,11 +213,11 @@ CREATE TABLE `user_profile` (
   `major` varchar(120) NOT NULL,
   `user_level` varchar(15) NOT NULL DEFAULT 'member',
   `institute` varchar(40) DEFAULT NULL,
-  `consult_rating` double NOT NULL DEFAULT 0,
+  `consult_rating` int(1) NOT NULL DEFAULT 0,
   `cvv` int(3) DEFAULT NULL,
   `expire_yr` int(4) DEFAULT NULL,
   `expire_mth` int(2) DEFAULT NULL,
-  `cardnumber` varchar(17) DEFAULT NULL,
+  `cardnumber` int(16) DEFAULT NULL,
   `cardname` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -205,10 +226,10 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`user_id`, `username`, `personal_picture`, `education_level`, `personal_description`, `major`, `user_level`, `institute`, `consult_rating`, `cvv`, `expire_yr`, `expire_mth`, `cardnumber`, `cardname`) VALUES
-(2, 'Admin2', NULL, 'Master', 'I want to pursue another degree in a new field!', 'Engineering', 'member', 'The Hong Kong Polytechnic University', 2, NULL, NULL, NULL, NULL, NULL),
-(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Education', 'member', 'The Chinese University of Hong Kong', 2, 444, 2222, 12, '1111222233334444', 'Cin Cind Cindy'),
-(3, 'Admin3', NULL, 'Undergraduate', 'I want to know about other major and gossip there xd', 'Engineering', 'member', 'The Chinese University of Hong Kong', 2, NULL, NULL, NULL, NULL, NULL),
-(7, 'Cin', NULL, 'Undergraduate', 'i love computer science', 'Engineering', 'member', NULL, 5, NULL, NULL, NULL, NULL, NULL);
+(2, 'Admin2', NULL, 'Master', 'I want to pursue another degree in a new field!', 'Engineering', 'member', 'The Hong Kong Polytechnic University', 2, 111, 1111, 11, 1234123, 'aaa'),
+(1, 'Admin1', NULL, 'Undergraduate', 'I want to pursue a master degree', 'Education', 'member', 'The Chinese University of Hong Kong', 3, 111, 1111, 11, 1234123, 'aaa'),
+(3, 'Admin3', NULL, 'Undergraduate', 'I want to know about other major and gossip there xd', 'Engineering', 'member', 'The Chinese University of Hong Kong', 2, 111, 1111, 11, 1234123, 'aaa'),
+(7, 'Cin', NULL, 'Undergraduate', 'i love computer science', 'Engineering', 'member', 'CUHK', 2, 111, 2222, 11, 1234123, 'aaa');
 
 --
 -- 已傾印資料表的索引
@@ -239,7 +260,8 @@ ALTER TABLE `comment`
 -- 資料表索引 `forum`
 --
 ALTER TABLE `forum`
-  ADD PRIMARY KEY (`post_id`);
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `like_number` (`like_number`);
 
 --
 -- 資料表索引 `post_content`
@@ -269,7 +291,7 @@ ALTER TABLE `user_profile`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
@@ -287,6 +309,12 @@ ALTER TABLE `user`
 ALTER TABLE `chatroom`
   ADD CONSTRAINT `chatroom_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `chatroom_ibfk_2` FOREIGN KEY (`opponent_id`) REFERENCES `user` (`user_id`);
+
+--
+-- 資料表的限制式 `forum`
+--
+ALTER TABLE `forum`
+  ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`like_number`) REFERENCES `post_content` (`like_number`);
 
 --
 -- 資料表的限制式 `post_content`

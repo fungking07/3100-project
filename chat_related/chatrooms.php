@@ -46,9 +46,9 @@
       die("Connection failed: " . $conn->connect_error);
   }
   $crmid = $_GET['id']; //parse from url?
-
+  $_SESSION["crmid"] = $crmid;
   //find the name the person are chatting w/ u
-  $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
+  $sql = "SELECT * FROM chatroom WHERE chatroom_id=$crmid";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
   if($_SESSION["user_id"] == $info['user_id']){
@@ -205,7 +205,7 @@
 </div>
 
 <script>
-  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 110000000);
+  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 1000);
 </script>
 </body>
 </html> 
