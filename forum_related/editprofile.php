@@ -52,8 +52,9 @@
 			$exmth = $Commentinfo['expire_mth'];
 			$exyr = $Commentinfo['expire_yr'];
 			$cvv = $Commentinfo['cvv'];
+			//plz make the name unique!! thx so much!!!! @@@@@@@@
 			echo "<div class='top1'><div class='circle1'></div>
-				<div class='username1'><input type='text' name='uname' id='name' value='$name' placeholder='username'></div>
+				<div class='username1'><input type='text' name='uname' id='name' value='$name' placeholder='username'></div> 
 				</div>";
 
 		?>
