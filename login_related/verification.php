@@ -48,9 +48,7 @@
 
                   mail($email,$email_subject,$message,$header);
         }
-        else{
-          array_push($errors, "Error!!Try again later!!");
-        }
+
     mysqli_free_result($result);
     mysqli_close($connect);
 
@@ -69,6 +67,12 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/verification.css">
+    <style>
+      .red{
+      margin-left:35%;
+      color: red;
+      }
+    </style>
 	</head>
 	<body>
 		<div class="Reset-Password">
@@ -76,8 +80,9 @@
         </div>
         <form action="verification.php" method="post">
             <input type="text" name="email" id="email" placeholder="Email" />
-            <input type="submit" name="send" id="send" type="button" onclick="verify()"></button>
+            <input type="submit" name="send" id="send" type="button" ></button>
             <a href="login.php">Back to login page</a>
          </form>
+         <h4 class="red"><?php include("error.php")?></h>
 	</body>
 </html>
