@@ -185,7 +185,7 @@
 </div>
 
 <script>
-  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 2000);
+  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 1000);
 </script>
 </body>
 </html> 
