@@ -4,7 +4,7 @@
   define('MYSQL_ASSOC',MYSQLI_ASSOC);
   include("../ConnectDatabase.php");
   include("../navbar.php");
-  $sql = 'SELECT * FROM forum';
+  $sql = "SELECT * FROM forum";
   //get result accoriding to the query
   $defaultresult = mysqli_query($connect,$sql);
 
@@ -42,31 +42,31 @@
       case 0:
         switch($likes_flag){ 
           case 3: 
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"';  break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."'";  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number ASC'; break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY like_number ASC"; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number DESC';  break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY like_number DESC";  break;
         }
         break;
       case 1:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC';  break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY Post_date ASC";  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"  Order BY Post_date ASC, like_number ASC'; break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."'  Order BY Post_date ASC, like_number ASC"; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC, like_number DESC';  break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY Post_date ASC, like_number DESC";  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC';  break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY Post_date DESC";  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC, like_number ASC'; break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY Post_date DESC, like_number ASC"; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC, like_number DESC';  break;
+            $sql = "SELECT * FROM forum WHERE category = '".$cat."' Order BY Post_date DESC, like_number DESC";  break;
         }
         break;
     }
@@ -77,31 +77,31 @@
       case 0:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum Order By post_id';  break;
+            $sql = "SELECT * FROM forum Order By post_id";  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY like_number ASC'; break;
+            $sql = "SELECT * FROM forum Order BY like_number ASC"; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY like_number DESC';  break;
+            $sql = "SELECT * FROM forum Order BY like_number DESC";  break;
         }
         break;
       case 1:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC';  break;
+            $sql = "SELECT * FROM forum Order BY Post_date ASC";  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC, like_number ASC'; break;
+            $sql = "SELECT * FROM forum Order BY Post_date ASC, like_number ASC"; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC, like_number DESC';  break;
+            $sql = "SELECT * FROM forum Order BY Post_date ASC, like_number DESC";  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum Order BY Post_date DESC';  break;
+            $sql = "SELECT * FROM forum Order BY Post_date DESC";  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY Post_date DESC, like_number ASC'; break;
+            $sql = "SELECT * FROM forum Order BY Post_date DESC, like_number ASC"; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY Post_date DESC, like_number DESC';  break;
+            $sql = "SELECT * FROM forum Order BY Post_date DESC, like_number DESC";  break;
         }
         break;
     }
@@ -137,7 +137,7 @@
 </head>
 
 <body>
-  <!-- add -->
+<!-- add -->
   <div class="content1" style='margin-left:40px'>
     <form action="add_post.php" method = "POST">
 			<input class="submit btn btn-success"  type="submit" name="add" value="add"/>
