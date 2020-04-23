@@ -13,6 +13,21 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/chatrooms.js"></script>
 </head>
+<style>
+.btn2 {
+  background-color: rgb(76, 78, 175);
+  color: white;
+  width: 100px;
+  border: none;
+  border-radius: 5%;
+  font-size: 16px;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+.btn2:hover{
+  opacity:1;
+}
+</style>
 <body>
 
 
@@ -176,15 +191,15 @@
   </div>
   <div class = "col-md-2">
     <form action="consult.php" class="form-container"> 
-          <p>Consult Fee:</p>
-          <input name="fee" type="text" onclick="" value='200' placeholder='money'>
-          <input type="submit" value='Consult'>
+          <p style='font-size:16px; margin-bottom:5px;'>Consult Fee:</p>
+          <input name="fee" style='font-size:16px;' type="text" onclick="" value='200' size='10' placeholder='money'>
+          <input class='btn2' type="submit" value='Consult'>
     </form>
   </div>
   <div class = "col-md-10">
     <form action="chatp.php" class="form-container" id='bottom'>
       <textarea placeholder="Type message.." name="msg" required></textarea>
-      <input class="btn" type="submit" onclick="document.getElementById('msg').value = '';"> 
+      <input class="btn" style='font-size:16px;' type="submit" onclick="document.getElementById('msg').value = '';"> 
     </form>
   </div>
 </div>

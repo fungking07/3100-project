@@ -16,8 +16,11 @@
 .btncs2 {
   background-color: #4CAF50;
   color: white;
-  border-radius: 5px;
   width: 100px;
+  border: none;
+  border-radius: 5%;
+  font-size: 16px;
+  margin-top: 5px;
   opacity: 0.8;
 }
 .btncs2:hover {
@@ -107,8 +110,8 @@
         <option value ="4">4</option>
         <option value ="5">5</option>
       </select>
-        <input type='text' size="10" name="comment" placeholder='comment'> 
-        <input type="submit" class='btncs2' onclick="history.go(0);" value='End'>
+        <input style='font-size:16px; margin-top:5px;' type='text' size="10" name="comment" placeholder='comment'> 
+        <input style='font-size:16px;' type="submit" class='btncs2' onclick="history.go(0);" value='End'>
     </form>
   </div>
   <div class="col-md-10">
