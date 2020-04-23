@@ -1,5 +1,5 @@
 <?php
  session_start();
  session_destroy();
- header("location: forum.php");
+ header("location: forum_related/forum.php");
 ?>
