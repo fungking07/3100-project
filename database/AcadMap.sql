@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost
--- 產生時間： 2020 年 04 月 23 日 17:49
+-- 產生時間： 2020 年 04 月 23 日 19:41
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.1
 
@@ -67,6 +67,15 @@ CREATE TABLE `comment` (
   `author_name` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `comment_date_time`, `post_id`, `comments_content`, `author_name`) VALUES
+(1, '2020-04-23 19:10:01', 30, 'reply to myself xd', 'Cin'),
+(2, '2020-04-23 19:11:27', 30, 'oh it is not myself xdddd', 'Cin'),
+(3, '2020-04-23 19:11:34', 31, 'reply to myself', 'Cin');
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +115,19 @@ CREATE TABLE `forum` (
   `view_number` int(8) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `forum`
+--
+
+INSERT INTO `forum` (`post_id`, `post_title`, `post_date`, `author_id`, `author_name`, `category`, `like_number`, `view_number`) VALUES
+(30, 'ulife1', '2020-04-23 16:58:12', 1, 'Admin1', 'ulife', 0, 0),
+(31, 'study1', '2020-04-23 16:59:47', 7, 'Cin', 'study', 0, 0),
+(32, 'future? I don\'t really know...', '2020-04-23 17:00:05', 7, 'Cin', 'career', 0, 0),
+(33, 'Ulife is so great!', '2020-04-23 17:00:23', 7, 'Cin', 'ulife', 0, 0),
+(34, 'study is so hard', '2020-04-23 17:00:37', 7, 'Cin', 'study', 0, 0),
+(35, 'career? I also don\'t really know', '2020-04-23 17:00:58', 7, 'Cin', 'career', 0, 0),
+(36, 'Ulife is so great and so tough and I am graduating soon...', '2020-04-23 17:01:29', 7, 'Cin', 'ulife', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -117,6 +139,19 @@ CREATE TABLE `post_content` (
   `post_content` text NOT NULL,
   `like_number` int(8) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `post_content`
+--
+
+INSERT INTO `post_content` (`post_id`, `post_content`, `like_number`) VALUES
+(30, '1', 0),
+(31, 'study laaaa', 0),
+(32, 'confused', 0),
+(33, 'don\'t wanna grad', 0),
+(34, 'but I love it', 0),
+(35, 'arrr...', 0),
+(36, 'sigh', 0);
 
 -- --------------------------------------------------------
 
@@ -204,8 +239,7 @@ ALTER TABLE `comment`
 -- 資料表索引 `forum`
 --
 ALTER TABLE `forum`
-  ADD PRIMARY KEY (`post_id`),
-  ADD KEY `like_number` (`like_number`);
+  ADD PRIMARY KEY (`post_id`);
 
 --
 -- 資料表索引 `post_content`
@@ -235,7 +269,7 @@ ALTER TABLE `user_profile`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `post_id` int(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
@@ -253,12 +287,6 @@ ALTER TABLE `user`
 ALTER TABLE `chatroom`
   ADD CONSTRAINT `chatroom_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `chatroom_ibfk_2` FOREIGN KEY (`opponent_id`) REFERENCES `user` (`user_id`);
-
---
--- 資料表的限制式 `forum`
---
-ALTER TABLE `forum`
-  ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`like_number`) REFERENCES `post_content` (`like_number`);
 
 --
 -- 資料表的限制式 `post_content`
