@@ -137,12 +137,7 @@
 </head>
 
 <body>
-<!-- add -->
-  <div class="content1" style='margin-left:40px' >
-    <form action="add_post.php" method = "POST">
-			<input class="submit btn btn-success"  type="submit" name="add" value="add"/>
-      </form>
-		</div>
+
   <div class="container-fluid">
         <!--Posts -->
         <div class="col-sm-9">
@@ -150,6 +145,12 @@
     </div>
     <!-- Filter -->
     <div class="col-sm-3">
+      <!-- add -->
+      <div class="content1" style='margin-left:40px' >
+    <form action="add_post.php" method = "POST">
+			<input class="btn-block submit btn btn-success"  type="submit" name="add" value="Add A New Post"/>
+      </form>
+		</div>
       <!-- The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
       <button class="collapsible">Filter</button>
         <div class="content">
