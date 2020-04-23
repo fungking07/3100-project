@@ -44,7 +44,7 @@
 		?>
 
 		<div class="content1">
-			<button class="consult1" type="button" onclick="">Match A Consult</button>
+			<button class="consult1" type="button" onclick="window.location.href='matching.php'">Match A Consult</button>
 			<div class="rank1">
 				Consultation Rating
 			</div>
