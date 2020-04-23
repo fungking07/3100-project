@@ -1,3 +1,7 @@
+<?php
+  $errors = array();
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +28,6 @@
 			$servername = "localhost";
 			$username = "root";
 			$password = "";
-      function alert($msg) {
-          echo "<script type='text/javascript'>alert('$msg');</script>";
-      }
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -279,7 +280,7 @@
 			?>
 
 				<input class="consult1" type="submit" value="Confirm">
-
+        <h6 class = "consult1"><?php include("error.php")?></h>
 			<div class="space1"></div>
 		</div>
 		</form>

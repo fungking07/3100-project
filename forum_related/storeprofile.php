@@ -52,7 +52,7 @@
 	if(empty($_GET['uname'])){
 		$name = $userdata['username'];
 		$msg = "Username can't be empty";
-		alert($msg);
+		array_push($errors,$msg);
 	}
 	else{
 		$name = $_GET['uname'];
@@ -65,7 +65,7 @@
 				if ($user){ // if user exists
 				if ($user['username'] == $name){
 					$msg = "Username already exists";
-					alert($msg);
+					array_push($errors,$msg);
 				}
 				}
 			}
@@ -78,7 +78,7 @@
 					if ($user){ // if user exists
 					if ($user['email_address'] == $email){
 						$msg = "email already exists";
-						alert($msg);
+						array_push($errors,$msg);
 					}
 					}
 				}
