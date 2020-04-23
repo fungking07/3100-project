@@ -9,11 +9,12 @@ html{
   margin-top:70px;
   margin-bottom: 70px;
   padding-top: 20px;
-  border-radius: 70px;
+  border-radius: 10px;
   overflow: auto;
 }
 .intro_welcome{
-  width: 40%;
+  width: 80%;
+  
   margin:0 auto;
   color:purple;
 }
