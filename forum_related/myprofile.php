@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="device-width, initial-scale = 1">
-  <title>Forum skeleton</title>
+  <title>profile</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/post.css">
@@ -12,27 +12,13 @@
   <link rel="stylesheet" href="../css/profile.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<a href="#" class="navbar-brand">AcadMap</a>
-				<div class="container-fluid">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Forum</a></li>
-						<li><a href="#">Chat</a></li>
-						<li><a href="#">Consultation</a></li>
-						<!-- <input type="text" placeholder="Search.."> -->
-						<li><a href="#">Welcome,User!</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
 
 		<div style="background-color: #e1f5f7">
 		<div class="space1"></div>
 		
 		<?php
 			session_start();
-			$_SESSION['user_id'] = 1;
+			include("../navbar.php");
 			$uid = $_SESSION['user_id'];
 			$servername = "localhost";
 			$username = "root";
@@ -58,7 +44,7 @@
 		?>
 
 		<div class="content1">
-			<button class="consult1" type="button" onclick="">Match A Consult</button>
+			<button class="consult1" type="button" onclick="window.location.href='matching.php'">Match A Consult</button>
 			<div class="rank1">
 				Consultation Rating
 			</div>
@@ -128,8 +114,8 @@
 						<div class="major2" >Major:
 							<div class="major1">'.$Commentinfo['major'].'</div>
 						</div>
-						<div class="user_status2">Institute:
-							<div class="user_status1">'.$Commentinfo['institute'].'</div>
+						<div class="user_status1">Institute:
+							<div class="user_status2">'.$Commentinfo['institute'].'</div>
 						</div>';
 				?>
 
@@ -240,8 +226,9 @@
 					echo '<div style="height:10px"></div><div style="margin-left:100px">There is no consultation yet.</div>';
 				}
 			?>
-
-			<button class="consult1" type="button">Edit</button>
+			<form action='editprofile.php'>
+				<button class="consult1" type="button" onclick="window.location.href='editprofile.php'">Edit</button>
+			</form>
 			<div class="space1"></div>
 		</div>
 	</body>

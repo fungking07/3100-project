@@ -8,7 +8,7 @@ html{
   background-size: cover;
 }
 .share{
-  margin-left:45%;
+  margin-left:42%;
   margin-top:3%;
   text-align: center;
   font-size: 40px;
@@ -44,9 +44,9 @@ input:focus{
 }
 
 .title{
-  margin-left:50%;
+  margin-left:45%;
   margin-top:2%;
-  width: 43%;
+  width: 49%;
   height:35px;
   border-style: solid;
   font-size: 16px;
@@ -54,9 +54,9 @@ input:focus{
   padding-left: 1%;
 }
 .major{
-  margin-left:50%;
+  margin-left:45%;
   margin-top:2%;
-  width: 44%;
+  width: 50%;
   height:35px;
   border-style: solid;
   font-size: 16px;
@@ -72,9 +72,9 @@ select{
 }
 
 .per-des{
-  margin-left:50%;
+  margin-left:45%;
   margin-top:2%;
-  width: 43%;
+  width: 49%;
   height:150px;
   border-style: solid;
   border-color: gray;
@@ -92,7 +92,7 @@ select{
   padding-top: 1%;
 }
 .submit{
-  margin-left:68%;
+  margin-left:65%;
   margin-top:2%;
   width: 10%;
   height:35px;

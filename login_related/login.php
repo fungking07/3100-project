@@ -1,6 +1,7 @@
 <?php
   //use helper function to connect to the database
-  include("ConnectDatabase.php");
+  include("../ConnectDatabase.php");  
+  include("../navbar.php");
   $errors = array();
   function login_check(){
     global $connect;
@@ -42,7 +43,7 @@
             $_SESSION["user_id"] = $userdata["user_id"];
           mysqli_free_result($result);
           mysqli_close($connect);
-          header("location:forum.php");
+          header("location:../forum_related/forum.php");
     }
   }
   else{
@@ -53,7 +54,7 @@
 }
 
   if(isset($_POST["register"])){
-    header("register.php");
+    header("location:register.php");
   }
   if(isset($_POST["submit"])){
       login_check();

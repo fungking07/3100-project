@@ -1,13 +1,13 @@
 <?php
   include('ConnectDatabase.php');
   $errors = array();
-  if(isset($_SESSION["email"])){
-    $email = mysqli_real_escape_string($connect,$_SESSION["email"]);
-  }
+  $uid = $_GET["uid"];
+
   function changepw(){
     global $connect;
     global $errors;
-    global $email;
+    global $uid;
+
     $newpw = $_POST["newpw"];
     $confimpw = $_POST["confirmpw"];
 
@@ -16,29 +16,31 @@
     $newpw = mysqli_real_escape_string($connect,$newpw);
     $confimpw = stripslashes($confimpw);
     $confimpw = mysqli_real_escape_string($connect,$confimpw);
-    if (empty($newpw)) { array_push($errors, "password is required"); }
-  	if (empty($confimpw)) { array_push($errors, "Confirm password needed"); }
-    if($newpw == $confimpw){
-      //save data to database
-      //sql for inset data to database
-      $password = substr(md5($newpw),0,15);
-      $sql = "UPDATE user SET password = '$password' where email_address = '$email'";
-      //check if data save to database sucessfully
-      if(mysqli_query($connect,$sql)){
-        header("location:login.php");
-      }
-      else{
-        //prompt error
-        push($errors,'query error:' . mysqli_error($connect));
+
+    if (empty($newpw)) {array_push($errors, "password is required"); }
+  	if (empty($confimpw)) {array_push($errors, "Confirm password needed"); }
+    if($newpw != $confimpw){array_push($errors,"passsword not match");}
+
+
+    if(count($errors)==0){
+        //save data to database
+        //sql for inset data to database
+        $password = substr(md5($newpw),0,15);
+        $sql = "UPDATE user SET password = '$password' where user_id = '$uid'";
+        //check if data save to database sucessfully
+        if(mysqli_query($connect,$sql)){
+          header("location:login.php");
         }
-    }
-    else{
-      //promt errors
-      mysql_free_resul($result);
+        else{
+          //prompt error
+          array_push($errors,'query error:' . mysqli_error($connect));
+          exit(1);
+          }
+      }
       mysqli_close($connect);
-      push($errors,"fail to change password . Please try it again.");
-    }
-  }
+      }
+
+
 
   if(isset($_POST["submit"])){
     changepw();
@@ -58,7 +60,7 @@
 		<div class="Reset-Password">
 			Reset
 		</div>
-    <form action = "reset.php" method="Post">
+    <form action = "reset.php?uid=<?php echo $uid;?>" method="Post">
 		    <input type="text" name="newpw" id="new" placeholder="New Password" />
 		    <input type="text" name="confirmpw" id="confirm" placeholder="Confirm Password" />
         <div class="red_text"><?php include('error.php'); ?></div>

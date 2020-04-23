@@ -21,7 +21,8 @@
   $servername = "localhost";
   $username = "root";
   $password = "";
-
+  //$_SESSION['username']='Admin2';//'Cccc';
+  //$_SESSION['user_id']=2;//5;
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -46,26 +47,14 @@
   $sql = "SELECT * FROM user WHERE user_id=$oppoid";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
+  echo "<nav class='navbar navbar-default navbar-fixed-top'>";
+  include("../navbar.php");
+  
+  echo "</div><div class='header1' style='margin-top:50px'>
+      <img src='../assets/avatar.png' alt='Avatar'>
+      <p class='phead'>".$info['username']."</p></div>
+      </nav>";
 
-  echo "
-  <nav class='navbar navbar-default navbar-fixed-top'>
-  <div class='container'>
-    <a href='#' class='navbar-brand'>AcadMap</a>
-    <div class='container-fluid'>
-      <ul class='nav navbar-nav'>
-        <li><a href='#'>Forum</a></li>
-        <li><a href='#'>Chat</a></li>
-        <li><a href='#'>Consultation</a></li>
-        <input type='text' placeholder='Search..'>
-        <li><a href='#'>Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class='header1'>
-  <img src='../assets/avatar.png' alt='Avatar'>
-  <p class='phead'>".$info['username']."</p>
-  </div>
-</nav>";
 ?>
 
 <div class="content1" style="margin-top:100px">
@@ -104,6 +93,36 @@
             <span class=\"time-left\">".$info['message_date_time']."</span>
             </div>";
           }
+          else if($info['msg_type']=='money_r'){
+            echo "<div class=\"container1 darker\">
+            <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
+            <div class=\"containerdoc\">
+              <p>Consulation payment amount:</p>
+              <form action=\"accept.php\">
+                  <input name='money' type='text'>
+                  <input class=\"btnsend\" name='accept' type=\"submit\" onclick=\"history.go(0);\" value='accept'>
+
+                  <input class=\"btnsend\" name='reject' type=\"submit\" onclick=\"history.go(0);\" value='decline'>
+              </form>
+            </div>
+            <span class=\"time-left\">".$info['message_date_time']."</span>
+            </div>";
+          }
+          else if($info['msg_type']=='money_c'){
+            $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
+            $ccidResult = mysqli_query($conn,$ccidsql);
+            $ccidinfo = mysqli_fetch_array($ccidResult);
+            $ccid = $ccidinfo['chatroom_id'];
+            echo "<div class=\"container1 darker\">
+            <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
+            <div class=\"containerdoc\">
+              <p>ACCEPTED, new chatroom is created in the chatlist.<br>
+              Payment is received from the consultee.</p>
+              <button class=\"btnsend\">confirm</button>
+            </div>
+            <span class=\"time-left\">".$info['message_date_time']."</span>
+            </div>";
+          }
           else if($info['msg_type']=='accept'){
             $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
             $ccidResult = mysqli_query($conn,$ccidsql);
@@ -112,7 +131,8 @@
             echo "<div class=\"container1 darker\">
             <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
             <div class=\"containerdoc\">
-              <p>ACCEPTED, new chatroom is created in the chatlist.</p>
+              <p>ACCEPTED, new chatroom is created in the chatlist.<br>
+              Payment is received from the consultee.</p>
               <button class=\"btnsend\" onclick=\"window.location.href='cschatrooms.php?id=$ccid'\">chatroom</button>
             </div>
             <span class=\"time-left\">".$info['message_date_time']."</span>
@@ -152,11 +172,16 @@
             </div>";
           }
           else if($info['msg_type']=='accept'){
+            $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
+            $ccidResult = mysqli_query($conn,$ccidsql);
+            $ccidinfo = mysqli_fetch_array($ccidResult);
+            $ccid = $ccidinfo['chatroom_id'];
             echo "<div class=\"container1\">
             <img src=\"../assets/avatar.png\" alt=\"Avatar\">
             <div class=\"containerdoc\">
-              <p>ACCEPTED, new chatroom is created in the chatlist.</p>
-              <button class=\"btnsend\">chatroom</button>
+              <p>ACCEPTED, new chatroom is created in the chatlist.<br>
+              Payment is received from the consultee.</p>
+              <button class=\"btnsend\" onclick=\"window.location.href='cschatrooms.php?id=$ccid'\">chatroom</button>
             </div>
             <span class=\"time-right\">".$info['message_date_time']."</span>
             </div>";
@@ -190,7 +215,7 @@
 </div>
 
 <script>
-  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 20000);
+  var auto_refresh = setInterval(function(){$('#8888').load('refresh.php');}, 110000000);
 </script>
 </body>
 </html> 
