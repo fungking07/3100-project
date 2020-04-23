@@ -38,10 +38,10 @@
   $fsql = "SELECT * FROM forum WHERE post_id=$postid";
   $fResult = mysqli_query($conn,$fsql);
   $finfo = mysqli_fetch_array($fResult);
-
+  $aid = $finfo['author_id'];
   echo "<div class='container1' style='margin-top:50px'>
   <img class='left' src='../assets/avatar.png' alt='Avatar1' height='30' width='30'>
-  <p class='name'>".$finfo['author_name']."</p>
+  <p class='name'><a href='othersprofile.php?uid=$aid'>".$finfo['author_name']."</a></p>
   <span class='time-right'>".$finfo['post_date']."</span>
   <p>".$info['post_content']."</p>
   </div>";

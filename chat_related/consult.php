@@ -56,9 +56,6 @@
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
-      echo "<script>
-      alert('$200 is charged from your account for the consultation when the consulter accept the request.');
-      </script>";
       header("Location: {$_SERVER["HTTP_REFERER"]}#bottom");
     }
   }

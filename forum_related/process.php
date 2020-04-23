@@ -1,4 +1,5 @@
 <?php
+  session_start();
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -15,8 +16,8 @@
   $commentResult = mysqli_query($conn,$commentsql);
 
   $cmt=$_GET['cmt'];
-  if($_SESSION['signed_in']){
-    $name = $_SESSION['user_name'];
+  if(isset($_SESSION['signed_in'])){
+    $name = $_SESSION['username'];
   }
   else{
     $name = "visitor";
