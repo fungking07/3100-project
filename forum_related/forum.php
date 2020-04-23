@@ -137,11 +137,12 @@
 </head>
 
 <body>
-<!-- add -->
-  <div class="content1">
-    <from method = "POST">
-			<input class="submit btn btn-success" type="submit" name="add" value="add"/>
-			</div>
+  <!-- add -->
+  <div class="content1" style='margin-left:40px'>
+    <form action="add_post.php" method = "POST">
+			<input class="submit btn btn-success"  type="submit" name="add" value="add"/>
+      </form>
+		</div>
   <div class="container-fluid">
         <!--Posts -->
         <div class="col-sm-9">
