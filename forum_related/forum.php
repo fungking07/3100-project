@@ -111,6 +111,18 @@
   $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
 
 }
+
+ function visitorpost(){
+ 	if(isset($_POST["add"])){  //need a button
+ 	//echo isset($_SESSION["signed_in"]);
+   if(isset($_SESSION["signed_in"]) === false){
+     echo "../404.php";
+   }
+   else{
+    header("add_post.php");
+   }
+ }
+ }
 ?>
 
 
