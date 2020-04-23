@@ -14,13 +14,13 @@
 	}
 
 	$edu_lv = $_GET['edu_lv'];
-	if($name == $_GET['uname'];){
+	if($name == $_GET['uname']){
 		$flag = 0;
 	}
 	else{
 		$flag = 1;
 	}
-	if($email == $_GET['email'];){
+	if($email == $_GET['email']){
 		$flag = 0;
 	}
 	else{
@@ -51,7 +51,7 @@
 	}
 	if($flag == 1){
 		$username_check_query = "SELECT * FROM user WHERE username = '$name'";
-		$result = mysqli_query($connect, $username_check_query);
+		$result = mysqli_query($conn, $username_check_query);
 		if($result != False){
 				$user = mysqli_fetch_assoc($result);
 				if ($user){ // if user exists
@@ -63,7 +63,7 @@
   	}
 		elseif ($flag == 2){
 			$useremail_check_query = "SELECT * FROM user WHERE email_address = '$email'";
-			$result = mysqli_query($connect, $useremail_check_query);
+			$result = mysqli_query($conn, $useremail_check_query);
 			if($result != False){
 					$user = mysqli_fetch_assoc($result);
 					if ($user){ // if user exists
@@ -91,6 +91,6 @@
 	echo "Error: " . $commentsql . "<br>" . mysqli_error($conn)."<br>";
 	}
 	$_SESSION["username"] = $name;
-	echo "<script>history.go(-2);</script>";
+	//echo "<script>history.go(-2);</script>";
 
 ?>
