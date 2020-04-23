@@ -1,16 +1,16 @@
 <?php
 	session_start();
-	include("../navbar.php");
+	include("navbar.php");
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Welcome to Acadmap</title>
-		<!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
-  <!--<link rel="stylesheet" href="../css/main.css">-->
-    <!--<link rel="stylesheet" href="../css/post.css">-->
-		<link rel="stylesheet" href="../css/introduction.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/post.css">
+		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
 		<div class="intro_container">
