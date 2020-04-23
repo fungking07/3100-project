@@ -138,7 +138,7 @@
 
 <body>
 <!-- add -->
-  <div class="content1" style='margin-left:40px'>
+  <div class="content1" style='margin-left:40px' >
     <form action="add_post.php" method = "POST">
 			<input class="submit btn btn-success"  type="submit" name="add" value="add"/>
       </form>

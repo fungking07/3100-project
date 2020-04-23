@@ -79,46 +79,18 @@
             </div>";
           }
           else if($info['msg_type']=='request'){
+            $money = $info['message'];
             echo "<div class=\"container1 darker\">
             <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
             <div class=\"containerdoc\">
               <p>Consulation Request</p>
+              <input name='money' type='text' value='$$money' disabled style='margin-bottom:10px'>
               <form action=\"accept.php\">
                   <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='accept'>
               </form>
               <form action=\"reject.php\">
                   <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='decline'>
               </form>
-            </div>
-            <span class=\"time-left\">".$info['message_date_time']."</span>
-            </div>";
-          }
-          else if($info['msg_type']=='money_r'){
-            echo "<div class=\"container1 darker\">
-            <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
-            <div class=\"containerdoc\">
-              <p>Consulation payment amount:</p>
-              <form action=\"accept.php\">
-                  <input name='money' type='text'>
-                  <input class=\"btnsend\" name='accept' type=\"submit\" onclick=\"history.go(0);\" value='accept'>
-
-                  <input class=\"btnsend\" name='reject' type=\"submit\" onclick=\"history.go(0);\" value='decline'>
-              </form>
-            </div>
-            <span class=\"time-left\">".$info['message_date_time']."</span>
-            </div>";
-          }
-          else if($info['msg_type']=='money_c'){
-            $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
-            $ccidResult = mysqli_query($conn,$ccidsql);
-            $ccidinfo = mysqli_fetch_array($ccidResult);
-            $ccid = $ccidinfo['chatroom_id'];
-            echo "<div class=\"container1 darker\">
-            <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
-            <div class=\"containerdoc\">
-              <p>ACCEPTED, new chatroom is created in the chatlist.<br>
-              Payment is received from the consultee.</p>
-              <button class=\"btnsend\">confirm</button>
             </div>
             <span class=\"time-left\">".$info['message_date_time']."</span>
             </div>";
@@ -157,10 +129,12 @@
             </div>";
           }
           else if($info['msg_type']=='request'){
+            $money = $info['message'];
             echo "<div class=\"container1\">
             <img src=\"../assets/avatar.png\" alt=\"Avatar\">
             <div class=\"containerdoc\">
               <p>Consulation Request</p>
+              <input name='money' type='text' value='$$money' disabled style='margin-bottom:10px'>
               <form action=\"accept.php\">
                   <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='accept'>
               </form>
@@ -203,7 +177,10 @@
 <div class="chat" id="myForm">
 
   <form action="consult.php" class="form-container">
-      <input class="btn" style="margin-top:25px" type="submit" onclick="window.location.reload();" value='Consult'>
+      <div class="container2">
+        <input  type="text" onclick="" value='200' placeholder='money'>
+        <input class="btn2" style="margin-top:25px padding:5px" type="submit" onclick="window.location.reload();" value='Consult'>
+      </div>
   </form>
 
   <form action="chatp.php" class="form-container" id='bottom'>
