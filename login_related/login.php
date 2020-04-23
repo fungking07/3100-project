@@ -76,6 +76,18 @@
 <link rel="stylesheet" href="../css/login.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<style>
+.left {
+  left: 0;
+background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+
+}
+
+.right {
+  right: 0;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+</style>
 </head>
 <body>
 <div class="content">
