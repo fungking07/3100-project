@@ -43,8 +43,9 @@
   echo "<div class='container1' style='margin-top:50px'>
   <img class='left' src='../assets/avatar.png' alt='Avatar1' height='30' width='30'>
   <p class='name'><a href='othersprofile.php?uid=$aid'>".$finfo['author_name']."</a></p>
-  <span class='time-right'>".$finfo['post_date']."</span>
+  <p style='color:grey'>".$finfo['post_title']."<p><br>
   <p>".$info['post_content']."</p>
+  <span class='time-right'>".$finfo['post_date']."</span>
   </div>";
 
   $commentsql = "SELECT * FROM comment WHERE post_id=$postid";
@@ -92,6 +93,8 @@
 
 
 </div>
-
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+  Like
+</button>
 </body>
 </html>
