@@ -3,13 +3,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Welcome to Acadmap</title>
-		<!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
   <!--<link rel="stylesheet" href="../css/main.css">-->
     <!--<link rel="stylesheet" href="../css/post.css">-->
 		<link rel="stylesheet" href="../css/introduction.css">
 	</head>
 	<body>
-		<?php include("../navbar.php"); ?>
+		<?php include("navbar.php"); ?>
 		<div class="intro_container">
 				<h1 class="intro_welcome">Welcome to Acadmap</h1>
 				<ul>
