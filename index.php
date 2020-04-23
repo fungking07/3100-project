@@ -13,32 +13,29 @@
 		<div class="intro_container">
 				<h1 class="intro_welcome">Welcome to Acadmap</h1>
 				<ul>
+				<li class="intro_content">Welcome to Acadmap, the service for your future education!</li>
 
-					<li class="intro_content">If this is your first time to Acadmap,
-						you can browse the posts in the forum;
-						or you can register by clicking the "login"
-						button in the navigate bar.</li>
-						<li class="intro_content">After you have registered, you can
-						log in to your account. But if you forget your password, you can reset
-					 	the password through email verifi-cation. After logging in, you may browse
-						the forum posts by categories, leave comments to posts, and even can chat with
-						the person who leaves the post.</li>
-						<li class="intro_content">The highlight of Acadmap is one-to-one tailored
-						professional consul-tation. To start a consultation,
-						you can click "match" button inside your profile.
-						We will find a suitable consultor to help you. Or,
-						you can also go to others' profile and consult him/her
-						directly.</li>
-						<li class="intro_content">Before consultation, you
-						may have a chat with the consultor to see if he
-						/she is suitable. If you agree to consult him/her, you
-					  need to pay some money. After your successful payment,
-						you can start a formal consult. In a formal consultion,
-						you can request more detailed and specific infor-mation.</li>
-						<li class="intro_content">After the consultation ends,
-						if the administor thinks the consultation is complete, your payment
-						will be transferred to the consultor's account. Otherwise the
-						payment will be given back to the your account.</li>
+				<li class="intro_content">To get started, you can register an account by clicking the <strong>Login</strong> button in the navigation bar, or you can browse the posts in the forum directly.</li>
+
+				<li class="intro_content">After registering the new account, you can log into your account.</li>
+
+				<li class="intro_content">If you forget your password, you can reset the password through email verification. </li>
+
+				<li class="intro_content">After logging in, not only you can browse the forum posts, you can also leave comments to posts, giving likes to the post and even chat with the person who leaves the post or comment.</li>
+
+				<li class="intro_content">Being a prestigious member of Acadmap, we offer one-to-one tailored professional consultation. If you want to start a consultation, you can click <strong>Match a consult</strong> button inside your profile.</li>
+
+				<li class="intro_content">After filling in the consultation form, we will find a suitable consultor according to your preferences. Also, you can go to others' profile and ask for a consultation directly.</li>
+
+				<li class="intro_content">Before starting a consultation, you can take a glance at their profile and gain some knowledge of their background information. You can know more about him/her by clicking to the <strong>Consult</strong> button in his/her profile to start a chat. </li>
+
+				<li class="intro_content">If you decide to consult with a consultor, you can send a consultation request and your desired consultation fee to your consultor. If the consultor approves your request, a consultation chatroom will be set up and your fee will be charged by us first. </li>
+
+				<li class="intro_content">Consulter and you can have a deep, formal and private consultation in the consultation chatroom. Before you terminate the consultation chatroom, you can leave the score of your consultor and leave a comment.</li>
+
+				<li class="intro_content">After the consultation, Acapmap will pay the consultation fee that both parties agreed before to the consulter and update his/her consultation rating by the score given from consultee.</li>
+
+				<li class="intro_content">If you have any problem, for example, refunding or getting payment from a stalling consultee, you can contact us using dedicated chatroom with reason. However, you have to risk that our admin decision may not always be what you want.</li>
 				</ul>
 		</div>
 	</body>
