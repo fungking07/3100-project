@@ -43,7 +43,7 @@
   echo "<div class='container1' style='margin-top:50px'>
   <img class='left' src='../assets/avatar.png' alt='Avatar1' height='30' width='30'>
   <p class='name'><a href='othersprofile.php?uid=$aid'>".$finfo['author_name']."</a></p>
-  <p style='color:grey'>".$finfo['post_title']."<p><br>
+  <p style='color:grey; font-size:22px'>".$finfo['post_title']."<p>
   <p>".$info['post_content']."</p>
   <span class='time-right'>".$finfo['post_date']."</span>
   </div>";
@@ -53,6 +53,7 @@
 
   $col = mysqli_num_rows($commentResult);
 
+  
   for ($x = 0; $x < $col; $x++) {
     $Commentinfo = mysqli_fetch_array($commentResult);
     $aname = $Commentinfo['author_name'];
@@ -65,7 +66,8 @@
             </div>";
     }
     else{
-      $sql = "SELECT * FROM user WHERE username='$aname'";
+      $user_id = $_SESSION['user_id'];
+      $sql = "SELECT * FROM user WHERE user_id='$user_id'";
       $Result = mysqli_query($conn,$sql);
       $info = mysqli_fetch_array($Result);
       $aid = $info['user_id'];
@@ -93,8 +95,6 @@
 
 
 </div>
-<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-  Like
-</button>
+
 </body>
 </html>
