@@ -165,7 +165,7 @@
 			</div></div>
 
 			<div class="major2" >CVV:<div class="major1">
-			<?php echo "<input type=\"text\" class=\"inputbox\" name=\"cvv\" value='$cvv' placeholder=\"000\">";?>
+			<?php echo "<input type=\"password\" class=\"inputbox\" name=\"cvv\" value='$cvv' placeholder=\"000\">";?>
 			</div></div>
 
 			<div class="user_status1" >Institute:<div class="user_status2">
@@ -178,7 +178,6 @@
 			<div class="con1">
 				Your Consultation
 			</div>
-
 
 			<?php
 				$sql = "SELECT * FROM consultation_comment WHERE user_id=$uid";

@@ -15,7 +15,6 @@
 
 <?php
   session_start();
-  include("../navbar.php");
   $servername = "localhost";
   $username = "root";
   $password = "";
@@ -45,25 +44,14 @@
   $sql = "SELECT * FROM user WHERE user_id=$oppoid";
   $Result = mysqli_query($conn,$sql);
   $info = mysqli_fetch_array($Result);
-  echo "
-  <nav class='navbar navbar-default navbar-fixed-top'>
-  <div class='container'>
-    <a href='#' class='navbar-brand'>AcadMap</a>
-    <div class='container-fluid'>
-      <ul class='nav navbar-nav'>
-        <li><a href='#'>Forum</a></li>
-        <li><a href='#'>Chat</a></li>
-        <li><a href='#'>Consultation</a></li>
-        <input type='text' placeholder='Search..'>
-        <li><a href='#'>Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class='header2'>
-  <img src='../assets/avatar.png' alt='Avatar'>
-  <p class='phead'>".$info['username']."</p>
-  </div>
-</nav>";
+
+  echo "<nav class='navbar navbar-default navbar-fixed-top'>";
+  include("../navbar.php");
+  
+  echo "</div><div class='header2' style='margin-top:50px'>
+      <img src='../assets/avatar.png' alt='Avatar'>
+      <p class='phead'>".$info['username']."</p></div>
+      </nav>";
 ?>
 
 <div class="content1" style="margin-top:100px">
