@@ -47,7 +47,6 @@
         $postdata = mysqli_fetch_assoc($likeresult);
         $like = $postdata["like_number"];
     }
-
 		if($post_id != false && $like != Null){
 			$sql = "INSERT INTO post_content (post_id,post_content,like_number) VALUES ('$post_id','$post_content','$like')";
       $ok = mysqli_query($connect,$sql);
