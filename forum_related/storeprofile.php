@@ -12,8 +12,14 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
+	$uid = $_SESSION['user_id'];
+	$datasql = "SELECT * FROM user WHERE user_id = $uid";
+	$dataResult = mysqli_query($conn,$datasql);
+	$userdata = mysqli_fetch_array($dataResult);
 
-	$edu_lv = $_GET['edu_lv'];
+	$name = $userdata['username'];
+	$email = $userdata['email_address'];
+
 	if($name == $_GET['uname']){
 		$flag = 0;
 	}
@@ -26,7 +32,7 @@
 	else{
 		$flag = 2;
 	}
-
+	$edu_lv = $_GET['edu_lv'];
 	$prof = $_GET['prof'];
 	$inst = $_GET['inst'];
 	$email = $_GET['email'];
@@ -44,7 +50,7 @@
 	// echo 	$email.'<br>';
 	// echo 	$major.'<br>';
 	if(empty($_GET['uname'])){
-
+		$name = $userdata['username'];
 	}
 	else{
 		$name = $_GET['uname'];
