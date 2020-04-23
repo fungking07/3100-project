@@ -2,13 +2,16 @@
   define('MYSQL_BOTH',MYSQLI_BOTH);
   define('MYSQL_NUM',MYSQLI_NUM);
   define('MYSQL_ASSOC',MYSQLI_ASSOC);
-  include("../ConnectDatabase.php");
-  include("../navbar.php");
+  include("ConnectDatabase.php");
+
   $sql = 'SELECT * FROM forum';
+  $usersql = 'SELECT * FROM user Order BY user_ID';
   //get result accoriding to the query
   $defaultresult = mysqli_query($connect,$sql);
+  $userresult = mysqli_query($connect,$usersql);
 
   $postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
+  $userinfo = mysqli_fetch_assoc($userresult);
  
   if(isset($_POST["find"])){
    //echo "finding...\n"; //cannot go in to the loop
@@ -36,37 +39,37 @@
   //echo $cat_flag."\n";
   //echo $date_flag."\n";
   //echo $likes_flag."\n";
+  
   if($cat_flag){  //need to find cat
-    $cat = $_POST['category'];
     switch ($date_flag) {
       case 0:
-        switch($likes_flag){ 
-          case 3: 
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"';  break;
+        switch($likes_flag){
+          case 3:
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].'';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY like_number DESC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY like_number DEC';  break;
         }
         break;
       case 1:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'"  Order BY Post_date ASC, like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date ASC, like_number DESC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date ASC Order BY like_number DEC';  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC, like_number ASC'; break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum WHERE category = "'.$cat.'" Order BY Post_date DESC, like_number DESC';  break;
+            $sql = 'SELECT * FROM forum WHERE category = '.$_POST["category"].' Order BY Post_date DEC Order BY like_number DEC';  break;
         }
         break;
     }
@@ -81,7 +84,7 @@
           case 4:
             $sql = 'SELECT * FROM forum Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY like_number DESC';  break;
+            $sql = 'SELECT * FROM forum Order BY like_number DEC';  break;
         }
         break;
       case 1:
@@ -89,19 +92,19 @@
           case 3:
             $sql = 'SELECT * FROM forum Order BY Post_date ASC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC, like_number ASC'; break;
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY Post_date ASC, like_number DESC';  break;
+            $sql = 'SELECT * FROM forum Order BY Post_date ASC Order BY like_number DEC';  break;
         }
         break;
       case 2:
         switch($likes_flag){
           case 3:
-            $sql = 'SELECT * FROM forum Order BY Post_date DESC';  break;
+            $sql = 'SELECT * FROM forum Order BY Post_date DEC';  break;
           case 4:
-            $sql = 'SELECT * FROM forum Order BY Post_date DESC, like_number ASC'; break;
+            $sql = 'SELECT * FROM forum Order BY Post_date DEC Order BY like_number ASC'; break;
           case 5:
-            $sql = 'SELECT * FROM forum Order BY Post_date DESC, like_number DESC';  break;
+            $sql = 'SELECT * FROM forum Order BY Post_date DEC Order BY like_number DEC';  break;
         }
         break;
     }
@@ -109,16 +112,19 @@
   //echo $sql."\n";
   $find_result = mysqli_query($connect,$sql);
   $postinfo = mysqli_fetch_all($find_result, MYSQLI_ASSOC);
-
 }
- if(isset($_POST["add"])){  //need a button
-   if($_SESSION("username") == "visitor"){
-     echo "You are not allow to add post, please login first.";
-   }
-   else{
-    header("add_post.php");
-   }
- }
+
+
+// $defaultresult = mysqli_query($connect,$sql);
+  //$postinfo = mysqli_fetch_all($defaultresult, MYSQLI_ASSOC);
+
+  //search is not implemented
+
+  //navigation bar should be implement by html(still not done)
+
+
+  //output forum post prototype
+  //code skeleton of output forum post -->
 ?>
 
 
@@ -137,19 +143,23 @@
 </head>
 
 <body>
-  <!-- add -->
-  <div class="content1" style='margin-left:40px'>
-    <form action="add_post.php" method = "POST">
-			<input class="submit btn btn-success"  type="submit" name="add" value="add"/>
-      </form>
-		</div>
-  <div class="container-fluid">
-        <!--Posts -->
-        <div class="col-sm-9">
-      <?php include("FetchPost.php") ?>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <a href="#" class="navbar-brand">AcadMap</a>
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Forum</a></li>
+          <li><a href="#">Chat</a></li>
+          <li><a href="#">Consultation</a></li>
+          <!-- <input type="text" placeholder="Search.."> -->
+          <li><a href="#">Welcome, User!</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <div class="container-fluid">
     <!-- Filter -->
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <!-- The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp -->
       <button class="collapsible">Filter</button>
         <div class="content">
@@ -182,10 +192,15 @@
           <hr>
           <input class="submit btn btn-success" type="submit" name="find" value="find"/>
         </form>
+        </div>
       </div>
+      
       <!-- Adapatation ends here -->
     </div>
-
+    <!--Posts -->
+    <div class="col-sm-8">
+      <?php include("FetchPost.php") ?>
+    </div>
   </div>
 
   <!--The following code is adapt from https://www.w3schools.com/howto/howto_js_collapsible.asp-->

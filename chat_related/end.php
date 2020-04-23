@@ -67,7 +67,7 @@
     echo "<script>
     alert('The consult chatroom is close and the transaction will be pass to the consulter.');
     </script>";
-    header("Location: chat_messages.php"); //actually shd return to chatroom list la as the consultroom is closed
+    header("Location: {$_SERVER["HTTP_REFERER"]}#bottom"); //actually shd return to chatroom list la as the consultroom is closed
   }
 
 ?>

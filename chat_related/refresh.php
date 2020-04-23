@@ -47,16 +47,11 @@
         </div>";
       }
       else if($info['msg_type']=='accept'){
-        $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
-        $ccidResult = mysqli_query($conn,$ccidsql);
-        $ccidinfo = mysqli_fetch_array($ccidResult);
-        $ccid = $ccidinfo['chatroom_id'];
         echo "<div class=\"container1 darker\">
         <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
         <div class=\"containerdoc\">
-        <p>ACCEPTED, new chatroom is created in the chatlist.<br>
-        Payment is received from the consultee.</p>
-        <button class=\"btnsend\" onclick=\"window.location.href='cschatrooms.php?id=$ccid'\">chatroom</button>
+          <p>ACCEPTED, new chatroom is created in the chatlist.</p>
+          <button class=\"btnsend\">chatroom</button>
         </div>
         <span class=\"time-left\">".$info['message_date_time']."</span>
         </div>";
@@ -95,16 +90,11 @@
         </div>";
       }
       else if($info['msg_type']=='accept'){
-        $ccidsql = "SELECT * FROM chatroom WHERE consultroom=$crmid";
-        $ccidResult = mysqli_query($conn,$ccidsql);
-        $ccidinfo = mysqli_fetch_array($ccidResult);
-        $ccid = $ccidinfo['chatroom_id'];
         echo "<div class=\"container1\">
         <img src=\"../assets/avatar.png\" alt=\"Avatar\">
         <div class=\"containerdoc\">
-        <p>ACCEPTED, new chatroom is created in the chatlist.<br>
-        Payment is received from the consultee.</p>
-        <button class=\"btnsend\" onclick=\"window.location.href='cschatrooms.php?id=$ccid'\">chatroom</button>
+          <p>ACCEPTED, new chatroom is created in the chatlist.</p>
+          <button class=\"btnsend\">chatroom</button>
         </div>
         <span class=\"time-right\">".$info['message_date_time']."</span>
         </div>";

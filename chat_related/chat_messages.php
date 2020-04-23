@@ -12,10 +12,20 @@
 </head>
 <body>
 
-<? 
-session_start();
-include("../navbar.php");
-?>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="header1">
   <p>--- WELCOME ---- TO ---- CHATROOM ---</p>
@@ -24,7 +34,7 @@ include("../navbar.php");
 <div class="content1">
 
 <?php
-  
+  session_start();
   //$_SESSION["user_id"]=1;
   //$_SESSION["username"]='Admin1';
 
@@ -41,7 +51,7 @@ include("../navbar.php");
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT * FROM chatroom WHERE (user_id=$myid OR opponent_id=$myid) ORDER BY last_message_time DESC";
+  $sql = "SELECT * FROM chatroom WHERE user_id=$myid OR opponent_id=$myid ORDER BY last_message_time DESC";
   $Result = mysqli_query($conn,$sql);
 
   $col = mysqli_num_rows($Result);

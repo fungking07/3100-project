@@ -45,14 +45,13 @@
     }
 
 		if($post_id != false && $like != Null){
-			$sql = "INSERT INTO post_content (post_id,post_content,like_number) VALUES ('$post_id','$post_content','$like')";
+			$sql = "INSERT INTO post_content(post_id,post_content,like_number) VALUES ('$post_id','$post_content','$like')";
       $ok = mysqli_query($connect,$sql);
 			if($ok){
 	  		header('location: forum.php');
 			}
       else{
         array_push($errors, "Errors!!Please try again later!!");
-        echo "Error: " . $sql . "<br>" . mysqli_error($connect);
       }
 
   }

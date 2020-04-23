@@ -50,11 +50,6 @@
 		if($password != $conpassword){
 			array_push($errors, "Password not matched");
 		}
-
-		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-			array_push($errors, "Email must be in format 123@example.com");
-		}
-
 		$user_check_query = "SELECT * FROM user WHERE username = '$username' OR email_address = '$email'";
 		$result = mysqli_query($connect, $user_check_query);
 		$user = mysqli_fetch_assoc($result);
@@ -80,8 +75,11 @@
 				$userid = $userdata["user_id"];
 		}
 		if($userid != Null){
-			$sql = "INSERT INTO user_profile(user_id,username,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
+			$sql = "INSERT INTO user_profile(user_id,user_name,education_level,personal_description,major) VALUES ('$userid','$username','$education','$pd','$major')";
 			if(mysqli_query($connect,$sql)){
+				$_SESSION['username'] = $username;
+				$_SESSION['user_id'] = $userid;
+	  		$_SESSION['signed_in'] = True;
 	  		header('location: login.php');
 			}
 			else{
@@ -106,13 +104,7 @@
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" href="../css/register.css">
-		<style>
-		.red_text{
-			margin-left:65%;
-			margin-top:2%;
-			color: red;
-		}
-		</style>
+
 	</head>
 	<body style="height:800px">
 		<div class="register">

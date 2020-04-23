@@ -1,3 +1,36 @@
+<?php
+  //$sql = 'SELECT * FROM post Order BY post_id';
+  //$result = mysqli_query($connect,$sql);
+
+  /*
+  $comment_sql = 'SELECT * FROM comment
+  WHERE post.post_id = comment.post_id
+  ORDER BY comment.comment_id'
+  //end of sql
+  //output $post_comment_sql
+  */
+
+
+  //$Postinfo = mysqli_fetch_all($result,MySQLI_ASSOC);
+  //$Commentinfo = mysqli_fetch_all($commentResult,MySQLI_ASSOC);
+  //mysql_free_resul($result);
+
+  //if(isset($_GET["submit"])){
+    //direct user to another page to write comment
+    //header("comment.php");
+  //}
+  //output the post_title and post_content in the html below(done partially)
+
+
+  //output the post_title and post_content in the html below(not done)
+  /*code skeleton of poutputinf Comment*/
+
+  //php way
+  //<?php forreach($commentinfo as comment){
+  //  if(post_id = current_post_id){
+  //
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,15 +46,35 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">AcadMap</a>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Consultation</a></li>
+        <input type="text" placeholder="Search..">
+        <li><a href="#">Welcome, User!</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="content1">
+
+<div class="container1">
+  <img class="left" src="../assets/avatar.png" alt="Avatar1" height="30" width="30">
+  <p class="name">Avatar 1</p>
+  <span class="time-right">time1</span>
+  <p>ar idk how to get the forum id... from the url?</p>
+</div>
 
 <?php
   session_start();
-  include("../navbar.php");
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $postid=$_GET['post_id'];
 
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
@@ -31,22 +84,7 @@
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT * FROM post_content WHERE post_id=$postid";
-  $Result = mysqli_query($conn,$sql);
-  $info = mysqli_fetch_array($Result);
-
-  $fsql = "SELECT * FROM forum WHERE post_id=$postid";
-  $fResult = mysqli_query($conn,$fsql);
-  $finfo = mysqli_fetch_array($fResult);
-  $aid = $finfo['author_id'];
-  echo "<div class='container1' style='margin-top:50px'>
-  <img class='left' src='../assets/avatar.png' alt='Avatar1' height='30' width='30'>
-  <p class='name'><a href='othersprofile.php?uid=$aid'>".$finfo['author_name']."</a></p>
-  <span class='time-right'>".$finfo['post_date']."</span>
-  <p>".$info['post_content']."</p>
-  </div>";
-
-  $commentsql = "SELECT * FROM comment WHERE post_id=$postid";
+  $commentsql = "SELECT * FROM comment";
   $commentResult = mysqli_query($conn,$commentsql);
 
   $col = mysqli_num_rows($commentResult);
@@ -75,20 +113,14 @@
             </div>";
     }
   }
+
 ?>
 
-<?php
-  if(isset($_SESSION["signed_in"])){
-    if($_SESSION["signed_in"]==true){
-      echo '<form action="process.php" class="form-container" method="get">
-      Comment:<br>
-        <textarea type="text" placeholder="Type comment.." name="cmt"></textarea>
-        <input class="btn2" type="submit" onclick="history.go(0);">
-      </form>';
-    }
-  }
-?>
-
+<form action="process.php" class="form-container" method="get">
+Comment:<br>
+  <textarea type="text" placeholder="Type comment.." name="cmt"></textarea>
+  <input class="btn2" type="submit" onclick="history.go(0);">
+</form>
 
 </div>
 
