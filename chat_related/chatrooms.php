@@ -174,20 +174,19 @@
       }
     ?>
   </div>
-<div class="chat" id="myForm">
-    <!-- UI for this part thz!!! @@@@@ -->
-  <form action="consult.php" class="form-container"> 
-        <p>Consult Fee:</p>
-        <input name="fee" type="text" onclick="" value='200' placeholder='money'>
-        <input type="submit" value='Consult'>
-  </form>
-
-  <form action="chatp.php" class="form-container" id='bottom'>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-    <input class="btn" type="submit" onclick="document.getElementById('msg').value = '';"> 
-  </form>
-
-</div>
+  <div class = "col-md-2">
+    <form action="consult.php" class="form-container"> 
+          <p>Consult Fee:</p>
+          <input name="fee" type="text" onclick="" value='200' placeholder='money'>
+          <input type="submit" value='Consult'>
+    </form>
+  </div>
+  <div class = "col-md-10">
+    <form action="chatp.php" class="form-container" id='bottom'>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+      <input class="btn" type="submit" onclick="document.getElementById('msg').value = '';"> 
+    </form>
+  </div>
 </div>
 
 <script>
