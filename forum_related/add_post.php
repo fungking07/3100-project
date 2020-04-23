@@ -10,10 +10,13 @@
     $title = $_POST["title"];
     $post_content= $_POST["post_content"];
     $category = $_POST["category"];
-    $name =   $_SESSION["username"] ;
-    $id =  $_SESSION["user_id"];
-
-
+    if(!(isset($_SESSION["username"]))  and !(isset($_SESSION["user_id"]))){
+      array_push($errors,"You have not login");
+    }
+    else{
+      $name =   $_SESSION["username"] ;
+      $id =  $_SESSION["user_id"];
+    }
     //prevent sql inject
     $title = stripslashes($title);
 	  $title = mysqli_real_escape_string($connect,$title);
@@ -38,6 +41,7 @@
     }
     $likesql = "SELECT  like_number FROM forum
     WHERE post_id = '$post_id'";
+
     $likeresult = mysqli_query($connect,$likesql);
     if($likeresult != False){
         $postdata = mysqli_fetch_assoc($likeresult);
