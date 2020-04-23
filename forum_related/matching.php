@@ -1,27 +1,28 @@
 <?php
     define('MYSQL_ASSOC',MYSQLI_ASSOC);
     include("../ConnectDatabase.php");
-    //function match(){
         //now all the sql not working
-        $usersql = 'SELECT user_name, eductional_level, faculty, institute from user_profile WHERE user_name = "'.$_SESSION["username"].'"';
-        $user_result = mysql_query($connect,$usersql);
-        $userinfo = mysql_fetch_array($find_result, MYSQLI_ASSOC);
-        echo $userinfo["user_name"];
-        $allsql = 'SELECT user_id, user_name, eductional_level, faculty, institute, consult_rating from user_profile';
-        $all_result = mysql_query($connect,$usersql);
-        $allinfo = mysql_fetch_array($find_result, MYSQLI_ASSOC);
-        echo "matching";
+        $username = $_SESSION["username"];
+        $usersql = "SELECT username, education_level, major, institute from user_profile WHERE username = '".$username."'";
+        //echo $usersql."\n";
+        $user_result = mysqli_query($connect,$usersql);
+        $userinfo = mysqli_fetch_array($user_result);
+        //echo $userinfo["username"];
+        $allsql = "SELECT user_id, username, education_level, major, institute, consult_rating from user_profile";
+        //echo $allsql;
+        $all_result = mysqli_query($connect,$allsql);
         $score_arr = array();
         $name_array = array();
         $userid_array = array();
-        $userinfo = ("username" => "henry", "eductional_level" => "Undergrad", "faculty" => "Engineering", "institute" => "CUHK");
-        foreach($userinfo as $key => $oneuser){
+        $col = mysqli_num_rows($all_result);
+        for($x = 0; $x < $col; $x++){
+            $oneuser = mysqli_fetch_array($all_result);
             $score = 0;
             if($oneuser["username"] != $userinfo["username"]){
-                if($oneuser["eductional_level"] == $userinfo["educational_level"]){
+                if($oneuser["education_level"] == $userinfo["education_level"]){
                     $score += 1;
                 }
-                if($oneuser["faculty"] == $userinfo["faculty"]){
+                if($oneuser["major"] == $userinfo["major"]){
                     $score += 1;
                 }
                 if($oneuser["institute"] == $userinfo["institute"]){
@@ -31,13 +32,13 @@
             }
             array_push($name_array, $oneuser["username"]);
             array_push($score_arr, $score);
-            array_push($userid_array, $user_id);
+            array_push($userid_array, $oneuser["user_id"]);
         }
         $key = array_keys($score_arr, max($score_arr))[0];
         echo $name_array[$key];
         $uid = $userid_array[$key];
-        echo "<a href='othersprofile.php?uid=$uid'></a>"
-        //if have time, then do pop to archeive top 3
-        //}
-    //}
+        echo $uid;
+        $sql = "SELECT username, education_level, major, institute from user_profile WHERE user_id = $uid";
+        //echo $usersql."\n";
+        header("Location: othersprofile.php?uid=$uid");
 ?>
