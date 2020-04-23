@@ -32,16 +32,18 @@
         </div>";
       }
       else if($info['msg_type']=='request'){
+        $money = $info['message'];
         echo "<div class=\"container1 darker\">
         <img src=\"../assets/avatar.png\" alt=\"Avatar\" class=\"right\">
         <div class=\"containerdoc\">
-          <p>Consulation Request</p>
-          <form action=\"accept.php\">
-              <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='accept'>
-          </form>
-          <form action=\"reject.php\">
-              <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='decline'>
-          </form>
+        <p>Consulation Request</p>
+        <input name='money' type='text' value='$$money' disabled style='margin-bottom:10px'>
+        <form action=\"accept.php\">
+            <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='accept'>
+        </form>
+        <form action=\"reject.php\">
+            <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='decline'>
+        </form>
         </div>
         <span class=\"time-left\">".$info['message_date_time']."</span>
         </div>";
@@ -80,16 +82,18 @@
         </div>";
       }
       else if($info['msg_type']=='request'){
+        $money = $info['message'];
         echo "<div class=\"container1\">
         <img src=\"../assets/avatar.png\" alt=\"Avatar\">
         <div class=\"containerdoc\">
-          <p>Consulation Request</p>
-          <form action=\"accept.php\">
-              <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='accept'>
-          </form>
-          <form action=\"reject.php\">
-              <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='decline'>
-          </form>
+        <p>Consulation Request</p>
+        <input name='money' type='text' value='$$money' disabled style='margin-bottom:10px'>
+        <form action=\"accept.php\">
+            <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='accept'>
+        </form>
+        <form action=\"reject.php\">
+            <input class=\"btnsend\" type=\"submit\" onclick=\"history.go(0);\" value='decline'>
+        </form>
         </div>
         <span class=\"time-right\">".$info['message_date_time']."</span>
         </div>";

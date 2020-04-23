@@ -3,6 +3,9 @@
   $servername = "localhost";
   $username = "root";
   $password = "";
+  $score = $_GET['score'];
+  $oppoid = $_SESSION['oppoid'];
+  $comment = $_GET['comment'];
 
   // Create connection
   $conn = new mysqli($servername, $username, $password, 'AcadMap');
@@ -12,7 +15,6 @@
       die("Connection failed: " . $conn->connect_error);
   }
   $crmid = $_SESSION["crmid"]; 
-
 
   //u needa check whether you are the one who start the consultation
   $sql = "SELECT * FROM chatroom WHERE chatroom_id=$crmid";
@@ -31,7 +33,7 @@
     $Result = mysqli_query($conn,$sql);
     $info = mysqli_fetch_array($Result);
     $pcrmid = $info['consultroom'];
-    echo  '$pcrmid  $crmid \n';
+    echo  '$pcrmid $crmid \n';
 
     //update the existing chatroom['hv_consult']=0
     $sql = "UPDATE chatroom SET hv_consult='0' WHERE chatroom_id=$pcrmid";
@@ -64,10 +66,37 @@
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+    $comment_date = date("Y-m-d H:i:s");
+
+    //insert consultation_comment
+    $uid = $_SESSION['user_id'];
+    $sql = "INSERT INTO consultation_comment (user_id, author_id, score, comments, comment_date) VALUES
+    ('$oppoid','$uid','$score','$comment','$comment_date')";
+    if (mysqli_multi_query($conn, $sql)) {
+      echo "insert successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    //GET AVG(SCORE) from consultation_comment
+    $sql = "SELECT AVG(score) AS Ascore FROM consultation_comment WHERE user_id=$oppoid";
+    $Result = mysqli_query($conn,$sql);
+    $info = mysqli_fetch_array($Result);
+    $score = $info['Ascore'];
+    echo $score;
+
+    //update consult_rating
+    $sql = "UPDATE user_profile SET consult_rating='$score' WHERE user_id=$oppoid";
+    if (mysqli_multi_query($conn, $sql)) {
+      echo "update successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
     echo "<script>
     alert('The consult chatroom is close and the transaction will be pass to the consulter.');
     </script>";
-    header("Location: chat_messages.php"); //actually shd return to chatroom list la as the consultroom is closed
+    header("Location: chat_messages.php"); 
   }
 
 ?>
