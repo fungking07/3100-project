@@ -35,7 +35,7 @@
 
     if(count($errors) == 0){
           $uid = $userdata['user_id'];
-          $link = "http://localhost/AcadMap/login_related/reset.php?uid=$uid";
+          $link = "http://localhost/login_related/reset.php?uid=$uid";
 
           $user = $userdata["username"];
           //email

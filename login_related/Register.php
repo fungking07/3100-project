@@ -12,7 +12,7 @@
 		$lastname = $_POST["last"];
 		$username = $_POST["username"];
 		$email = $_POST["email"];
-		$major = $_POST["major"];
+		$major = $_POST["Faculty"];
 		$education = $_POST["education"];
 		$password = $_POST["password"];
 		$conpassword = $_POST["confirmpassword"];
