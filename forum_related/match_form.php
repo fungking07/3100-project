@@ -8,8 +8,6 @@
 <script src="../js/bootstrap.min.js"></script>
 <?php
   include("ConnectDatabase.php");
-  include("../navbar.php");
-  session_start();
   $errors = array();
 
   function add_post(){
