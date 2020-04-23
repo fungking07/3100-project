@@ -83,7 +83,7 @@
 				           <option style="display: none;" value ="">Category</option>
 				           <option value ="ulife">ulife</option>
 				           <option value ="study">study</option>
-				           <option value ="Education">Education</option>
+				           <option value ="career">Future Career</option>
 			       </select>
 		     </div>
 		<div class="per-des">
