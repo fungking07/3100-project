@@ -24,7 +24,9 @@
 			$servername = "localhost";
 			$username = "root";
 			$password = "";
-
+      function alert($msg) {
+          echo "<script type='text/javascript'>alert('$msg');</script>";
+      }
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, 'AcadMap');
 
@@ -40,7 +42,7 @@
 			$usersql = "SELECT * FROM user WHERE user_id=$uid";
 			$userResult = mysqli_query($conn,$usersql);
 			$userinfo = mysqli_fetch_array($userResult);
-			
+
 			$name = $Commentinfo['username'];
 			$edu_lv = $Commentinfo['education_level'];
 			$email = $userinfo['email_address'];
@@ -54,7 +56,7 @@
 			$cvv = $Commentinfo['cvv'];
 			//plz make the name unique!! thx so much!!!! @@@@@@@@
 			echo "<div class='top1'><div class='circle1'></div>
-				<div class='username1'><input type='text' name='uname' id='name' value='$name' placeholder='username'></div> 
+				<div class='username1'><input type='text' name='uname' id='name' value='$name' placeholder='username'></div>
 				</div>";
 
 		?>
@@ -134,7 +136,7 @@
 			<div class="email2" >Email-Address: <div class="email1">
 				<?php echo "<input type=\"text\" value='$email' placeholder=\"Your email\" name='email' class=\"inputbox\">";?>
 			</div></div>
-			
+
 			<div class="major2" >Major:<div class="major1">
 				<select name = "major" class='inputbox'>
 				<?php echo "<option style=\"display: none;\" >$major</option>";?>
@@ -175,7 +177,7 @@
 
 			<div class="des1">Description</div>
 			<?php echo "<textarea rows=\"3\" cols=\"10\" name=\"prof\" placeholder=\"Type your description, e.g. majors, habits...\" class=\"description1\" id='prof'>".$prof."</textarea>";?>
-			
+
 			<div class="con1">
 				Your Consultation
 			</div>
@@ -277,7 +279,7 @@
 			?>
 
 				<input class="consult1" type="submit" value="Confirm">
-			
+
 			<div class="space1"></div>
 		</div>
 		</form>

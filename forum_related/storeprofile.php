@@ -51,6 +51,8 @@
 	// echo 	$major.'<br>';
 	if(empty($_GET['uname'])){
 		$name = $userdata['username'];
+		$msg = "Username can't be empty";
+		alert($msg);
 	}
 	else{
 		$name = $_GET['uname'];
@@ -62,7 +64,8 @@
 				$user = mysqli_fetch_assoc($result);
 				if ($user){ // if user exists
 				if ($user['username'] == $name){
-					echo "Username already exists";
+					$msg = "Username already exists";
+					alert($msg);
 				}
 				}
 			}
@@ -74,7 +77,8 @@
 					$user = mysqli_fetch_assoc($result);
 					if ($user){ // if user exists
 					if ($user['email_address'] == $email){
-						echo "email already exists";
+						$msg = "email already exists";
+						alert($msg);
 					}
 					}
 				}
