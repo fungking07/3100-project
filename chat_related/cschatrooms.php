@@ -12,6 +12,21 @@
 <script src="../js/chatrooms.js"></script>
 </head>
 <body>
+<style>
+.btncs2 {
+  background-color: #4CAF50;
+  color: white;
+  width: 100px;
+  border: none;
+  border-radius: 5%;
+  font-size: 16px;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+.btncs2:hover {
+  opacity: 1;
+}
+</style>
 
 <?php
   session_start();
@@ -84,14 +99,27 @@
 ?>
 </div>
 <div class="chat" id="myForm">
-  <form action="end.php" class="form-container">
-      <input class="btncs" style="margin-top:25px" type="submit" onclick="history.go(0);" value='End'>
-  </form>
-
-  <form action="chatp.php" class="form-container" id='bottom'>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
-    <input class="btncs" type="submit" onclick="history.go(0);"> 
-  </form>
+  <div class = "col-md-2">
+    <form action="end.php" class="form-container">
+      <select style='width:100px' name = "score" class='inputbox'>
+        <option style="display: none;" value =""></option>
+        <option value ="0">0</option>
+        <option value ="1">1</option>
+        <option value ="2">2</option>
+        <option value ="3">3</option>
+        <option value ="4">4</option>
+        <option value ="5">5</option>
+      </select>
+        <input style='font-size:16px; margin-top:5px;' type='text' size="10" name="comment" placeholder='comment'> 
+        <input style='font-size:16px;' type="submit" class='btncs2' onclick="history.go(0);" value='End'>
+    </form>
+  </div>
+  <div class="col-md-10">
+    <form action="chatp.php" class="form-container" id='bottom'>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+      <input class="btncs" type="submit" onclick="history.go(0);"> 
+    </form>
+  </div>
 </div>
 
 </div>

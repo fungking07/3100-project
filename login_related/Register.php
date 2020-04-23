@@ -119,9 +119,6 @@
 			Start Your Bright Future
 		</div>
 		<form name="form" action="register.php" method="POST">
-		<div class="picture">
-		</div>
-		<button class="upload" type="button">Upload your portrait</button> <br>
 		<input type="text" class="first" name="first" placeholder="First Name" />
 		<input type="text" class="last" name="last" placeholder="Last Name" />
 		<input type="text" class="user" name="username" placeholder="Username" />
@@ -129,8 +126,8 @@
 		<input type="password" class="email" name="confirmpassword" placeholder="confirm password"/>
 		<input type="text" class="email" name="email" placeholder="Email Address" />
 		<div class="major">
-			<select name = "major" >
-				<option style="display: none;" value ="">major</option>
+			<select name = "Faculty" >
+				<option style="display: none;" value ="">Faculty</option>
 				<option value ="Arts">Arts</option>
 				<option value ="Business">Business</option>
 				<option value ="Education">Education</option>

@@ -1,6 +1,6 @@
 <?php
   //use helper function to connect to the database
-  include("../ConnectDatabase.php");  
+  include("../ConnectDatabase.php");
   include("../navbar.php");
   $errors = array();
   function login_check(){
@@ -77,20 +77,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 </head>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <a href="#" class="navbar-brand">AcadMap</a>
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Chat</a></li>
-        <li><a href="#">Consultation</a></li>
-        <input type="text" placeholder="Search..">
-        <li><a href="#">Welcome, User!</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <body>
 <div class="content">
   <div class="split left">
