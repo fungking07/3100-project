@@ -104,7 +104,7 @@
         break;
     }
   }
-  echo $sql."\n";
+  //echo $sql."\n";
   $result = mysqli_query($connect,$sql);
   $postinfo = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
