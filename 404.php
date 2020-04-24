@@ -24,7 +24,9 @@
     <div class='text-center'>
     <h1>Oops, You've been to a mystery area.</h1><hr />
     </div>
-    <h3><strong><?php echo $_SERVER['REQUEST_URI']; ?></strong> does not exist, sorry. Try the functions listed above first.</h3><br>
+    <h3>The page that you requested does not exist, sorry. Try the functions listed above first.<br>
+        Unless you randomly search for our 404 page, then you have found a right place.</h3>
+    
   <?php
   if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])){
     $refuri = parse_url($_SERVER['HTTP_REFERER']); // use the parse_url() function to create an array containing information about the domain
@@ -35,9 +37,10 @@
   }
   else{
   //the visitor typed gibberish into the address bar
-  echo "<h3>If you got here from wherever you are, step away from us and listen to Michael's jokes first. And if you insist to do that, stop typing. You're filling my error logs with unnecessary junk.</h3>";
+  echo "<h3>If you got here from wherever you are, step away from us and listen to Michael's jokes first. <br>And if you insist to do that, stop typing. You're filling my error logs with unnecessary junk.</h3>";
   }
-  ?><br />
+  ?>
+  <h3>Here's a random priase to Michael. Enjoy!</h3>
   <img src="../assets/404ee.jpg" />
   <p>
     Courtesy of our classmates <a href="https://piazza.com/class/k49r1y3uxe8u2?cid=176">here</a>.
