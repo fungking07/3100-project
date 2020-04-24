@@ -47,7 +47,7 @@
   //find the name the person are chatting w/ u
   $sql = "SELECT * FROM chatroom WHERE chatroom_id=$crmid";
   $Result = mysqli_query($conn,$sql);
-  if($Result!=false){
+  if(mysqli_num_rows($Result) == 0) {
     header("Location: ../404.php");
   }
   $info = mysqli_fetch_array($Result);
