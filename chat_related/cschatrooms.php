@@ -45,8 +45,11 @@
   $_SESSION["crmid"] = $crmid;
 
   //find the name the person are chatting w/ u
-  $sql = "SELECT * FROM chatroom,user WHERE chatroom_id=$crmid";
+  $sql = "SELECT * FROM chatroom WHERE chatroom_id=$crmid";
   $Result = mysqli_query($conn,$sql);
+  if($Result!=false){
+    header("Location: ../404.php");
+  }
   $info = mysqli_fetch_array($Result);
   if($_SESSION["user_id"] == $info['user_id']){
     $oppoid = $info['opponent_id'];
@@ -65,7 +68,7 @@
   
   echo "</div><div class='header2' style='margin-top:50px'>
       <img src='../assets/avatar.png' alt='Avatar'>
-      <p class='phead'>".$info['username']."</p></div>
+      <p class='phead'>Consultation Chatroom: ".$info['username']."</p></div>
       </nav>";
 ?>
 
