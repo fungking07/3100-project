@@ -24,7 +24,7 @@
     <div class='text-center'>
     <h1>You shall not PASS!</h1><hr />
     </div>
-    <h3> Y U DO DIS?!?!?!?!?!</h3><br>
+    <img src="/assets/yudodis.png">
     <h3> Don't try to open Pandora's box, otherwise, you will be force to <a href="login_related/login.php">register</a> and paid for our services.</h3>
   </div>
 </div>

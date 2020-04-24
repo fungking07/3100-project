@@ -1,0 +1,26 @@
+html{
+  background-color: skyblue;
+}
+.intro_container{
+  width: 60%;
+  height:650px;
+  background: #bfa;
+  margin-left: 20%;
+  margin-top:70px;
+  margin-bottom: 70px;
+  padding-top: 20px;
+  border-radius: 10px;
+  overflow: auto;
+}
+.intro_welcome{
+  width: 80%;
+  
+  margin:0 auto;
+  color:purple;
+}
+.intro_content{
+  margin-left:10%;
+  width:84%;
+  font-size: 20px;
+  margin-bottom:10px;
+}

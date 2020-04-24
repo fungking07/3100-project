@@ -18,6 +18,11 @@
 		
 		<?php
 			session_start();
+			if(isset($_SESSION['signed_in']) == false){
+				echo "<script> 
+				window.location.href='/403.php';
+				</script>";
+			}
 			include("../navbar.php");
 			$uid = $_SESSION['user_id'];
 			$servername = "localhost";

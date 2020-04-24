@@ -32,7 +32,13 @@
 
 
 <?php
+
   session_start();
+  if(isset($_SESSION['signed_in']) == false){
+    echo "<script> 
+    window.location.href='/403.php';
+    </script>";
+  }
   $servername = "localhost";
   $username = "root";
   $password = "";

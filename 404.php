@@ -25,8 +25,8 @@
     <h1>Oops, You've been to a mystery area.</h1><hr />
     </div>
     <h3>The page that you requested does not exist, sorry. Try the functions listed above first.<br>
-        Unless you randomly search for our 404 page, then you have found a right place.</h3>
-    
+        Unless you randomly search for our 404 page, then you have found the right place.</h3>
+
   <?php
   if(isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])){
     $refuri = parse_url($_SERVER['HTTP_REFERER']); // use the parse_url() function to create an array containing information about the domain
@@ -41,7 +41,7 @@
   }
   ?>
   <h3>Here's a random priase to Michael. Enjoy!</h3>
-  <img src="../assets/404ee.jpg" />
+  <img src="/assets/404ee.jpg" />
   <p>
     Courtesy of our classmates <a href="https://piazza.com/class/k49r1y3uxe8u2?cid=176">here</a>.
   </p>

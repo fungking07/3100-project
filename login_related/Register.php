@@ -1,6 +1,13 @@
 <?php
+
 	include("ConnectDatabase.php");
 	$errors = array();
+	if(isset($_SESSION['signed_in']) == true){
+    echo "<script> 
+    alert('You have been logged in. Redirecting you to our forum.');
+    window.location.href='../forum_related/forum.php';
+    </script>";
+  }
 	function register(){
 		//variable declaration
 		global $connect;

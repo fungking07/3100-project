@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a href="index.php" class="navbar-brand">AcadMap</a>
+      <a href="/index.php" class="navbar-brand">AcadMap</a>
       <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
           <?php

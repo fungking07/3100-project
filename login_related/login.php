@@ -2,6 +2,13 @@
   //use helper function to connect to the database
   include("../ConnectDatabase.php");
   include("../navbar.php");
+
+  if(isset($_SESSION['signed_in']) == true){
+    echo "<script> 
+    alert('You have been logged in. Redirecting you to our forum.');
+    window.location.href='../forum_related/forum.php';
+    </script>";
+  }
   $errors = array();
   function login_check(){
     global $connect;

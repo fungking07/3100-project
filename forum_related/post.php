@@ -88,6 +88,7 @@
       Comment:<br>
         <textarea type="text" placeholder="Type comment.." name="cmt"></textarea>
         <input class="btn2" type="submit" onclick="history.go(0);">
+        <input class="btn btn-primary" type="button" value="Like" onclick="location.href = '."'like.php'".'">
       </form>';
     }
   }

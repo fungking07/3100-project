@@ -2,6 +2,11 @@
     define('MYSQL_ASSOC',MYSQLI_ASSOC);
     include("../ConnectDatabase.php");
     include("../navbar.php");
+    if(isset($_SESSION['signed_in']) == false){
+      echo "<script> 
+      window.location.href='/403.php';
+      </script>";
+    }
     $uid = $_SESSION["user_id"];
     $sql = "SELECT * FROM forum WHERE author_id= $uid";
     $result = mysqli_query($connect, $sql);

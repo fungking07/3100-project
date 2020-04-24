@@ -10,6 +10,11 @@
   include("ConnectDatabase.php");
   include("../navbar.php");
   session_start();
+  if(isset($_SESSION['signed_in']) == false){
+    echo "<script> 
+    window.location.href='/403.php';
+    </script>";
+  }
   $errors = array();
 
   function add_post(){
