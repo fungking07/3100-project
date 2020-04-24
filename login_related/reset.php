@@ -61,8 +61,8 @@
 			Reset
 		</div>
     <form action = "reset.php?uid=<?php echo $uid;?>" method="Post">
-		    <input type="text" name="newpw" id="new" placeholder="New Password" />
-		    <input type="text" name="confirmpw" id="confirm" placeholder="Confirm Password" />
+		    <input type="password" name="newpw" id="new" placeholder="New Password" />
+		    <input type="password" name="confirmpw" id="confirm" placeholder="Confirm Password" />
         <div class="red_text"><?php include('error.php'); ?></div>
 		    <input class="submit" name = "submit" type="submit" value="submit"/>
     </form>
