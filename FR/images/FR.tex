@@ -1,0 +1,93 @@
+\documentclass[12pt,titlepage]{article}
+%\usepackage{xeCJK}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+%\afterindenttrue
+\geometry{margin=2.5cm}
+\setlength{\parindent}{1em}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\usepackage{ragged2e} 
+\pagestyle{fancy}
+\usepackage{graphicx}
+\graphicspath{ {./images/FR/} }
+\setlength{\headheight}{15pt}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+\newcommand{\ra}{$\rightarrow$ }
+\newcommand{\para}{\hspace{\parindent}}
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+
+
+\addcontentsline{toc}{paragraph}{Matching to Consultation Service}
+
+\fancyhead[L]{CSCI3100: Design Specification}
+\fancyhead[R]{Group 17}
+
+\begin{document}
+\setcounter{tocdepth}{4}\textbf{}
+\thispagestyle{empty}
+   \begin{center}
+       \vspace*{1cm}
+       \textbf{\Huge{AcadMap Web Application}}\\
+       \vspace{0.5cm}
+        \large{Version 1.0}\\
+       \vspace{1.5cm}
+       \textbf{\LARGE{Group 17}}
+       \vspace{0.5cm}\\
+       Member:\vspace{0.25cm}\\\phantom{Menber}
+       \begin{tabular}{rl}
+        1155110208&Chung Tsz Ting\\
+        1155108968&Lam King Fung\\
+        1155109311&Lee Pak Hei\\
+        1155124500&Su Hong Jin\\
+        1155109296&Tso Sze Long Angus\\
+        \end{tabular}
+       \vfill
+       Final report of \textit{Acadmap}
+       \vspace{0.8cm}\\
+       CSCI3100 : Software Engineering\\
+       Department of Computer Science and Engineering\\
+       The Chinese University of Hong Kong\\
+       Print date: 15/03/2020
+            
+   \end{center}
+\newpage
+\tableofcontents
+\newpage
+\end{document}
