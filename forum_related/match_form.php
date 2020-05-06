@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="../css/add_post.css">
 
 	</head>
-	<body style="height:2000px">
+	<body >
 		<div class="share">
 			Share your experience
 		</div>
