@@ -1,13 +1,6 @@
 <?php
   //use helper function to connect to the database
   include("ConnectDatabase.php");
-
-  if(isset($_SESSION['signed_in']) == true){
-    echo "<script> 
-    alert('You have been logged in. Redirecting you to our forum.');
-    window.location.href='../forum_related/forum.php';
-    </script>";
-  }
   $errors = array();
   function verify(){
     global $connect;
@@ -86,13 +79,14 @@
 	</head>
 	<body>
 		<div class="Reset-Password">
-			Forget Password?
-        </div>
-        <form action="verification.php" method="post">
-            <input type="text" name="email" id="email" placeholder="Email" />
-            <input type="submit" name="send" id="send" type="button" ></button>
-            <a href="login.php" class="link">Back to login page</a>
-         </form>
-         <h4 class="red"><?php include("error.php")?></h>
+			Reset Password
+    </div>
+    <form action="verification.php" method="post">
+        <input type="text" name="email" id="email" placeholder="Email" />
+        <br><br>
+        <input type="submit" name="send" id="send" type="button"/><br><br>
+        <a href="login.php" class="send">Back to login page</a>
+     </form>
+     <h4 class="red"><?php include("error.php")?></h>
 	</body>
 </html>

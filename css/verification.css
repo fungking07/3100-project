@@ -10,55 +10,32 @@ html{
   margin-top:150px;
   margin-left:37%;
   font-size: 50px;
-  font-family: 'Cooper Black';
-  color:#8b7765;
+  color:#000000;
 }
 #email{
   margin-left:25%;
-  margin-top:80px;
+  margin-top:30px;
   width: 50%;
   height:35px;
-  border-style: solid;
   font-size: 20px;
-  border-radius: 20px;
-  border-color: gray;
+  border-radius: 5px;
   padding-left: 1%;
-  outline: none;
-}
-#code{
-  display:inline-block;
-  margin-left:25%;
-  margin-top:50px;
-  width: 35%;
-  height:35px;
-  border-style: solid;
-  font-size: 20px;
-  border-radius: 20px;
-  border-color: gray;
-  padding-left: 1%;
-  outline: none;
 }
 #send{
-  display:inline-block;
-  margin-left:2%;
+  margin-left:45%;
   width: 13%;
   height:42px;
-  border-radius: 20px;
-  padding-left: 1%;
-  border-style: solid;
+  border-radius: 5px;
   font-size: 16px;
-  border-color: gray;
-  outline: none;
   background-color: white;
 }
-.submit{
-  margin-left:47%;
-  margin-top:65px;
-  width: 10%;
-  height:35px;
-  border-radius: 20px;
-  text-align: center;
-  border-style: none;
-  background-color: #4876ff;
+.send{
+  margin-top: 20px;
+  margin-left:45%;
+  padding:10px;
+  width: 13%;
+  height:42px;
+  border-radius: 5px;
   font-size: 16px;
+  background-color: white;
 }
