@@ -15,7 +15,7 @@
 <?php
 session_start();
 if(isset($_SESSION['signed_in']) == false){
-  echo "<script> 
+  echo "<script>
   window.location.href='/403.php';
   </script>";
 }
@@ -23,13 +23,13 @@ include("../navbar.php");
 ?>
 
 <div class="header1">
-  <p>--- WELCOME ---- TO ---- CHATROOM ---</p>
+  <p>---- CHATROOM ---</p>
 </div>
 
 <div class="content1">
 
 <?php
-  
+
   //$_SESSION["user_id"]=1;
   //$_SESSION["username"]='Admin1';
 
@@ -84,7 +84,7 @@ include("../navbar.php");
       }
     }
   }
-  
+
 ?>
 
 </div>

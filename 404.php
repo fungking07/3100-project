@@ -22,9 +22,10 @@
 <div class = "continer container-fluid">
   <div class = "col-lg-12">
     <div class='text-center'>
+      <font size="72" color="#aa0000">404</font><hr>
     <h1>Oops, You've been to a mystery area.</h1><hr />
     </div>
-    <h3>The page that you requested does not exist, sorry. Try the functions listed above first.<br>
+    <h3>The page that you requested does not exist, sorry. Try the functions listed above first.
         Unless you randomly search for our 404 page, then you have found the right place.</h3>
 
   <?php
@@ -40,11 +41,14 @@
   echo "<h3>If you got here from wherever you are, step away from us and listen to Michael's jokes first. <br>And if you insist to do that, stop typing. You're filling my error logs with unnecessary junk.</h3>";
   }
   ?>
+  <center>
   <h3>Here's a random priase to Michael. Enjoy!</h3>
-  <img src="/assets/404ee.jpg" />
-  <p>
-    Courtesy of our classmates <a href="https://piazza.com/class/k49r1y3uxe8u2?cid=176">here</a>.
-  </p>
+    <img src="/assets/404ee.jpg" />
+    <p>
+      Courtesy of our classmates <a href="https://piazza.com/class/k49r1y3uxe8u2?cid=176">here</a>.
+    </p>
+  </center>
+
   </div>
 </div>
 
