@@ -57,17 +57,9 @@
   for ($x = 0; $x < $col; $x++) {
     $Commentinfo = mysqli_fetch_array($commentResult);
     $aname = $Commentinfo['author_name'];
-    if($aname=='visitor'){
-      echo "<div class=\"container1 reply\">
-            <img class=\"left\" src=\"../assets/avatar.png\" alt=\"Avatar1\" height=\"30\" width=\"30\">
-            <p class=\"name\">".$Commentinfo['author_name']."</p>
-            <p>".$Commentinfo['comments_content']."</p>
-            <span class=\"time-right\">".$Commentinfo['comment_date_time']."</span>
-            </div>";
-    }
-    else{
-      $user_id = $_SESSION['user_id'];
-      $sql = "SELECT * FROM user WHERE user_id='$user_id'";
+
+      $username = $Commentinfo['author_name'];
+      $sql = "SELECT * FROM user WHERE username='$username'";
       $Result = mysqli_query($conn,$sql);
       $info = mysqli_fetch_array($Result);
       $aid = $info['user_id'];
@@ -77,7 +69,7 @@
             <p>".$Commentinfo['comments_content']."</p>
             <span class=\"time-right\">".$Commentinfo['comment_date_time']."</span>
             </div>";
-    }
+    
   }
 ?>
 
