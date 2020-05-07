@@ -1,3 +1,12 @@
+<!-- 
+PROGRAM end.php - update consulter profile for the comment of consultation
+                - remove the consultation request and accepted message and consultroom link from the normal chatroom
+                - delete the current consultation chatroom
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- 'end' button in cschatrooms.php -> end.php -> chatrooms.php
+WHERE 'end' button cschatrooms.php
+ -->
 <?php
   session_start();
   $servername = "localhost";

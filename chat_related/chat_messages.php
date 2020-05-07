@@ -1,3 +1,11 @@
+<!-- 
+PROGRAM chat_message.php - display chatroom list of the current user (have two type of chatroom - normal chatroom and consultation room)
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- 'consult' button in othersprofile.php -> chat_messages.php -> chatrooms.php
+- 'consult' button in othersprofile.php -> chat_messages.php -> cschatrooms.php
+Where 'consult' button in othersprofile.php 
+ -->
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">

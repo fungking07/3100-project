@@ -1,3 +1,13 @@
+<!-- 
+PROGRAM myprofile - allow user view the content of the post in forum
+                  - allow user to write comment to the post
+                  - allow user to like the post
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-'read' button in forum.php | in post history in navigation bar -> post.php -> like.php -> post.php
+-'read' button in forum.php | in post history in navigation bar -> 'submit' button in post.php -> post.php 
+WHERE 'read' button in forum.php | in post history in navigation bar
+ -->
 <!DOCTYPE html>
 <html>
 <head>

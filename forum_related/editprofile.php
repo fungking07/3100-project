@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM editprofile - allow user edit and update their personal information
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-'edit' button in myprofile.php -> editprofile.php -> storeprofile.php -> myprofile.php
+Where 'edit' button in myprofile.php 
+ -->
 <!DOCTYPE html>
 <html>
 <head>

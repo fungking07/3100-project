@@ -1,3 +1,17 @@
+<!-- 
+PROGRAM chatrooms.php - display and transmit chatroom messages in a one-to-one chatroom
+                         - allow user request for consultation with their self-defined consult fee
+                         - allow user to accept / decline consultation request
+                         - direct user to the consultation chatroom
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- a block in chat_messages.php -> chatrooms.php -> consult button -> consult.php -> chatrooms.php
+- a block in chat_messages.php -> chatrooms.php -> accept button (only appear when the other side request a consultation) -> accept.php -> chatrooms.php
+- a block in chat_messages.php -> chatrooms.php -> decline button (only appear when the other side request a consultation) -> reject.php -> chatrooms.php
+- a block in chat_messages.php -> chatrooms.php -> submit button -> chatp.php -> chatrooms.php
+- a block in chat_messages.php -> chatrooms.php -> chatroom button -> cschatrooms.php
+WHERE a block in chat_messages.php
+ -->
 <!DOCTYPE html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <html>
