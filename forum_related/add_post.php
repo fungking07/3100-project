@@ -9,9 +9,8 @@
 <?php
   include("ConnectDatabase.php");
   include("../navbar.php");
-  session_start();
   if(isset($_SESSION['signed_in']) == false){
-    echo "<script> 
+    echo "<script>
     window.location.href='/403.php';
     </script>";
   }
@@ -88,9 +87,17 @@
 		<meta charset="utf-8">
 		<title>Add_post</title>
 		<link rel="stylesheet" href="../css/add_post.css">
-
+    <style media="screen">
+			.bg{background: #ECE9E6;  /* fallback for old browsers */
+					background: -webkit-linear-gradient(to top, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+					background: linear-gradient(to top, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+					height: 100%}
+			.text{text-align:justify;font-size: 16px;}
+			h1{color: rgb(100,90,255);}
+			h3{color: rgb(0,191,255);}
+		</style>
 	</head>
-	<body style="height:2000px">
+	<body style="height:100%" class="bg">
 		<div class="share">
 			Share your experience
 		</div>
