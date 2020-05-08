@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM 403.php - access denied  
+PROGRAMMER: Lam King Fung 1155108968
+CALLING SEQUENCE: 
+- 403.php(direct input)
+- if not login/ visitor visit forbidden pages -> 403.php
+ -->
 <?php
   define('MYSQL_BOTH',MYSQLI_BOTH);
   define('MYSQL_NUM',MYSQLI_NUM);

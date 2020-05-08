@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM index.php - front page
+PROGRAMMER: Lee Pak Hei 1155109311 Lam King Fung 1155108968
+CALLING SEQUENCE: 
+- front page of software
+- navbar.php -> index.php
+ -->
 <?php session_start() ?><!DOCTYPE html>
 <html>
 	<head>

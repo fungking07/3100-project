@@ -1,3 +1,12 @@
+<!-- 
+PROGRAM forum.php - forum  
+PROGRAMMER: Tso Sze Long Angus 1155109296
+CALLING SEQUENCE: 
+- forum.php
+- navbar.php -> forum.php
+Where filter button is for sorting by date, likes and filter by category.
+Where Add Post button is for accessing add post.
+ -->
 <?php
   include('ConnectDatabase.php');
   $errors = array();

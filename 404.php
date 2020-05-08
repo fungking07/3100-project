@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM 404.php -   
+PROGRAMMER: Lam King Fung 1155108968
+CALLING SEQUENCE: 
+- 404.php (direct access)
+- incorrect link -> 404.php
+ -->
 <?php
   define('MYSQL_BOTH',MYSQLI_BOTH);
   define('MYSQL_NUM',MYSQLI_NUM);
