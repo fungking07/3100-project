@@ -1,3 +1,15 @@
+<!-- 
+PROGRAM myprofile - display person background information
+				  - record user credit card information for transaction
+				  - allow user to match a consulter according to their preference
+				  - display person to view the comment of his/her previous consultation as a consulter
+				  - allow user edit and update their personal information
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-'My Profile' button in navigation bar -> myprofile.php -> editprofile.php -> myprofile.php
+-'My Profile' button in navigation bar -> myprofile.php -> 'match to consult' button -> match.php -> othersprofile.php
+Where 'My Profile' button in navigation bar
+ -->
 <!DOCTYPE html>
 <html>
 <head>

@@ -60,7 +60,13 @@
 		verify();
 	}
  ?>
-
+}
+<!-- 
+PROGRAM ForgetPw_UI
+PROGRAMMER: Chung Tsz Ting 1155110208, SU Hong Jin 1155124500
+CALLING SEQUENCE: verification.html -> verfication.php -> login.php
+Where 'forget' button on login page is clicked
+ -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -75,6 +81,16 @@
       .link{
       margin-left:81%;
       }
+      #send{
+        margin-top: 20px;
+        margin-left:25%;
+        padding:10px;
+        width: 8%;
+        height:40px;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: white;
+      }
     </style>
 	</head>
 	<body>
@@ -82,10 +98,11 @@
 			Reset Password
     </div>
     <form action="verification.php" method="post">
-        <input type="text" name="email" id="email" placeholder="Email" />
+        <input class="send" type="text" name="email" id="email" placeholder="Email" />
         <br><br>
-        <input type="submit" name="send" id="send" type="button"/><br><br>
-        <a href="login.php" class="send">Back to login page</a>
+            <input type="submit" name="send" id="send" type="button"/>
+        <br><br>
+        <a href="login.php" style="margin-left:25%">Back to login page</a>
      </form>
      <h4 class="red"><?php include("error.php")?></h>
 	</body>

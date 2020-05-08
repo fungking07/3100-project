@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM match_form.php - allow user enter their preference (education level, consulters' consultation performance and faculty) to direct them to the matched person page
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-'match to consult' button in myprofile.php -> match_form.php -> match.php -> othersprofile.php -> consult button -> chat_messages.php
+Where 'match to consult' button in myprofile.php 
+ -->
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="device-width, initial-scale = 1">
 <title>chats</title>

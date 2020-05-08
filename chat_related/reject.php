@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM reject.php - delete the original request consultation message and display message of decline request
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- chatrooms.php -> reject button (only appear when the other side request a consultation) -> reject.php -> chatrooms.php
+Where 'reject' button in chatrooms.php 
+ -->
 <?php
   session_start();
   $servername = "localhost";

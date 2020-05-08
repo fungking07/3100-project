@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM storeprofile - store the updated personal information to server and refresh the information in myprofile.php
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-'confirm' button in editprofile.php -> storeprofile.php -> myprofile.php
+Where 'confirm' button in editprofile.php
+ -->
 <?php
 	session_start();
 	$uid = $_SESSION['user_id'];

@@ -1,7 +1,13 @@
-<!-- TODO:  -->
-<!-- -profile have choice for major and education
-- -->
-
+<!-- 
+PROGRAM myprofile - display person background information
+				  - allow the current user to build a chatroom with the user
+				  - display person to view the comment of that user' previous consultation as a consulter
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-username in post -> 'consult' button in othersprofile.php -> chat_messages.php
+-'match to consult' button in myprofile.php -> match.php -> othersprofile.php
+Where username in post || 'match to consult' button in myprofile.php 
+ -->
 
 <!DOCTYPE html>
 <html>

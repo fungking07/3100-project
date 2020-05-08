@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM accept.php - build a new consultation chatroom between the current 2 user in the normal chatroom and display a message of link to the newly built chatroom
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- chatrooms.php -> accept button (only appear when the other side request a consultation) -> accept.php -> chatrooms.php
+Where 'accept' button in chatrooms.php 
+ -->
 <?php
   session_start();
   $servername = "localhost";

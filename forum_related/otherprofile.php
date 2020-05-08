@@ -1,3 +1,11 @@
+<!-- 
+PROGRAM myprofile - display person background information
+				  - allow the current user to build a chatroom with this user
+				  - display person to view the comment of his/her previous consultation as a consulter
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: clicking username in post -> otherprofile.php -> consult button -> chat_message.php
+Where username in post
+ -->
 <!DOCTYPE html>
 <html>
 	<head>

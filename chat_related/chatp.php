@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM chatp.php - store the message to the server and update the page of chatroom
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- chatrooms.php -> submit button -> chatp.php -> chatrooms.php
+Where 'submit' button in chatrooms.php 
+ -->
 <?php
   session_start();
   $servername = "localhost";

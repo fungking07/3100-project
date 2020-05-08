@@ -1,3 +1,11 @@
+<!-- 
+PROGRAM refresh.php - refresh and display chatroom messages in a one-to-one chatroom continuously for a few minisecond
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+-chatrooms.php -> refresh.php
+-cschatrooms.php -> refresh.php
+WHERE chatrooms.php || cschatrooms.php
+-->
 <?php
   session_start();
   $servername = "localhost";

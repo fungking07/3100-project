@@ -1,3 +1,12 @@
+<!-- 
+PROGRAM cschatrooms.php - display and transmit chatroom messages in a one-to-one chatroom
+                         - allow consultee to rate / comment for the consultation
+PROGRAMMER: Chung Tsz Ting 115511028
+CALLING SEQUENCE: 
+- a block in chat_messages.php -> cschatrooms.php -> end button -> end.php -> chatrooms.php
+- a block in chat_messages.php -> cschatrooms.php -> submit button -> chatp.php -> chatrooms.php
+Where a block in chat_messages.php
+ -->
 <!DOCTYPE html>
 <html>
 <head>
