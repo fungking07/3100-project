@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM like.php - give "like" to post 
+PROGRAMMER: Lee Pak Hei 1155109311 Lam King Fung 1155108968
+CALLING SEQUENCE: 
+- post.php -> like button -> like.php -> post.php
+Where 'like' button in post.php 
+ -->
 <?php
   session_start();
   if(isset($_SESSION['signed_in']) == false){

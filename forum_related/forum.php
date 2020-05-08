@@ -1,3 +1,12 @@
+<!-- 
+PROGRAM forum.php - forum  
+PROGRAMMER: Lee Pak Hei 1155109311 Lam King Fung 1155108968 Tso Sze Long Angus 1155109296
+CALLING SEQUENCE: 
+- forum.php
+- navbar.php -> forum.php
+Where filter button is for sorting by date, likes and filter by category.
+Where Add Post button is for accessing add post.
+ -->
 <?php
   define('MYSQL_BOTH',MYSQLI_BOTH);
   define('MYSQL_NUM',MYSQLI_NUM);

@@ -1,6 +1,6 @@
 <!-- 
 PROGRAM match_form.php - allow user enter their preference (education level, consulters' consultation performance and faculty) to direct them to the matched person page
-PROGRAMMER: Chung Tsz Ting 115511028
+PROGRAMMER: Chung Tsz Ting 115511028 Lee Pak Hei 1155109311
 CALLING SEQUENCE: 
 -'match to consult' button in myprofile.php -> match_form.php -> match.php -> othersprofile.php -> consult button -> chat_messages.php
 Where 'match to consult' button in myprofile.php 

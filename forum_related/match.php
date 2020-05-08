@@ -1,6 +1,6 @@
 <!-- 
 PROGRAM match.php - using sql to match according to the entered information to direct users to their matched person page
-PROGRAMMER: Chung Tsz Ting 115511028
+PROGRAMMER: Chung Tsz Ting 115511028 Lee Pak Hei 1155109311
 CALLING SEQUENCE: 
 - 'submit' button in match_form.php -> match.php -> othersprofile.php -> consult button -> chat_messages.php
 Where 'submit' button in match_form.php  

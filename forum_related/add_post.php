@@ -1,3 +1,10 @@
+<!-- 
+PROGRAM FetchPost.php - output all post
+PROGRAMMER: Tso Sze Long 1155109296
+CALLING SEQUENCE: 
+- forum.php -> add_post.php
+Where Read More button is for accessing to specific post.
+ -->
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="device-width, initial-scale = 1">
 <title>chats</title>
