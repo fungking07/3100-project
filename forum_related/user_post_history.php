@@ -1,17 +1,9 @@
-<!-- 
-PROGRAM forum.php - forum  
-PROGRAMMER: Lee Pak Hei 1155109311
-CALLING SEQUENCE: 
-- navbar.php -> user_post_history.php
-Where filter button is for sorting by date, likes and filter by category.
-Where Add Post button is for accessing add post.
- -->
 <?php
     define('MYSQL_ASSOC',MYSQLI_ASSOC);
     include("../ConnectDatabase.php");
     include("../navbar.php");
     if(isset($_SESSION['signed_in']) == false){
-      echo "<script> 
+      echo "<script>
       window.location.href='/403.php';
       </script>";
     }
@@ -51,8 +43,8 @@ Where Add Post button is for accessing add post.
     $cat = $_POST['category'];
     switch ($date_flag) {
       case 0:
-        switch($likes_flag){ 
-          case 3: 
+        switch($likes_flag){
+          case 3:
             $sql = "SELECT * FROM forum WHERE category = '".$cat."' and author_id= $uid";  break;
           case 4:
             $sql = "SELECT * FROM forum WHERE category = '".$cat."' and author_id= $uid Order BY like_number ASC"; break;
@@ -140,7 +132,7 @@ Where Add Post button is for accessing add post.
   <div class="container-fluid">
         <!--Posts -->
         <div class="col-sm-9">
-      <?php include("FetchPost.php") ?>
+      <?php include("FetchPost0.php") ?>
     </div>
     <!-- Filter -->
     <div class="col-sm-3">
