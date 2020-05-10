@@ -1,28 +1,33 @@
-<!-- 
-PROGRAM forum.php - forum  
+<!--
+PROGRAM forum.php - forum
 PROGRAMMER: Tso Sze Long Angus 1155109296
-CALLING SEQUENCE: 
+CALLING SEQUENCE:
 - forum.php
 - navbar.php -> forum.php
 Where filter button is for sorting by date, likes and filter by category.
 Where Add Post button is for accessing add post.
  -->
+
 <?php
   //use helper function to connect to the database
   include("../ConnectDatabase.php");
   include("../navbar.php");
 
+  //If user signedin then prompt a alert message to user telling them they have signed in
   if(isset($_SESSION['signed_in']) == true){
-    echo "<script> 
+    echo "<script>
     alert('You have been logged in. Redirecting you to our forum.');
     window.location.href='../forum_related/forum.php';
     </script>";
   }
+  //To store all error message
   $errors = array();
+  //check user infomation is correct or not
   function login_check(){
+    //get the GLOBALS variable
     global $connect;
     global $errors;
-    // get the input
+    // get the input pw and name from user
     $username = $_POST["user"]; //input id = user
     $password = $_POST["pw"];
 
@@ -52,26 +57,35 @@ Where Add Post button is for accessing add post.
     //fetch the result from query into the asociative array format
     $userdata = mysqli_fetch_assoc($result);
 
+    //if the user exist then the userdata will be true
     if($userdata != false){
       if($userdata['username'] == $username && $userdata['password'] == $password){
+         //set session variables
           $_SESSION["signed_in"] = true;
             $_SESSION["username"] = $userdata["username"];
             $_SESSION["user_id"] = $userdata["user_id"];
+          //free result
           mysqli_free_result($result);
+          //close connection
           mysqli_close($connect);
+          //rediect user to forum as signed in
           header("location:../forum_related/forum.php");
     }
   }
   else{
+    //free result
     mysqli_free_result($result);
+    //close connection
     mysqli_close($connect);
+    //push error message to array and promt to the user in html code
     array_push($errors, "username/password is incorrect");
   }
 }
-
+  // if user press register button rediect user to register page
   if(isset($_POST["register"])){
     header("location:register.php");
   }
+  //if user press the submite button then go to login check function to check user info is correct or not
   if(isset($_POST["submit"])){
       login_check();
     }
