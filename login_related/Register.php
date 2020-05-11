@@ -1,22 +1,31 @@
-<!-- 
-PROGRAM forum.php - forum  
+<!--
+PROGRAM Register.php - forum
 PROGRAMMER: Tso Sze Long Angus 1155109296
-CALLING SEQUENCE: 
+CALLING SEQUENCE:
 - forum.php
 - navbar.php -> forum.php
 Where filter button is for sorting by date, likes and filter by category.
 Where Add Post button is for accessing add post.
+VERSION 1: written 2-2-2020
+REVISION 1.1: 3-3-2020 to improve searching algorithm.
+PURPOSE:
+DATA STRUCTURES:
+ALGORITHM: 
+
  -->
 <?php
-
+	//use helper function to connect to the database
 	include("ConnectDatabase.php");
+	//To store all error message
 	$errors = array();
+	//
 	if(isset($_SESSION['signed_in']) == true){
-    echo "<script> 
+    echo "<script>
     alert('You have been logged in. Redirecting you to our forum.');
     window.location.href='../forum_related/forum.php';
     </script>";
   }
+
 	function register(){
 		//variable declaration
 		global $connect;

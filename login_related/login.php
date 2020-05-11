@@ -1,16 +1,24 @@
 <!--
-PROGRAM forum.php - forum
+PROGRAM login.php - forum
 PROGRAMMER: Tso Sze Long Angus 1155109296
 CALLING SEQUENCE:
 - forum.php
-- navbar.php -> forum.php
-Where filter button is for sorting by date, likes and filter by category.
-Where Add Post button is for accessing add post.
+- navbar.php -> login.php
+where nav bar is for navigation between page
+Where login button is for logging in with checking
+Where register button is for rediecting to register page
+where forget buttuon is for Redirecting to verification page
+VERSION 1: written 2-2-2020
+REVISION 1.1: 3-3-2020 to improve searching algorithm.
+PURPOSE:
+DATA STRUCTURES:
+ALGORITHM:
  -->
 
 <?php
   //use helper function to connect to the database
   include("../ConnectDatabase.php");
+  //add navbar to page
   include("../navbar.php");
 
   //If user signedin then prompt a alert message to user telling them they have signed in
@@ -115,7 +123,37 @@ background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
 
 .right {
   right: 0;
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+.button1{
+	background: transparent;
+	color: #6B5B95;
+	border: 5px solid #6B5B95;
+	border-radius: 50px;
+	padding: 0.8rem 2rem;
+	font: 18px "Margarine", sans-serif;
+	outline: none;
+	cursor: pointer;
+	position: relative;
+	transition: 0.2s ease-in-out;
+	letter-spacing: 2px;
+}
+.button1:hover {background-color: #66CCCC}
+.button1:active {
+  background-color: #66CCCC;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.input{
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid #696969;
+}
+.colorful{
+  font-size: 30px;
+  font-family: "Courier New", Courier, monospace;
+  color: #6B5B95;
 }
 </style>
 </head>
@@ -123,13 +161,14 @@ background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
 <div class="content">
   <div class="split left">
     <div class="centered">
+        <div class="colorful">
+          <h1>AcadMap</h>
+        </div>
       <form  method="Post" action = "login.php">
-        <label for="fname">Username:</label>
-        <input type="text" id="user" name="user"><br><br>
-        <label for="lname">Password:</label>
-        <input type="password" id="pw" name="pw"><br><br>
-        <button type="submit" class="btn2" onclick="regPage()" name= "submit" value ="submit">CONFIRM</button>
-        <a href="verification.php" class="btn2">Forget</a></button>
+        <input type="text" id="user" name="user" class ="input" placeholder="Type username"><br><br>
+        <input type="password" id="pw" name="pw" class ="input" placeholder="Type password"><br><br>
+        <button type="submit" class="button1" name= "submit" value ="submit">CONFIRM</button>
+        <a href="verification.php" class="button1">Forget</a>
       </form>
       <div class="red-text"><?php include("error.php")?></div>
     </div>
@@ -138,10 +177,12 @@ background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
 
   <div class="split right">
     <div class="centered">
-      <p>Not yet our member?</p>
+      <div class="colorful">
+      <p >Not yet our member?</p>
       <h3>REGISTER HERE!</h3>
+      </div>
       <form action="register.php" method="Post">
-      <button type="submit" class="btn1" onclick="regPage()" name= "register" value = "register">REGISTER</button>
+      <button type="submit" class="button1" onclick="regPage()" name= "register" value = "register">REGISTER</button>
       </form>
     </div>
   </div>
