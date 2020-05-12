@@ -1,7 +1,7 @@
-<!-- 
-PROGRAM forum.php - forum  
+<!--
+PROGRAM forum.php - forum
 PROGRAMMER: Tso Sze Long Angus 1155109296
-CALLING SEQUENCE: 
+CALLING SEQUENCE:
 - forum.php
 - navbar.php -> forum.php
 Where filter button is for sorting by date, likes and filter by category.
@@ -56,6 +56,10 @@ Where Add Post button is for accessing add post.
                   \n\n$link\n\nThank you for using our website.\n\nRegrad,\nThe AcadMap team";
 
                   mail($email,$email_subject,$message,$header);
+
+                  echo "<script>
+                  alert('Email has sent!!Check your email!');
+                  </script>";
         }
 
     mysqli_free_result($result);
@@ -69,10 +73,9 @@ Where Add Post button is for accessing add post.
 		verify();
 	}
  ?>
-}
-<!-- 
+<!--
 PROGRAM ForgetPw_UI
-PROGRAMMER: Chung Tsz Ting 1155110208, SU Hong Jin 1155124500
+PROGRAMMER: Chung Tsz Ting 1155110208, SU Hong Jin 1155124500 Tso Sze Long Angus 1155109296
 CALLING SEQUENCE: verification.html -> verfication.php -> login.php
 Where 'forget' button on login page is clicked
  -->
@@ -84,21 +87,34 @@ Where 'forget' button on login page is clicked
 		<link rel="stylesheet" href="../css/verification.css">
     <style>
       .red{
-      margin-left:35%;
+      margin-left:25%;
+      margin-top: 2%;
       color: red;
       }
       .link{
       margin-left:81%;
       }
-      #send{
-        margin-top: 20px;
-        margin-left:25%;
-        padding:10px;
-        width: 8%;
-        height:40px;
-        border-radius: 5px;
-        font-size: 16px;
-        background-color: white;
+      .submit{
+        margin-top: 1%;
+        margin-left: 25%;
+      	background: transparent;
+      	color: #6B5B95;
+      	border: 3px solid #6B5B95;
+      	border-radius: 50px;
+      	padding: 0.8rem 2rem;
+      	font: 18px "Margarine", sans-serif;
+      	outline: none;
+      	cursor: pointer;
+      	position: relative;
+      	transition: 0.2s ease-in-out;
+      	letter-spacing: 2px;
+      }
+      .submit:hover {background-color: #66CCCC;border: 5px solid #66CCCC;}
+      .submit:active {
+        background-color: #66CCCC;
+        border: 5px solid #66CCCC;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
       }
     </style>
 	</head>
@@ -109,9 +125,9 @@ Where 'forget' button on login page is clicked
     <form action="verification.php" method="post">
         <input class="send" type="text" name="email" id="email" placeholder="Email" />
         <br><br>
-            <input type="submit" name="send" id="send" type="button"/>
+            <button type="submit" name="send" class ="submit">submit</button>
         <br><br>
-        <a href="login.php" style="margin-left:25%">Back to login page</a>
+        <a href="login.php" style="margin-left:25%" class ="submit">Back to login page</a>
      </form>
      <h4 class="red"><?php include("error.php")?></h>
 	</body>

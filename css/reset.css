@@ -1,0 +1,31 @@
+*{
+  margin:0;
+  padding:0;
+}
+.Reset-Password{
+  margin-top:150px;
+  margin-left:45%;
+  font-size: 50px;
+  
+}
+.submit{
+	margin-left:43%;
+	margin-top:2%;
+	background: transparent;
+	color: #004d99;
+	border: 5px solid #004d99;
+	border-radius: 50px;
+	padding: 0.8rem 2rem;
+	font: 18px "Margarine", sans-serif;
+	outline: none;
+	cursor: pointer;
+	position: relative;
+	transition: 0.2s ease-in-out;
+	letter-spacing: 2px;
+}
+.submit:hover {background-color: #66CCCC}
+.submit:active {
+  background-color: #66CCCC;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

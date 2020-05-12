@@ -1,11 +1,11 @@
 <!--
-PROGRAM forum.php - forum
+PROGRAM ConnectDatabase.php
 PROGRAMMER: Tso Sze Long Angus 1155109296
 CALLING SEQUENCE:
-- forum.php
-- navbar.php -> forum.php
-Where filter button is for sorting by date, likes and filter by category.
-Where Add Post button is for accessing add post.
+- all pages
+PURPOSE:For connecting to the database
+DATA STRUCTURES:
+variable connect:for storing the connection of database
  -->
 <?php
   //connect to database as admin
@@ -17,6 +17,4 @@ Where Add Post button is for accessing add post.
  }
  //start session
  session_start();
-
-
  ?>

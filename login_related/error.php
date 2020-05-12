@@ -1,11 +1,11 @@
 <!--
-PROGRAM forum.php - forum
+PROGRAM error.php
 PROGRAMMER: Tso Sze Long Angus 1155109296
 CALLING SEQUENCE:
-- forum.php
-- navbar.php -> forum.php
-Where filter button is for sorting by date, likes and filter by category.
-Where Add Post button is for accessing add post.
+- all login_related pages
+purpose:output error message to user
+DATA STRUCTURE:
+array error : string array for storing error message
  -->
 
 <?php

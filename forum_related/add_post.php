@@ -1,18 +1,13 @@
-<!-- 
-PROGRAM FetchPost.php - output all post
-PROGRAMMER: Tso Sze Long 1155109296
-CALLING SEQUENCE: 
+<!--
+PROGRAM add_Post.php - add new post
+PROGRAMMER and UI designer: Tso Sze Long 1155109296
+CALLING SEQUENCE:
 - forum.php -> add_post.php
-Where Read More button is for accessing to specific post.
+Where add post button is for redicting to add post.
+Algorithm:
+add_post():For adding new post to the forum.If the post content is valid then store in the database .Otherwise promt error to user
  -->
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="viewport" content="device-width, initial-scale = 1">
-<title>chats</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/chat_msg.css">
-<link rel="stylesheet" href="../css/main.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+
 <?php
   include("ConnectDatabase.php");
   include("../navbar.php");
@@ -93,23 +88,39 @@ Where Read More button is for accessing to specific post.
 	<head>
 		<meta charset="utf-8">
 		<title>Add_post</title>
-		<link rel="stylesheet" href="../css/add_post.css">
-    <style media="screen">
-			.bg{background: #ECE9E6;  /* fallback for old browsers */
-					background: -webkit-linear-gradient(to top, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-					background: linear-gradient(to top, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-					height: 100%}
-			.text{text-align:justify;font-size: 16px;}
-			h1{color: rgb(100,90,255);}
-			h3{color: rgb(0,191,255);}
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+			body{
+				background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+        }
+        .inner-persnal-description{
+	            color: #004d99;
+	            background: transparent;
+	            border: 0;
+	            outline: 0;
+	            border-bottom: 1px solid #696969;
+              width:100%;
+              height:90%;
+              appearance: none;
+              font-size: 16px;
+              margin-left:-5%;
+              margin-top: -3%;
+              padding-left: 1%;
+              padding-top: 8%;
+	            resize: none;
+            }
 		</style>
 	</head>
 	<body style="height:100%" class="bg">
-		<div class="share">
+		<div class="register">
 			Share your experience
 		</div>
     <form action ="add_post.php" method = "post">
-		  <input type="text" class="title" name="title" placeholder="Post Title" />
+		  <input type="text" class="email" name="title" placeholder="Post Title" />
 		    <div class="major">
 			       <select  name = "category">
 				           <option style="display: none;" value ="">Category</option>

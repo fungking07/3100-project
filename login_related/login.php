@@ -1,18 +1,30 @@
 <!--
 PROGRAM login.php - forum
-PROGRAMMER: Tso Sze Long Angus 1155109296
+PROGRAMMER and UI designer: Tso Sze Long Angus 1155109296
 CALLING SEQUENCE:
-- forum.php
 - navbar.php -> login.php
 where nav bar is for navigation between page
 Where login button is for logging in with checking
 Where register button is for rediecting to register page
 where forget buttuon is for Redirecting to verification page
-VERSION 1: written 2-2-2020
-REVISION 1.1: 3-3-2020 to improve searching algorithm.
-PURPOSE:
+VERSION 1: written 2-4-2020
+REVISION 1.1: 25-4-2020 to improve searching algorithm.
+REVISION 2: 11-5-2020 to improve UI
+PURPOSE:Provide login function and rediect the unregister user to register page.Enable user to reset their password by
+rediecting them to verification page
 DATA STRUCTURES:
+variable connect:for storing database connection
+variable $_POST[username]:Global variable storing username
+variable $_POST[register]:Global variable storing username
+variable $_POST[submit]:Global variable storing input from submit button
+variable $_POST[password:Global variable storing password
+variable sql:for storing query
+variable result:for storing query result
+variable userdata:store all record fetched form query result
+array error : string array for storing error message
 ALGORITHM:
+Login_check():check user input(username,password).Promt error to user if user input failed to meet
+checking criteria .Otherwise,log user in.
  -->
 
 <?php
@@ -102,7 +114,11 @@ ALGORITHM:
    we copy login.html to php in order to make action in html functional
   */
 ?>
-
+<!--
+PROGRAM login UI
+PROGRAMMER: Tso Sze Long Angus 1155109296 ,Chung Tsz Ting 1155110208
+CALLING SEQUENCE: login.html -> login.php
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,9 +134,7 @@ ALGORITHM:
 .left {
   left: 0;
 background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-
 }
-
 .right {
   right: 0;
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
@@ -150,6 +164,9 @@ background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
   background: transparent;
   border-bottom: 1px solid #696969;
 }
+.red{
+  color: red;
+}
 .colorful{
   font-size: 30px;
   font-family: "Courier New", Courier, monospace;
@@ -168,13 +185,11 @@ background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
         <input type="text" id="user" name="user" class ="input" placeholder="Type username"><br><br>
         <input type="password" id="pw" name="pw" class ="input" placeholder="Type password"><br><br>
         <button type="submit" class="button1" name= "submit" value ="submit">CONFIRM</button>
-        <a href="verification.php" class="button1">FORGET</a>
+        <a href="verification.php" class="button1">Forget</a>
       </form>
-      <div class="red-text"><?php include("error.php")?></div>
+      <div class="red"><?php include("error.php")?></div>
     </div>
-
   </div>
-
   <div class="split right">
     <div class="centered">
       <div class="colorful">

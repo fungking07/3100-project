@@ -4,53 +4,25 @@
   outline:none;
 }
 html{
-  background:url(../assets/register_bac.jpeg) no-repeat center center fixed;
-  background-size: cover;
+background-image: linear-gradient(60deg, #C9FFBF 0%,
+#ffafbd 99%,#ffafbd 100%);
 }
 .red_text{
-margin-left:65%;
+margin-left:40%;
 margin-top:2%;
 color: red;
 }
 .register{
-  margin-left:42%;
+  margin-left:0%;
   margin-top:3%;
   text-align: center;
   font-size: 40px;
-  font-family: 'Cooper Black';
+  font-family: "Courier New", Courier, monospace;
   margin-bottom: 25px;
-  color:skyblue;
-}
-.picture{
-  display:inline-block;
-  width:100px;
-  height:100px;
-  border-radius: 50px;
-  border-color: gray;
-  border-style: solid;
-  border-width: 2px;
-  background-color: white;
-  margin-left:45%;
-}
-.upload{
-  display:inline-block;
-  vertical-align: text-top;
-  margin-top:-60px;
-  margin-left:3%;
-  width: 170px;
-  height:35px;
-  border-color: gray;
-  border-style: solid;
-  border-width: 2px;
-  font-size: 15px;
-}
-.upload:hover{
-  border-style:solid;
-  border-width: 2px;
-  border-color: skyblue;
+  color:#004d99;
 }
 .first{
-  margin-left:45%;
+  margin-left:25%;
 }
 input:hover{
   border-width: 2px;
@@ -89,67 +61,49 @@ input:focus{
   border-color: skyblue;
 }
 .first,.last,.user{
+	background: transparent;
   display:inline-block;
+	color: #004d99;
   margin-top:2%;
   width: 15%;
   height:35px;
   text-align: center;
-  border-style: solid;
+	border: 0;
+  outline: 0;
+	border-bottom: 1px solid #696969;
   font-size: 16px;
-  border-color: gray;
+
 }
 .last,.user{
   margin-left:2%;
 }
-.password{
-  margin-left:45%;
-  margin-top:2%;
-  width: 49%;
-  height:35px;
-  border-style: solid;
-  font-size: 16px;
-  border-color: gray;
-  padding-left: 1%;
-}
-.con_password{
-  margin-left:45%;
-  margin-top:2%;
-  width: 38%;
-  height:35px;
-  border-style: solid;
-  font-size: 16px;
-  border-color: gray;
-  padding-left: 1%;
-}
-.confirm{
-  display:inline-block;
-  margin-top:2%;
-  margin-left:1%;
-  width: 9.6%;
-  height:35px;
-  border-color: gray;
-  border-style: solid;
-  border-width: 2px;
-  font-size: 15px;
+.user{
+	width: 11%;
 }
 .email{
-  margin-left:45%;
+	background: transparent;
+	color: #004d99;
+  margin-left:25%;
   margin-top:2%;
-  width: 49%;
+  width: 45%;
   height:35px;
-  border-style: solid;
   font-size: 16px;
-  border-color: gray;
   padding-left: 1%;
+	border: 0;
+	outline: 0;
+	border-bottom: 1px solid #696969;
 }
 .major{
-  margin-left:45%;
+	background: transparent;
+  margin-left:25%;
   margin-top:2%;
-  width: 50%;
+  width: 15%;
   height:35px;
-  border-style: solid;
+	border: 0;
+	outline: 0;
+	border-bottom: 1px solid #696969;
   font-size: 16px;
-  border-color: gray;
+
 }
 select{
   border:none;
@@ -160,26 +114,27 @@ select{
   padding-left: 1%;
 }
 .education{
-  margin-left:45%;
-  margin-top:2%;
-  width: 50%;
+	margin-top: -41px;
+  margin-left:55%;
+  width: 15%;
   height:35px;
-  border-style: solid;
   font-size: 16px;
-  border-color: gray;
+	border-bottom: 1px
 }
 .per-des{
-  margin-left:45%;
+  margin-left:25%;
   margin-top:2%;
-  width: 49%;
+  width: 45%;
   height:100px;
-  border-style: solid;
-  border-color: gray;
   padding-left: 1%;
   text-align: center;
 }
 .inner-persnal-description{
-  border:none;
+	color: #004d99;
+	background: transparent;
+	border: 0;
+	outline: 0;
+	border-bottom: 1px solid #696969;
   width:100%;
   height:90%;
   appearance: none;
@@ -187,14 +142,26 @@ select{
   margin-left:-2%;
   padding-left: 1%;
   padding-top: 1%;
+	resize: none;
 }
 .submit{
-  margin-left:65%;
-  margin-top:2%;
-  width: 10%;
-  height:35px;
-  text-align: center;
-  border-style: none;
-  background-color: rgb(115,255,99);
-  font-size: 16px;
+	margin-left:43%;
+	margin-top:2%;
+	background: transparent;
+	color: #004d99;
+	border: 5px solid #004d99;
+	border-radius: 50px;
+	padding: 0.8rem 2rem;
+	font: 18px "Margarine", sans-serif;
+	outline: none;
+	cursor: pointer;
+	position: relative;
+	transition: 0.2s ease-in-out;
+	letter-spacing: 2px;
+}
+.submit:hover {background-color: #66CCCC}
+.submit:active {
+  background-color: #66CCCC;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

@@ -2,16 +2,35 @@
 PROGRAM Register.php - forum
 PROGRAMMER: Tso Sze Long Angus 1155109296
 CALLING SEQUENCE:
-- forum.php
-- navbar.php -> forum.php
+- login.php -> register.php
 Where filter button is for sorting by date, likes and filter by category.
 Where Add Post button is for accessing add post.
-VERSION 1: written 2-2-2020
-REVISION 1.1: 3-3-2020 to improve searching algorithm.
-PURPOSE:
+VERSION 1: written 15-4-2020
+REVISION 1.1: 12-5-2020 to improve UI
+PURPOSE:For people to register by inputting correct infomation(with checking)
 DATA STRUCTURES:
-ALGORITHM: 
-
+variable connect:for storing database connection
+variable $_POST[first]:Global variable storing user firstname
+variable $_POST[last]:Global variable storing user lastname
+variable $_POST[submit]:Global variable storing input from submit button
+variable $_POST[password]:Global variable storing password
+variable $_POST[confirmpassword]:Global variable storing conpassword
+variable $_POST[faculty]:Global variable storing user faculty
+variable $_POST[education]:Global variable storing education level
+variable user_check_query :for storing query that check if user existed
+variable useridsql:for storing query that enable us to find the user id and store other data to the other table by using foreign key
+variable sql:for storing query that inset the user input into database
+variable userresult:for storing query result
+variable useridresult:for storing query result
+variable result:for storing query result
+variable userdata:store all record fetched form query result
+variable userid:store all record fetched form query result
+variable user:store all record fetched form query result
+variable userdata:store all record fetched form query result
+array error :string array for storing error message
+ALGORITHM:
+register():For user to register.If user input correct info ,
+it will store user data to database .Otherwise promt error to user
  -->
 <?php
 	//use helper function to connect to the database
@@ -122,6 +141,7 @@ ALGORITHM:
 	if(isset($_POST["submit"])){
 		register();
 	}
+	//
  ?>
 
 
@@ -132,11 +152,6 @@ ALGORITHM:
 		<title></title>
 		<link rel="stylesheet" href="../css/register.css">
 		<style>
-		.red_text{
-			margin-left:65%;
-			margin-top:2%;
-			color: red;
-		}
 		</style>
 	</head>
 	<body style="height:800px">
@@ -150,6 +165,9 @@ ALGORITHM:
 		<input type="password" class="email" name="password" placeholder="password" />
 		<input type="password" class="email" name="confirmpassword" placeholder="confirm password"/>
 		<input type="text" class="email" name="email" placeholder="Email Address" />
+		<div class="per-des">
+			<textarea class="inner-persnal-description" rows="10" cols="50" name = "person" placeholder="Personal Description: characteristics, habits..."></textarea>
+		</div>
 		<div class="major">
 			<select name = "Faculty" >
 				<option style="display: none;" value ="">Faculty</option>
@@ -171,9 +189,6 @@ ALGORITHM:
 				<option value ="Master">Master</option>
 				<option value ="Post Graduate">Post Graduate</option>
 			</select>
-		</div>
-		<div class="per-des">
-			<textarea class="inner-persnal-description" rows="10" cols="50" name = "person" placeholder="Personal Description: characteristics, habits..."></textarea>
 		</div>
 		 <input class="submit" type="submit" name="submit" value="submit"/>
 		 <div class="red_text"><?php include('error.php'); ?></div>
