@@ -168,7 +168,7 @@ background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
         <input type="text" id="user" name="user" class ="input" placeholder="Type username"><br><br>
         <input type="password" id="pw" name="pw" class ="input" placeholder="Type password"><br><br>
         <button type="submit" class="button1" name= "submit" value ="submit">CONFIRM</button>
-        <a href="verification.php" class="button1">Forget</a>
+        <a href="verification.php" class="button1">FORGET</a>
       </form>
       <div class="red-text"><?php include("error.php")?></div>
     </div>
